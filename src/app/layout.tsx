@@ -3,7 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEOJsonLd from "./seo";
-const siteUrl = "https://your-domain.com"; // عدّل لاحقاً بعد النشر
+const siteUrl = "https://portfolio-xi-one-38.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: "Mohanad AlHajy Portfolio",
     images: [
       {
-        url: "https://portfolio-xi-one-38.vercel.app/og.png",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "Mohanad AlHajy Portfolio",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     title: "Mohanad AlHajy | Full Stack Engineer",
     description:
       "Backend-focused Full Stack Engineer building scalable APIs, real-time systems, and subscription/payment flows.",
-    images: ["https://portfolio-xi-one-38.vercel.app/og.png"],
+    images: ["/og.png"],
   },
 
   robots: {
