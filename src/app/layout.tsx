@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: "Mohanad AlHajy Portfolio",
     images: [
       {
-        url: "/og.png",
+        url: "https://portfolio-xi-one-38.vercel.app/og.png",
         width: 1200,
         height: 630,
         alt: "Mohanad AlHajy Portfolio",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     title: "Mohanad AlHajy | Full Stack Engineer",
     description:
       "Backend-focused Full Stack Engineer building scalable APIs, real-time systems, and subscription/payment flows.",
-    images: ["/og.png"],
+    images: ["https://portfolio-xi-one-38.vercel.app/og.png"],
   },
 
   robots: {
