@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Backend-focused Full Stack Engineer building scalable APIs, real-time systems, and subscription/payment flows using Node.js & NestJS.",
+    "Full Stack Engineer building scalable APIs, real-time systems, and subscription/payment flows using Node.js & NestJS.",
 
   keywords: [
     "Mohanad AlHajy",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Mohanad AlHajy | Full Stack Engineer",
     description:
-      "Backend-focused Full Stack Engineer building scalable APIs, real-time systems, and subscription/payment flows.",
+      "Full Stack Engineer building scalable APIs, real-time systems, and subscription/payment flows.",
     url: siteUrl,
     siteName: "Mohanad AlHajy Portfolio",
     images: [
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Mohanad AlHajy | Full Stack Engineer",
     description:
-      "Backend-focused Full Stack Engineer building scalable APIs, real-time systems, and subscription/payment flows.",
+      "Full Stack Engineer building scalable APIs, real-time systems, and subscription/payment flows.",
     images: ["/og.png"],
   },
 

@@ -13,17 +13,22 @@ export default function HomePage() {
       <section className="space-y-6">
         <div className="space-y-3">
           <p className="text-sm text-zinc-400">Dubai, UAE</p>
-          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">Mohanad AlHajy</h1>
+          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+            Mohanad AlHajy
+          </h1>
           <p className="max-w-2xl text-lg leading-relaxed text-zinc-300">
-            Backend-focused Full Stack Engineer building scalable APIs, real-time systems, and
-            subscription/payment flows using Node.js, NestJS, and modern web stacks.
+            Full Stack Developer with 5+ years of experience building scalable
+            applications and modern web platforms, focused on clean
+            architecture, reliable systems, and high-quality user experiences.
           </p>
         </div>
 
         <div className="flex flex-wrap gap-2">
           <Tag>NestJS</Tag>
           <Tag>Node.js</Tag>
-          <Tag>Payments</Tag>
+          <Tag>Express</Tag>
+          <Tag>React</Tag>
+          <Tag>Next.js</Tag>
           <Tag>Real-time</Tag>
           <Tag>Microservices</Tag>
           <Tag>AWS</Tag>
@@ -68,9 +73,14 @@ export default function HomePage() {
             desc: "Multi-tenant platforms, clean codebases, and production-ready deployments.",
           },
         ].map((x) => (
-          <div key={x.title} className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-5">
+          <div
+            key={x.title}
+            className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-5"
+          >
             <h3 className="text-base font-semibold">{x.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-zinc-300">{x.desc}</p>
+            <p className="mt-2 text-sm leading-relaxed text-zinc-300">
+              {x.desc}
+            </p>
           </div>
         ))}
       </section>
@@ -81,7 +91,9 @@ export default function HomePage() {
 
         <div className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6 space-y-4">
           <div>
-            <h3 className="text-lg font-medium">Full Stack Developer — Step By Tech</h3>
+            <h3 className="text-lg font-medium">
+              Full Stack Developer — Step By Tech
+            </h3>
             <p className="text-sm text-zinc-400">2021 – Present · Dubai</p>
             <ul className="mt-2 list-disc pl-5 text-sm text-zinc-300 space-y-1">
               <li>Built scalable backend systems for Vidnik mobile platform</li>
@@ -92,7 +104,9 @@ export default function HomePage() {
           </div>
 
           <div>
-            <h3 className="text-lg font-medium">Full Stack Developer — InfoTech</h3>
+            <h3 className="text-lg font-medium">
+              Full Stack Developer — InfoTech
+            </h3>
             <p className="text-sm text-zinc-400">2020 – 2021 · Dubai</p>
             <ul className="mt-2 list-disc pl-5 text-sm text-zinc-300 space-y-1">
               <li>Developed multi-tenant HR platform</li>
