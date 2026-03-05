@@ -3,7 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEOJsonLd from "./seo";
-const siteUrl = "https://portfolio-xi-one-38.vercel.app";
+const siteUrl = "https://mohannad-alhajy.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

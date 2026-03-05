@@ -1,3 +1,4 @@
+import QuickLinks from "@/components/QuickLinks";
 import Link from "next/link";
 
 const Tag = ({ children }: { children: React.ReactNode }) => (
@@ -61,16 +62,16 @@ export default function HomePage() {
       <section className="grid gap-4 sm:grid-cols-3">
         {[
           {
-            title: "Payments & Subscriptions",
-            desc: "Stripe + Apple/Google IAP flows, lifecycle handling, validation, and reliability-first design.",
+            title: "Scalable Web Applications",
+            desc: "Design and development of full-stack web platforms with scalable backend services, modern frontend interfaces, and reliable system architecture.",
           },
           {
-            title: "Real-time Systems",
-            desc: "Messaging & live features with Socket.IO and scalable backend patterns.",
+            title: "Real-Time & Messaging Systems",
+            desc: "Implementation of real-time communication features and messaging systems using WebSockets, Pub/Sub architectures, and distributed services.",
           },
           {
-            title: "Scalable Architecture",
-            desc: "Multi-tenant platforms, clean codebases, and production-ready deployments.",
+            title: "Cloud & Third-Party Integrations",
+            desc: "Integration with cloud platforms and external services including authentication, payments, messaging, and AI-powered APIs to build complete production systems.",
           },
         ].map((x) => (
           <div
@@ -117,34 +118,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Quick links */}
-      <section className="rounded-2xl border border-zinc-800 bg-zinc-900/20 p-6">
-        <h2 className="text-lg font-semibold">Quick Links</h2>
-        <div className="mt-4 flex flex-wrap gap-3 text-sm">
-          <a
-            className="rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-2 hover:bg-zinc-900"
-            href="https://github.com/mohannadalhajy"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-          <a
-            className="rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-2 hover:bg-zinc-900"
-            href="https://linkedin.com/in/mohannad-alhajy"
-            target="_blank"
-            rel="noreferrer"
-          >
-            LinkedIn
-          </a>
-          <a
-            className="rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-2 hover:bg-zinc-900"
-            href="mailto:mohannad.alhajy@gmail.com"
-          >
-            Email
-          </a>
-        </div>
-      </section>
+      <QuickLinks/>
     </div>
   );
 }
