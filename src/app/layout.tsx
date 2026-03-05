@@ -9,15 +9,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
   title: {
-    default: "Mohanad AlHajy | Full Stack Engineer",
-    template: "%s | Mohanad AlHajy",
+    default: "Mohannad AlHajy | Full Stack Engineer",
+    template: "%s | Mohannad AlHajy",
   },
 
   description:
     "Full Stack Engineer building scalable APIs, real-time systems, and subscription/payment flows using Node.js & NestJS.",
 
   keywords: [
-    "Mohanad AlHajy",
+    "Mohannad AlHajy",
     "Full Stack Engineer",
     "NestJS Developer",
     "Node.js Backend",
@@ -26,21 +26,21 @@ export const metadata: Metadata = {
     "Dubai Developer",
   ],
 
-  authors: [{ name: "Mohanad AlHajy" }],
+  authors: [{ name: "Mohannad AlHajy" }],
 
-  creator: "Mohanad AlHajy",
+  creator: "Mohannad AlHajy",
   openGraph: {
-    title: "Mohanad AlHajy | Full Stack Engineer",
+    title: "Mohannad AlHajy | Full Stack Engineer",
     description:
       "Full Stack Engineer building scalable APIs, real-time systems, and subscription/payment flows.",
     url: siteUrl,
-    siteName: "Mohanad AlHajy Portfolio",
+    siteName: "Mohannad AlHajy Portfolio",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Mohanad AlHajy Portfolio",
+        alt: "Mohannad AlHajy Portfolio",
       },
     ],
     locale: "en_US",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Mohanad AlHajy | Full Stack Engineer",
+    title: "Mohannad AlHajy | Full Stack Engineer",
     description:
       "Full Stack Engineer building scalable APIs, real-time systems, and subscription/payment flows.",
     images: ["/og.png"],

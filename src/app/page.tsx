@@ -15,7 +15,7 @@ export default function HomePage() {
         <div className="space-y-3">
           <p className="text-sm text-zinc-400">Dubai, UAE</p>
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Mohanad AlHajy
+            Mohannad AlHajy
           </h1>
           <p className="max-w-2xl text-lg leading-relaxed text-zinc-300">
             Full Stack Developer with 5+ years of experience building scalable
@@ -43,7 +43,7 @@ export default function HomePage() {
             View Projects
           </Link>
           <a
-            href="/mohanad-alhajy-cv.pdf"
+            href="/mohannad-alhajy-cv.pdf"
             download
             className="rounded-xl border border-zinc-800 bg-zinc-950 px-5 py-2.5 text-sm font-medium text-zinc-100 hover:bg-zinc-900"
           >

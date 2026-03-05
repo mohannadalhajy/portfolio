@@ -6,7 +6,7 @@ export default function SEOJsonLd() {
         __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          name: "Mohanad AlHajy",
+          name: "Mohannad AlHajy",
           jobTitle: "Full Stack Engineer",
           url: "https://your-domain.com",
           sameAs: ["https://github.com/mohannadalhajy", "https://linkedin.com/in/mohannad-alhajy"],

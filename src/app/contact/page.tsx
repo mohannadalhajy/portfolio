@@ -26,7 +26,7 @@ export default function ContactPage() {
 
         <a
           className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6 hover:bg-zinc-900/40"
-          href="https://wa.me/971509987098?text=Hello%20Mohanad%2C%20I%20saw%20your%20portfolio"
+          href="https://wa.me/971509987098?text=Hello%20Mohannad%2C%20I%20saw%20your%20portfolio"
           target="_blank"
         >
           <div className="text-sm text-zinc-400">Phone</div>
