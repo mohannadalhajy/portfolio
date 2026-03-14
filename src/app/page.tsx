@@ -97,10 +97,37 @@ export default function HomePage() {
             </h3>
             <p className="text-sm text-zinc-400">2021 – Present · Dubai</p>
             <ul className="mt-2 list-disc pl-5 text-sm text-zinc-300 space-y-1">
-              <li>Built scalable backend systems for Vidnik mobile platform</li>
-              <li>Implemented Apple & Google subscription lifecycle flows</li>
-              <li>Designed real-time messaging & video communication</li>
-              <li>Improved system stability under growing user load</li>
+              <li>
+                Developed the backend-side for the "Vidnik" mobile application,
+                focusing on scalability, security, and maintainability.
+              </li>
+              <li>
+                Architected real-time messaging and video communication systems
+                to enable secure and low-latency user interactions.
+              </li>
+              <li>
+                Designed and implemented a cross-platform subscription system
+                (Google Play & Apple App Store), handling payment lifecycle,
+                renewals, and validation flows.
+              </li>
+
+              <li>
+                Improved backend performance and stability under increasing user
+                load through optimization and scalable service design.
+              </li>
+
+              <li>
+                Contributed to deployment processes and collaborated with team
+                members to ensure reliable app delivery.
+              </li>
+
+              <li>
+                Contributed to the development of responsive landing pages like{" "}
+                <a href="https://vidnik.com" dir="_blank">
+                  vidnik.com
+                </a>
+                .
+              </li>
             </ul>
           </div>
 
@@ -110,15 +137,29 @@ export default function HomePage() {
             </h3>
             <p className="text-sm text-zinc-400">2020 – 2021 · Dubai</p>
             <ul className="mt-2 list-disc pl-5 text-sm text-zinc-300 space-y-1">
-              <li>Developed multi-tenant HR platform</li>
-              <li>Implemented dynamic employee data models</li>
-              <li>Ensured data consistency and scalability</li>
+              <li>
+                Developed and maintained an HR platform specialized in managing
+                employee data and dynamic profile structures across
+                organizations.
+              </li>
+              <li>
+                Implemented multi-tenant architecture to support multiple
+                organizations with isolated data and configurations.
+              </li>
+              <li>
+                Applied data quality standards to ensure the accuracy,
+                consistency, and reliability of employee records.
+              </li>
+              <li>
+                Contributed to the design of scalable and secure backend systems
+                to support enterprise-level usage.
+              </li>
             </ul>
           </div>
         </div>
       </section>
 
-      <QuickLinks/>
+      <QuickLinks />
     </div>
   );
 }
