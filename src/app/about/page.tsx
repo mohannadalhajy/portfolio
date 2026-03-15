@@ -6,10 +6,15 @@ export default function AboutPage() {
       <div className="space-y-2">
         <h1 className="text-3xl font-semibold">About</h1>
         <p className="text-zinc-300">
-          I’m a Full Stack Engineer with over 5 years of experience building
-          production-grade web applications and scalable digital platforms. I
-          work across the entire stack — from designing backend services and
-          system architectures to developing modern, responsive user interfaces.
+          Full Stack Developer with 5+ years of experience developing scalable
+          backend systems using Node.js, NestJS And Typescript. Skilled in
+          designing REST APIs, database structures, and writing clean,
+          maintainable code. Experienced in building modern web interfaces using
+          React, and Next.js. Contributed to the development of multiple
+          production platforms including marriage, legal services, car rental,
+          HR management, and project management systems. Familiar with deploying
+          and managing applications using AWS, Docker, and Nginx in production
+          environments.
         </p>
         <p className="text-zinc-300">
           My work focuses on building reliable systems that integrate real-world
@@ -64,9 +69,8 @@ export default function AboutPage() {
           </ul>
         </div>
       </div>
-      
-      <QuickLinks/>
 
+      <QuickLinks />
     </div>
   );
 }
