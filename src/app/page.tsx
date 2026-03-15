@@ -97,36 +97,44 @@ export default function HomePage() {
             </h3>
             <p className="text-sm text-zinc-400">2021 – Present · Dubai</p>
             <ul className="mt-2 list-disc pl-5 text-sm text-zinc-300 space-y-1">
+              Developed and maintained scalable backend services using Node.js,
+              NestJS, and TypeScript.
               <li>
-                Developed the backend-side for the "Vidnik" mobile application,
-                focusing on scalability, security, and maintainability.
+                Built REST APIs and business logic for multiple platforms
+                including Vidnik (marriage app), Zadlaw (legal services), Exyar
+                (car rental), and Axiom (real estate).
               </li>
               <li>
-                Architected real-time messaging and video communication systems
-                to enable secure and low-latency user interactions.
+                Implemented real-time chat and video calling features for the
+                Vidnik mobile application.
               </li>
               <li>
-                Designed and implemented a cross-platform subscription system
-                (Google Play & Apple App Store), handling payment lifecycle,
-                renewals, and validation flows.
+                Developed admin dashboards and management systems using React
+                and modern web technologies.
               </li>
-
               <li>
-                Improved backend performance and stability under increasing user
-                load through optimization and scalable service design.
+                Built internal platforms including HR management software and a
+                Jira-like project management system (PMS).
               </li>
-
               <li>
-                Contributed to deployment processes and collaborated with team
-                members to ensure reliable app delivery.
+                Designed systems supporting 3D visualization features for cars
+                and real estate platforms.
               </li>
-
               <li>
-                Contributed to the development of responsive landing pages like{" "}
-                <a href="https://vidnik.com" dir="_blank">
-                  vidnik.com
-                </a>
-                .
+                Developed backend services for dynamic blog/content management
+                systems.
+              </li>
+              <li>
+                Contributed to multiple landing pages (Vidnik, Zadlaw, Xygma,
+                Mark Media, StepByTech).
+              </li>
+              <li>
+                Deployed and managed production systems using AWS, Docker, and
+                Nginx.
+              </li>
+              <li>
+                Provided production support, system maintenance, and performance
+                improvements.
               </li>
             </ul>
           </div>
