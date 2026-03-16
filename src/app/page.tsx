@@ -137,6 +137,8 @@ export default function HomePage() {
                 improvements.
               </li>
             </ul>
+            <br/>
+            <img src="/stepbytech-certificate.jpeg" alt="stepbytech certificate" />
           </div>
 
           <div>
