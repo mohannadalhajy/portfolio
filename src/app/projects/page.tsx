@@ -25,12 +25,12 @@ export default function ProjectsPage() {
                 <p className="text-sm text-zinc-300">{p.subtitle}</p>
               </div>
 
-              {/* <Link
+              <Link
                 href={`/projects/${p.slug}`}
                 className="shrink-0 rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-2 text-sm hover:bg-zinc-900"
               >
                 Details
-              </Link> */}
+              </Link>
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2">
