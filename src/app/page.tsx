@@ -1,4 +1,5 @@
 import QuickLinks from "@/components/QuickLinks";
+import ProjectGallery from "@/components/project-gallery";
 import Link from "next/link";
 
 const Tag = ({ children }: { children: React.ReactNode }) => (
@@ -15,7 +16,7 @@ export default function HomePage() {
         <div className="space-y-3">
           <p className="text-sm text-zinc-400">Dubai, UAE</p>
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Mohannad AlHajy
+            Mohannad Alhajy
           </h1>
           <p className="max-w-2xl text-lg leading-relaxed text-zinc-300">
             Full Stack Developer with 5+ years of experience building scalable
@@ -138,7 +139,8 @@ export default function HomePage() {
               </li>
             </ul>
             <br/>
-            <img src="/stepbytech-certificate.jpeg" alt="stepbytech certificate" />
+            <ProjectGallery images={["/stepbytech-certificate.jpeg"]}/>
+            {/* <img src="/stepbytech-certificate.jpeg" alt="stepbytech certificate" /> */}
           </div>
 
           <div>

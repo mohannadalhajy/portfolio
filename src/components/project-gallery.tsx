@@ -8,7 +8,7 @@ export default function ProjectGallery({ images }: { images: string[] }) {
   return (
     <>
       <section className="space-y-4">
-        <h2 className="text-lg font-semibold">Preview</h2>
+        {/* <h2 className="text-lg font-semibold">Preview</h2> */}
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {images.map((img, i) => (
