@@ -17,17 +17,22 @@ export default function ProjectsPage() {
         {projects.map((p) => (
           <div
             key={p.slug}
-            className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6"
+            className="group relative rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6 hover:bg-zinc-800/50 transition-colors"
           >
             <div className="flex items-start justify-between gap-4">
               <div className="space-y-1">
-                <h2 className="text-xl font-semibold">{p.title}</h2>
+                <h2 className="text-xl font-semibold">
+                  <Link href={`/projects/${p.slug}`} className="focus:outline-none">
+                    <span className="absolute inset-0" aria-hidden="true" />
+                    {p.title}
+                  </Link>
+                </h2>
                 <p className="text-sm text-zinc-300">{p.subtitle}</p>
               </div>
 
               <Link
                 href={`/projects/${p.slug}`}
-                className="shrink-0 rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-2 text-sm hover:bg-zinc-900"
+                className="relative z-10 shrink-0 rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-2 text-sm hover:bg-zinc-900"
               >
                 Details
               </Link>
