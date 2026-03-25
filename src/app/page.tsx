@@ -1,177 +1,201 @@
+"use client";
+
 import QuickLinks from "@/components/QuickLinks";
 import ProjectGallery from "@/components/project-gallery";
 import Link from "next/link";
+import { motion, Variants } from "framer-motion";
+import { ArrowRight, Download, Server, Zap, Cloud } from "lucide-react";
 
 const Tag = ({ children }: { children: React.ReactNode }) => (
-  <span className="rounded-full border border-zinc-800 bg-zinc-900/60 px-3 py-1 text-sm text-zinc-200">
+  <span className="rounded-full border border-zinc-800/60 bg-zinc-900/40 px-3 py-1 text-sm text-zinc-300 backdrop-blur-sm transition-colors hover:border-zinc-600 hover:bg-zinc-800/60">
     {children}
   </span>
 );
 
+const FADE_DOWN_ANIMATION_VARIANTS: Variants = {
+  hidden: { opacity: 0, y: -10 },
+  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } },
+};
+
+const STAGGER_CHILDREN: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
 export default function HomePage() {
   return (
-    <div className="space-y-14">
+    <div className="space-y-16">
       {/* Hero */}
-      <section className="space-y-6">
-        <div className="space-y-3">
-          <p className="text-sm text-zinc-400">Dubai, UAE</p>
-          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Mohannad Alhajy
+      <motion.section
+        initial="hidden"
+        animate="show"
+        viewport={{ once: true }}
+        variants={STAGGER_CHILDREN}
+        className="space-y-8"
+      >
+        <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="space-y-4">
+          <div className="inline-flex items-center gap-2 rounded-full border border-zinc-800/50 bg-zinc-900/30 px-3 py-1 text-sm text-zinc-400 backdrop-blur-md">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+            </span>
+            Available for new opportunities in Dubai, UAE
+          </div>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+            <span className="bg-gradient-to-br from-zinc-100 to-zinc-500 bg-clip-text text-transparent">Mohannad Alhajy</span>
           </h1>
-          <p className="max-w-2xl text-lg leading-relaxed text-zinc-300">
-            Full Stack Developer with 5+ years of experience building scalable
-            applications and modern web platforms, focused on clean
-            architecture, reliable systems, and high-quality user experiences.
+          <p className="max-w-2xl text-lg leading-relaxed text-zinc-400 sm:text-xl">
+            Full Stack Developer with 5+ years of experience building scalable applications and modern web platforms, focused on clean architecture, reliable systems, and high-quality user experiences.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-wrap gap-2">
+        <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="flex flex-wrap gap-2">
           <Tag>NestJS</Tag>
           <Tag>Node.js</Tag>
-          <Tag>Express</Tag>
           <Tag>React</Tag>
           <Tag>Next.js</Tag>
-          <Tag>Real-time</Tag>
+          <Tag>TypeScript</Tag>
           <Tag>Microservices</Tag>
           <Tag>AWS</Tag>
-        </div>
+          <Tag>WebSockets</Tag>
+        </motion.div>
 
-        <div className="flex flex-wrap gap-3 pt-2">
+        <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="flex flex-wrap gap-3 pt-4">
           <Link
             href="/projects"
-            className="rounded-xl bg-white px-5 py-2.5 text-sm font-medium text-zinc-900 hover:bg-zinc-100"
+            className="group flex items-center justify-center gap-2 rounded-xl bg-zinc-100 px-6 py-3 text-sm font-semibold text-zinc-900 transition-all hover:bg-white hover:ring-4 hover:ring-zinc-100/20 active:scale-95"
           >
             View Projects
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
           <a
             href="/mohannad-alhajy-cv.pdf"
             download
-            className="rounded-xl border border-zinc-800 bg-zinc-950 px-5 py-2.5 text-sm font-medium text-zinc-100 hover:bg-zinc-900"
+            className="group flex items-center justify-center gap-2 rounded-xl border border-zinc-800/50 bg-zinc-900/50 px-6 py-3 text-sm font-medium text-zinc-100 backdrop-blur-md transition-all hover:border-zinc-700 hover:bg-zinc-800 hover:text-white active:scale-95"
           >
+            <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
             Download CV
           </a>
           <Link
             href="/contact"
-            className="rounded-xl border border-zinc-800 bg-zinc-950 px-5 py-2.5 text-sm font-medium text-zinc-100 hover:bg-zinc-900"
+            className="rounded-xl border border-zinc-800/50 bg-transparent px-6 py-3 text-sm font-medium text-zinc-300 transition-all hover:bg-zinc-900 hover:text-zinc-100 active:scale-95"
           >
             Contact
           </Link>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* Highlights */}
-      <section className="grid gap-4 sm:grid-cols-3">
+      <motion.section 
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={STAGGER_CHILDREN}
+        className="grid gap-4 sm:grid-cols-3"
+      >
         {[
           {
-            title: "Scalable Web Applications",
-            desc: "Design and development of full-stack web platforms with scalable backend services, modern frontend interfaces, and reliable system architecture.",
+            title: "Scalable Platforms",
+            desc: "Design and development of full-stack platforms with reliable backend microservices and engaging frontends.",
+            icon: Server
           },
           {
-            title: "Real-Time & Messaging Systems",
-            desc: "Implementation of real-time communication features and messaging systems using WebSockets, Pub/Sub architectures, and distributed services.",
+            title: "Real-Time Systems",
+            desc: "Implementation of lightning-fast communication features leveraging WebSockets and Pub/Sub architectures.",
+            icon: Zap
           },
           {
-            title: "Cloud & Third-Party Integrations",
-            desc: "Integration with cloud platforms and external services including authentication, payments, messaging, and AI-powered APIs to build complete production systems.",
+            title: "Cloud Integrations",
+            desc: "Advanced integrations with cloud platforms from deployments to third-party authentication and payments.",
+            icon: Cloud
           },
         ].map((x) => (
-          <div
+          <motion.div
+            variants={FADE_DOWN_ANIMATION_VARIANTS}
             key={x.title}
-            className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-5"
+            className="group relative overflow-hidden rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-zinc-700/60 hover:bg-zinc-900/50"
           >
-            <h3 className="text-base font-semibold">{x.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-zinc-300">
+            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800/50 bg-zinc-950 text-zinc-400 group-hover:text-zinc-100 transition-colors">
+              <x.icon className="h-5 w-5" />
+            </div>
+            <h3 className="text-base font-semibold text-zinc-100">{x.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-zinc-400">
               {x.desc}
             </p>
-          </div>
+          </motion.div>
         ))}
-      </section>
+      </motion.section>
 
       {/* Experience */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Experience</h2>
+      <motion.section 
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={FADE_DOWN_ANIMATION_VARIANTS}
+        className="space-y-6"
+      >
+        <h2 className="text-2xl font-bold tracking-tight text-zinc-100">Experience</h2>
 
-        <div className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6 space-y-4">
-          <div>
-            <h3 className="text-lg font-medium">
-              Full Stack Developer — Step By Tech
-            </h3>
-            <p className="text-sm text-zinc-400">2021 – Present · Dubai</p>
-            <ul className="mt-2 list-disc pl-5 text-sm text-zinc-300 space-y-1">
-              Developed and maintained scalable backend services using Node.js,
-              NestJS, and TypeScript.
-              <li>
-                Built REST APIs and business logic for multiple platforms
-                including Vidnik (marriage app), Zadlaw (legal services), Exyar
-                (car rental), and Axiom (real estate).
-              </li>
-              <li>
-                Implemented real-time chat and video calling features for the
-                Vidnik mobile application.
-              </li>
-              <li>
-                Developed admin dashboards and management systems using React
-                and modern web technologies.
-              </li>
-              <li>
-                Built internal platforms including HR management software and a
-                Jira-like project management system (PMS).
-              </li>
-              <li>
-                Designed systems supporting 3D visualization features for cars
-                and real estate platforms.
-              </li>
-              <li>
-                Developed backend services for dynamic blog/content management
-                systems.
-              </li>
-              <li>
-                Contributed to multiple landing pages (Vidnik, Zadlaw, Xygma,
-                Mark Media, StepByTech).
-              </li>
-              <li>
-                Deployed and managed production systems using AWS, Docker, and
-                Nginx.
-              </li>
-              <li>
-                Provided production support, system maintenance, and performance
-                improvements.
-              </li>
+        <div className="flex flex-col gap-6">
+          <div className="group relative rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-6 backdrop-blur-sm transition-all hover:border-zinc-700 hover:bg-zinc-900/40">
+            <div className="absolute inset-px -z-10 rounded-2xl bg-gradient-to-b from-zinc-800/30 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
+            <div className="flex flex-col justify-between sm:flex-row sm:items-baseline gap-2 mb-4">
+              <h3 className="text-xl font-semibold text-zinc-100">
+                Full Stack Developer <span className="text-zinc-500 font-medium">— Step By Tech</span>
+              </h3>
+              <span className="inline-flex rounded-full bg-zinc-950 border border-zinc-800 px-3 py-1 text-xs font-medium text-zinc-300">
+                2021 – Present · Dubai
+              </span>
+            </div>
+            
+            <p className="text-sm font-medium text-zinc-300 mb-4">
+              Led development of high-impact backend systems and dynamic product lines using Node.js, NestJS, and TypeScript.
+            </p>
+            
+            <ul className="list-inside list-disc text-sm text-zinc-400 space-y-2 mb-6 ml-1 marker:text-zinc-600">
+              <li>Engineered expansive API architectures servicing varied markets including Vidnik (social), Zadlaw (legal), and Exyar (auto).</li>
+              <li>Orchestrated real-time messaging and video conferencing capabilities for mobile-first products.</li>
+              <li>Architected and deployed responsive admin dashboards and internal operational tooling via React.</li>
+              <li>Spearheaded integration of intricate UI functions like 3D visualization and real-time mapping integrations.</li>
+              <li>Directed cloud deployment strategies utilizing AWS infrastructure, Docker containerization, and Nginx.</li>
             </ul>
-            <br/>
+
             <ProjectGallery images={["/stepbytech-certificate.jpeg"]}/>
-            {/* <img src="/stepbytech-certificate.jpeg" alt="stepbytech certificate" /> */}
           </div>
 
-          <div>
-            <h3 className="text-lg font-medium">
-              Full Stack Developer — InfoTech
-            </h3>
-            <p className="text-sm text-zinc-400">2020 – 2021 · Dubai</p>
-            <ul className="mt-2 list-disc pl-5 text-sm text-zinc-300 space-y-1">
-              <li>
-                Developed and maintained an HR platform specialized in managing
-                employee data and dynamic profile structures across
-                organizations.
-              </li>
-              <li>
-                Implemented multi-tenant architecture to support multiple
-                organizations with isolated data and configurations.
-              </li>
-              <li>
-                Applied data quality standards to ensure the accuracy,
-                consistency, and reliability of employee records.
-              </li>
-              <li>
-                Contributed to the design of scalable and secure backend systems
-                to support enterprise-level usage.
-              </li>
+          <div className="group relative rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-6 backdrop-blur-sm transition-all hover:border-zinc-700 hover:bg-zinc-900/40">
+            <div className="absolute inset-px -z-10 rounded-2xl bg-gradient-to-b from-zinc-800/30 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
+            <div className="flex flex-col justify-between sm:flex-row sm:items-baseline gap-2 mb-4">
+              <h3 className="text-xl font-semibold text-zinc-100">
+                Full Stack Developer <span className="text-zinc-500 font-medium">— InfoTech</span>
+              </h3>
+              <span className="inline-flex rounded-full bg-zinc-950 border border-zinc-800 px-3 py-1 text-xs font-medium text-zinc-300">
+                2020 – 2021 · Dubai
+              </span>
+            </div>
+            
+            <ul className="list-inside list-disc text-sm text-zinc-400 space-y-2 ml-1 marker:text-zinc-600">
+              <li>Designed highly secure multi-tenant capabilities, enabling total data isolation for enterprise organizational customers.</li>
+              <li>Oversaw continuous data integrations, rigorously enforcing standards to ensure maximum profile reliability and compliance.</li>
+              <li>Co-architected foundational systems, emphasizing zero-downtime maintenance and robust system optimization tools.</li>
             </ul>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <QuickLinks />
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={FADE_DOWN_ANIMATION_VARIANTS}
+      >
+        <QuickLinks />
+      </motion.div>
     </div>
   );
 }
