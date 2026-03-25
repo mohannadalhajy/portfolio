@@ -48,16 +48,16 @@ export default function QuickLinks() {
             rel="noreferrer"
             className="group relative flex items-center justify-between gap-4 rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-5 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-zinc-700/80 hover:bg-zinc-900/50"
           >
-            <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full border border-zinc-800/50 bg-zinc-950 text-zinc-400 transition-colors group-hover:text-zinc-100">
+            <div className="flex items-center gap-4 min-w-0">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-zinc-800/50 bg-zinc-950 text-zinc-400 transition-colors group-hover:text-zinc-100">
                 {link.icon}
               </div>
-              <div>
-                <div className="text-sm font-semibold text-zinc-100">{link.title}</div>
-                <div className="text-xs text-zinc-400">{link.subtitle}</div>
+              <div className="min-w-0">
+                <div className="text-sm font-semibold text-zinc-100 truncate">{link.title}</div>
+                <div className="text-xs text-zinc-400 truncate">{link.subtitle}</div>
               </div>
             </div>
-            <ArrowUpRight className="h-5 w-5 text-zinc-600 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-zinc-100" />
+            <ArrowUpRight className="h-5 w-5 shrink-0 text-zinc-600 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-zinc-100" />
           </a>
         ))}
       </div>
