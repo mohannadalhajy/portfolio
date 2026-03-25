@@ -219,6 +219,41 @@ export default function HomePage() {
         </div>
       </motion.section>
 
+
+      {/* Education */}
+      <motion.section 
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={FADE_DOWN_ANIMATION_VARIANTS}
+        className="space-y-8"
+      >
+        <h2 className="text-2xl font-bold tracking-tight text-zinc-100">Education</h2>
+
+        <div className="relative border-l border-zinc-800/60 ml-3 py-2">
+          
+          <div className="relative pl-8 group">
+            <span className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full border-2 border-zinc-800 bg-zinc-950 transition-colors group-hover:border-zinc-400 group-hover:bg-zinc-800"></span>
+            
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-2">
+              <div>
+                <h3 className="text-xl font-semibold text-zinc-100">
+                  Damascus University
+                </h3>
+              </div>
+              <span className="shrink-0 text-sm font-medium text-zinc-500">
+                2015 – 2020 · Syria
+              </span>
+            </div>
+            
+            <p className="text-sm font-medium text-zinc-300 max-w-2xl leading-relaxed">
+              Bachelor&apos;s degree in Software and Information Systems Engineering
+            </p>
+          </div>
+
+        </div>
+      </motion.section>
+
       <motion.div
         initial="hidden"
         whileInView="show"
