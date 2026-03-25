@@ -137,52 +137,83 @@ export default function HomePage() {
         whileInView="show"
         viewport={{ once: true, margin: "-50px" }}
         variants={FADE_DOWN_ANIMATION_VARIANTS}
-        className="space-y-6"
+        className="space-y-8"
       >
         <h2 className="text-2xl font-bold tracking-tight text-zinc-100">Experience</h2>
 
-        <div className="flex flex-col gap-6">
-          <div className="group relative rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-6 backdrop-blur-sm transition-all hover:border-zinc-700 hover:bg-zinc-900/40">
-            <div className="absolute inset-px -z-10 rounded-2xl bg-gradient-to-b from-zinc-800/30 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
-            <div className="flex flex-col justify-between sm:flex-row sm:items-baseline gap-2 mb-4">
-              <h3 className="text-xl font-semibold text-zinc-100">
-                Full Stack Developer <span className="text-zinc-500 font-medium">— Step By Tech</span>
-              </h3>
-              <span className="inline-flex rounded-full bg-zinc-950 border border-zinc-800 px-3 py-1 text-xs font-medium text-zinc-300">
+        <div className="relative border-l border-zinc-800/60 ml-3 space-y-14 py-2">
+          
+          <div className="relative pl-8 group">
+            <span className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full border-2 border-zinc-800 bg-zinc-950 transition-colors group-hover:border-emerald-500 group-hover:bg-emerald-500/20"></span>
+            
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-4">
+              <div>
+                <h3 className="text-xl font-semibold text-zinc-100">
+                  Full Stack Developer <span className="text-zinc-500 font-medium">— Step By Tech</span>
+                </h3>
+              </div>
+              <span className="shrink-0 text-sm font-medium text-emerald-400">
                 2021 – Present · Dubai
               </span>
             </div>
             
-            <p className="text-sm font-medium text-zinc-300 mb-4">
+            <p className="text-sm font-medium text-zinc-300 mb-6 max-w-2xl leading-relaxed">
               Led development of high-impact backend systems and dynamic product lines using Node.js, NestJS, and TypeScript.
             </p>
             
-            <ul className="list-inside list-disc text-sm text-zinc-400 space-y-2 mb-6 ml-1 marker:text-zinc-600">
-              <li>Engineered expansive API architectures servicing varied markets including Vidnik (social), Zadlaw (legal), and Exyar (auto).</li>
-              <li>Orchestrated real-time messaging and video conferencing capabilities for mobile-first products.</li>
-              <li>Architected and deployed responsive admin dashboards and internal operational tooling via React.</li>
-              <li>Spearheaded integration of intricate UI functions like 3D visualization and real-time mapping integrations.</li>
-              <li>Directed cloud deployment strategies utilizing AWS infrastructure, Docker containerization, and Nginx.</li>
+            <ul className="list-none space-y-3 mb-6 text-sm text-zinc-400">
+              <li className="flex gap-3">
+                <span className="text-emerald-500/50 mt-1">▹</span>
+                <span className="leading-relaxed">Engineered expansive API architectures servicing varied markets including Vidnik (social), Zadlaw (legal), and Exyar (auto).</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-emerald-500/50 mt-1">▹</span>
+                <span className="leading-relaxed">Orchestrated real-time messaging and video conferencing capabilities for mobile-first products.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-emerald-500/50 mt-1">▹</span>
+                <span className="leading-relaxed">Architected and deployed responsive admin dashboards and internal operational tooling via React.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-emerald-500/50 mt-1">▹</span>
+                <span className="leading-relaxed">Spearheaded integration of intricate UI functions like 3D visualization and real-time mapping integrations.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-emerald-500/50 mt-1">▹</span>
+                <span className="leading-relaxed">Directed cloud deployment strategies utilizing AWS infrastructure, Docker containerization, and Nginx.</span>
+              </li>
             </ul>
 
             <ProjectGallery images={["/stepbytech-certificate.jpeg"]}/>
           </div>
 
-          <div className="group relative rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-6 backdrop-blur-sm transition-all hover:border-zinc-700 hover:bg-zinc-900/40">
-            <div className="absolute inset-px -z-10 rounded-2xl bg-gradient-to-b from-zinc-800/30 to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
-            <div className="flex flex-col justify-between sm:flex-row sm:items-baseline gap-2 mb-4">
-              <h3 className="text-xl font-semibold text-zinc-100">
-                Full Stack Developer <span className="text-zinc-500 font-medium">— InfoTech</span>
-              </h3>
-              <span className="inline-flex rounded-full bg-zinc-950 border border-zinc-800 px-3 py-1 text-xs font-medium text-zinc-300">
+          <div className="relative pl-8 group">
+            <span className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full border-2 border-zinc-800 bg-zinc-950 transition-colors group-hover:border-zinc-400 group-hover:bg-zinc-800"></span>
+            
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-4">
+              <div>
+                <h3 className="text-xl font-semibold text-zinc-100">
+                  Full Stack Developer <span className="text-zinc-500 font-medium">— InfoTech</span>
+                </h3>
+              </div>
+              <span className="shrink-0 text-sm font-medium text-zinc-500">
                 2020 – 2021 · Dubai
               </span>
             </div>
             
-            <ul className="list-inside list-disc text-sm text-zinc-400 space-y-2 ml-1 marker:text-zinc-600">
-              <li>Designed highly secure multi-tenant capabilities, enabling total data isolation for enterprise organizational customers.</li>
-              <li>Oversaw continuous data integrations, rigorously enforcing standards to ensure maximum profile reliability and compliance.</li>
-              <li>Co-architected foundational systems, emphasizing zero-downtime maintenance and robust system optimization tools.</li>
+            <ul className="list-none space-y-3 text-sm text-zinc-400">
+              <li className="flex gap-3">
+                <span className="text-zinc-600 mt-1">▹</span>
+                <span className="leading-relaxed">Designed highly secure multi-tenant capabilities, enabling total data isolation for enterprise organizational customers.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-zinc-600 mt-1">▹</span>
+                <span className="leading-relaxed">Oversaw continuous data integrations, rigorously enforcing standards to ensure maximum profile reliability and compliance.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-zinc-600 mt-1">▹</span>
+                <span className="leading-relaxed">Co-architected foundational systems, emphasizing zero-downtime maintenance and robust system optimization tools.</span>
+              </li>
             </ul>
           </div>
         </div>
