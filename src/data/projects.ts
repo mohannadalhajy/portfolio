@@ -16,7 +16,7 @@ export const projects: Project[] = [
     slug: "vidnik",
     title: "Vidnik",
     subtitle:
-      "Mobile app where Muslims can connect with their potential life partners.",
+      "A modern halal matchmaking platform that helps Muslims connect for marriage through secure and respectful interactions. The application includes a mobile app for users and a backend system supporting authentication, profile management, matchmaking, messaging, and AI-based identity verification. The platform emphasizes privacy, guardian (wali) involvement, and culturally aligned communication.",
     myContribution: [
       "Architected and developed the full backend system for a scalable mobile application",
       "Built a real-time chat system with video calling capabilities",
