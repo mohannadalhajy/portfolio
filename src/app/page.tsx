@@ -82,8 +82,7 @@ export default function HomePage() {
             </div>
             <div className="h-4 w-px bg-zinc-800"></div>
             <div className="flex items-center gap-2">
-              <span className="text-zinc-100 font-bold">20+</span> Systems
-              Architected
+              <span className="text-zinc-100 font-bold">20+</span> Completed Projects
             </div>
             <div className="h-4 w-px bg-zinc-800"></div>
             <div className="flex items-center gap-2">
@@ -141,7 +140,7 @@ export default function HomePage() {
             href="/projects"
             className="group flex items-center justify-center gap-2 rounded-xl bg-zinc-100 px-6 py-3 text-sm font-semibold text-zinc-900 transition-all hover:bg-white hover:ring-4 hover:ring-zinc-100/20 active:scale-95"
           >
-            View Featured Architecture
+            View Projects
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
           <a
