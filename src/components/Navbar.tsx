@@ -35,6 +35,7 @@ export default function Navbar() {
                 <Link
                   key={i.href}
                   href={i.href}
+                  aria-current={isActive ? "page" : undefined}
                   className={`relative rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
                     isActive ? "text-zinc-100" : "text-zinc-400 hover:text-zinc-100"
                   }`}

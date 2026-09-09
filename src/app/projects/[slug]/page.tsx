@@ -1,20 +1,61 @@
+import type { Metadata } from "next";
 import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
 import ProjectGallery from "@/components/project-gallery";
+import { getProjectAccent } from "@/data/project-meta";
+
+type Params = Promise<{ slug: string }>;
+
+export function generateStaticParams() {
+  return projects.map((p) => ({ slug: p.slug }));
+}
+
+export const dynamicParams = false;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) return {};
+
+  return {
+    title: project.title,
+    description: project.subtitle,
+    alternates: { canonical: `/projects/${project.slug}` },
+    openGraph: {
+      title: project.title,
+      description: project.subtitle,
+      images: project.photos[0] ? [project.photos[0]] : undefined,
+      type: "article",
+    },
+  };
+}
+
 export default async function ProjectDetailsPage({
   params,
 }: {
-  params: { slug: string };
+  params: Params;
 }) {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
+
+  const accent = getProjectAccent(project.slug);
+  const Icon = accent.icon;
 
   return (
     <div className="space-y-12">
       {/* 🔥 HERO */}
       <div className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-gradient-to-br from-zinc-900 via-zinc-900/60 to-zinc-800 p-8">
         <div className="space-y-4">
+          <div
+            className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border backdrop-blur-md ${accent.badge}`}
+          >
+            <Icon className="h-5 w-5" strokeWidth={2} />
+          </div>
           <h1 className="text-4xl font-bold tracking-tight">{project.title}</h1>
           <p className="max-w-2xl text-zinc-300 text-lg">{project.subtitle}</p>
 
@@ -33,7 +74,8 @@ export default async function ProjectDetailsPage({
         </div>
 
         {/* subtle glow */}
-        <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-purple-500/20 blur-3xl" />
+        <div className={`absolute -top-10 -right-10 h-40 w-40 rounded-full blur-3xl ${accent.glowA}`} />
+        <div className={`absolute -bottom-16 -left-10 h-40 w-40 rounded-full blur-3xl ${accent.glowB}`} />
       </div>
 
       {/* 🔥 GRID SECTIONS */}
@@ -104,7 +146,9 @@ export default async function ProjectDetailsPage({
           ))}
         </section>
       )}
-      {project.photos?.length > 0 && <ProjectGallery images={project.photos} />}
+      {project.photos?.length > 0 && (
+        <ProjectGallery images={project.photos} alt={`${project.title} screenshot`} />
+      )}
     </div>
   );
 }

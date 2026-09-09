@@ -1,3 +1,5 @@
+import { siteConfig, siteUrl } from "@/lib/site";
+
 export default function SEOJsonLd() {
   return (
     <script
@@ -6,10 +8,11 @@ export default function SEOJsonLd() {
         __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          name: "Mohannad Alhajy",
+          name: siteConfig.name,
           jobTitle: "Full Stack Engineer",
-          url: "https://your-domain.com",
-          sameAs: ["https://github.com/mohannadalhajy", "https://linkedin.com/in/mohannad-alhajy"],
+          url: siteUrl,
+          email: siteConfig.email,
+          sameAs: [siteConfig.github, siteConfig.linkedin],
         }),
       }}
     />
