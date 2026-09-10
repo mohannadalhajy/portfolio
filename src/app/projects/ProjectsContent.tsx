@@ -35,7 +35,7 @@ export default function ProjectsContent() {
             <motion.div
               variants={FADE_DOWN_ANIMATION_VARIANTS}
               key={p.slug}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-800/50 bg-zinc-900/30 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-zinc-700/60 hover:bg-zinc-900/50"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-800/70 bg-zinc-900/50 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-zinc-700/60 hover:bg-zinc-900/50"
             >
               <Link
                 href={`/projects/${p.slug}`}

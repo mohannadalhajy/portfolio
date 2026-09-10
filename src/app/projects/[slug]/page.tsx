@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
 import ProjectGallery from "@/components/project-gallery";
-import { getProjectAccent } from "@/data/project-meta";
+import { getProjectAccent, type ProjectAccent } from "@/data/project-meta";
 import { siteConfig, siteUrl } from "@/lib/site";
 
 type Params = Promise<{ slug: string }>;
@@ -108,44 +108,44 @@ export default async function ProjectDetailsPage({
       </div>
 
       {/* 🔥 GRID SECTIONS */}
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid items-start gap-6 md:grid-cols-2">
         {/* Highlights */}
-        <Section title="Highlights">
+        <Section title="Highlights" accent={accent}>
           {project.highlights.map((h) => (
-            <CardItem key={h}>{h}</CardItem>
+            <CardItem key={h} accent={accent}>{h}</CardItem>
           ))}
         </Section>
 
         {/* Technical */}
         {project.technicalHighlights.length > 0 && (
-          <Section title="Technical Highlights">
+          <Section title="Technical Highlights" accent={accent}>
             {project.technicalHighlights.map((h) => (
-              <CardItem key={h}>{h}</CardItem>
+              <CardItem key={h} accent={accent}>{h}</CardItem>
             ))}
           </Section>
         )}
 
         {/* Contribution */}
         {project.myContribution.length > 0 && (
-          <Section title="My Contribution">
+          <Section title="My Contribution" accent={accent}>
             {project.myContribution.map((h) => (
-              <CardItem key={h}>{h}</CardItem>
+              <CardItem key={h} accent={accent}>{h}</CardItem>
             ))}
           </Section>
         )}
 
         {/* Challenges */}
         {project.challengesSolved.length > 0 && (
-          <Section title="Challenges Solved">
+          <Section title="Challenges Solved" accent={accent}>
             {project.challengesSolved.map((h) => (
-              <CardItem key={h}>{h}</CardItem>
+              <CardItem key={h} accent={accent}>{h}</CardItem>
             ))}
           </Section>
         )}
       </div>
 
       {/* 🔥 FULL WIDTH STACK */}
-      <section className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6">
+      <section className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6">
         <h2 className="text-lg font-semibold mb-4">Tech Stack</h2>
         <div className="flex flex-wrap gap-2">
           {project.stack.map((s) => (
@@ -185,24 +185,36 @@ export default async function ProjectDetailsPage({
 /* 🔥 reusable section */
 function Section({
   title,
+  accent,
   children,
 }: {
   title: string;
+  accent: ProjectAccent;
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 space-y-4">
-      <h2 className="text-lg font-semibold">{title}</h2>
+    <section className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 space-y-4">
+      <h2 className="flex items-center gap-2 text-lg font-semibold">
+        <span className={`h-1.5 w-4 rounded-full ${accent.glowA}`} />
+        {title}
+      </h2>
       <div className="space-y-3">{children}</div>
     </section>
   );
 }
 
 /* 🔥 card item instead of boring bullets */
-function CardItem({ children }: { children: React.ReactNode }) {
+function CardItem({
+  accent,
+  children,
+}: {
+  accent: ProjectAccent;
+  children: React.ReactNode;
+}) {
   return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 text-sm text-zinc-300 hover:bg-zinc-900 transition">
-      {children}
+    <div className="group flex gap-3 rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 text-sm text-zinc-300 transition hover:border-zinc-700 hover:bg-zinc-900">
+      <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${accent.glowA}`} />
+      <span>{children}</span>
     </div>
   );
 }

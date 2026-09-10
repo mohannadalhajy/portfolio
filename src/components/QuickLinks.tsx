@@ -48,7 +48,7 @@ export default function QuickLinks() {
         {links.map((link) => (
           <div
             key={link.title}
-            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-5 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-zinc-700/80 hover:bg-zinc-900/50"
+            className="group relative flex items-center justify-between gap-4 rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-5 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-zinc-700/80 hover:bg-zinc-900/50"
           >
             <a
               href={link.href}
@@ -58,7 +58,7 @@ export default function QuickLinks() {
               className="absolute inset-0 z-0 rounded-2xl"
             />
             <div className="pointer-events-none flex items-center gap-4 min-w-0">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-zinc-800/50 bg-zinc-950 text-zinc-400 transition-colors group-hover:text-zinc-100">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-zinc-800/70 bg-zinc-950 text-zinc-400 transition-colors group-hover:text-zinc-100">
                 {link.icon}
               </div>
               <div className="min-w-0">

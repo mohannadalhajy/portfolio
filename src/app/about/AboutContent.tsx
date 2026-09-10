@@ -27,8 +27,8 @@ export default function AboutContent() {
       </motion.div>
 
       <div className="grid gap-6 md:grid-cols-2">
-        <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-6 backdrop-blur-sm transition-all hover:bg-zinc-900/50">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800/50 bg-zinc-950 text-emerald-400 mb-4">
+        <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-6 backdrop-blur-sm transition-all hover:bg-zinc-900/50">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800/70 bg-zinc-950 text-emerald-400 mb-4">
             <Server className="h-5 w-5" />
           </div>
           <h2 className="text-lg font-semibold text-zinc-100">What I Focus On</h2>
@@ -41,8 +41,8 @@ export default function AboutContent() {
           </ul>
         </motion.div>
 
-        <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-6 backdrop-blur-sm transition-all hover:bg-zinc-900/50">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800/50 bg-zinc-950 text-blue-400 mb-4">
+        <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-6 backdrop-blur-sm transition-all hover:bg-zinc-900/50">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800/70 bg-zinc-950 text-blue-400 mb-4">
             <Briefcase className="h-5 w-5" />
           </div>
           <h2 className="text-lg font-semibold text-zinc-100">Experience Areas</h2>
@@ -55,8 +55,8 @@ export default function AboutContent() {
           </ul>
         </motion.div>
 
-        <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-6 backdrop-blur-sm transition-all hover:bg-zinc-900/50 md:col-span-2">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800/50 bg-zinc-950 text-indigo-400 mb-4">
+        <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-6 backdrop-blur-sm transition-all hover:bg-zinc-900/50 md:col-span-2">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800/70 bg-zinc-950 text-indigo-400 mb-4">
             <Code2 className="h-5 w-5" />
           </div>
           <h2 className="text-lg font-semibold text-zinc-100">Technologies</h2>

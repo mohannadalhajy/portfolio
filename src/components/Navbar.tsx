@@ -19,7 +19,7 @@ export default function Navbar() {
   return (
     <>
       <div className="pointer-events-none sticky top-6 z-50 flex justify-center px-4 pb-6">
-        <header className="pointer-events-auto flex w-full max-w-2xl items-center justify-between gap-6 rounded-full border border-zinc-800/50 bg-zinc-950/80 px-4 py-2 shadow-xl backdrop-blur-md">
+        <header className="pointer-events-auto flex w-full max-w-2xl items-center justify-between gap-6 rounded-full border border-zinc-800/70 bg-zinc-950/80 px-4 py-2 shadow-xl backdrop-blur-md">
           <Link
             href="/"
             className="px-2 font-semibold tracking-tight text-zinc-100 transition-colors hover:text-white"
@@ -97,7 +97,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-4 top-24 z-40 rounded-2xl border border-zinc-800/50 bg-zinc-950/95 p-4 shadow-2xl backdrop-blur-xl md:hidden"
+            className="fixed inset-x-4 top-24 z-40 rounded-2xl border border-zinc-800/70 bg-zinc-950/95 p-4 shadow-2xl backdrop-blur-xl md:hidden"
           >
             <nav className="flex flex-col space-y-2">
               {nav.map((i) => {

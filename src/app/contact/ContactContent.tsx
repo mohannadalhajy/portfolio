@@ -63,7 +63,7 @@ export default function ContactContent() {
         <p className="text-lg text-zinc-400">
           Get in touch for new opportunities and collaborations.
         </p>
-        <div className="inline-flex items-center gap-2 rounded-full border border-zinc-800/50 bg-zinc-900/30 px-3 py-1 text-sm text-zinc-400 backdrop-blur-md">
+        <div className="inline-flex items-center gap-2 rounded-full border border-zinc-800/70 bg-zinc-900/50 px-3 py-1 text-sm text-zinc-400 backdrop-blur-md">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
@@ -75,7 +75,7 @@ export default function ContactContent() {
       <div className="grid gap-6 lg:grid-cols-[1fr_1.15fr]">
         <motion.div
           variants={FADE_DOWN_ANIMATION_VARIANTS}
-          className="flex flex-col justify-between gap-6 rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-6 backdrop-blur-sm"
+          className="flex flex-col justify-between gap-6 rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-6 backdrop-blur-sm"
         >
           <div className="space-y-3">
             <h2 className="text-xl font-semibold text-zinc-100">
@@ -101,7 +101,7 @@ export default function ContactContent() {
           <a
             href="/mohannad-alhajy-cv.pdf"
             download
-            className="group inline-flex items-center justify-center gap-2 self-start rounded-xl border border-zinc-800/50 bg-zinc-950 px-5 py-2.5 text-sm font-medium text-zinc-100 transition-all hover:border-zinc-700 hover:bg-zinc-800 active:scale-95"
+            className="group inline-flex items-center justify-center gap-2 self-start rounded-xl border border-zinc-800/70 bg-zinc-950 px-5 py-2.5 text-sm font-medium text-zinc-100 transition-all hover:border-zinc-700 hover:bg-zinc-800 active:scale-95"
           >
             <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
             Download Resume (PDF)
@@ -113,7 +113,7 @@ export default function ContactContent() {
             <motion.div
               key={method.title}
               variants={FADE_DOWN_ANIMATION_VARIANTS}
-              className="group relative flex flex-col gap-3 rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-5 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-zinc-700/80 hover:bg-zinc-900/50"
+              className="group relative flex flex-col gap-3 rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-5 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-zinc-700/80 hover:bg-zinc-900/50"
             >
               <a
                 href={method.href}

@@ -12,6 +12,7 @@ import {
   Cloud,
   Monitor,
   Database,
+  Quote,
 } from "lucide-react";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
 
@@ -30,7 +31,7 @@ export default function HomeContent() {
           variants={FADE_DOWN_ANIMATION_VARIANTS}
           className="space-y-4"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-zinc-800/50 bg-zinc-900/30 px-3 py-1 text-sm text-zinc-400 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 rounded-full border border-zinc-800/70 bg-zinc-900/50 px-3 py-1 text-sm text-zinc-400 backdrop-blur-md">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
@@ -66,7 +67,7 @@ export default function HomeContent() {
           variants={FADE_DOWN_ANIMATION_VARIANTS}
           className="grid gap-3 sm:grid-cols-2 pt-2"
         >
-          <div className="rounded-xl border border-zinc-800/50 bg-zinc-900/30 p-4 backdrop-blur-md transition-colors hover:border-zinc-700/60">
+          <div className="rounded-xl border border-zinc-800/70 bg-zinc-900/50 p-4 backdrop-blur-md transition-colors hover:border-zinc-700/60">
             <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
               <span className="flex h-6 w-6 items-center justify-center rounded-md border border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
                 <Server className="h-3.5 w-3.5" />
@@ -78,7 +79,7 @@ export default function HomeContent() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-zinc-800/50 bg-zinc-900/30 p-4 backdrop-blur-md transition-colors hover:border-zinc-700/60">
+          <div className="rounded-xl border border-zinc-800/70 bg-zinc-900/50 p-4 backdrop-blur-md transition-colors hover:border-zinc-700/60">
             <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
               <span className="flex h-6 w-6 items-center justify-center rounded-md border border-blue-500/30 bg-blue-500/10 text-blue-400">
                 <Monitor className="h-3.5 w-3.5" />
@@ -90,7 +91,7 @@ export default function HomeContent() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-zinc-800/50 bg-zinc-900/30 p-4 backdrop-blur-md transition-colors hover:border-zinc-700/60">
+          <div className="rounded-xl border border-zinc-800/70 bg-zinc-900/50 p-4 backdrop-blur-md transition-colors hover:border-zinc-700/60">
             <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
               <span className="flex h-6 w-6 items-center justify-center rounded-md border border-sky-500/30 bg-sky-500/10 text-sky-400">
                 <Cloud className="h-3.5 w-3.5" />
@@ -102,7 +103,7 @@ export default function HomeContent() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-zinc-800/50 bg-zinc-900/30 p-4 backdrop-blur-md transition-colors hover:border-zinc-700/60">
+          <div className="rounded-xl border border-zinc-800/70 bg-zinc-900/50 p-4 backdrop-blur-md transition-colors hover:border-zinc-700/60">
             <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
               <span className="flex h-6 w-6 items-center justify-center rounded-md border border-violet-500/30 bg-violet-500/10 text-violet-400">
                 <Database className="h-3.5 w-3.5" />
@@ -129,14 +130,14 @@ export default function HomeContent() {
           <a
             href="/mohannad-alhajy-cv.pdf"
             download
-            className="group flex items-center justify-center gap-2 rounded-xl border border-zinc-800/50 bg-zinc-900/50 px-6 py-3 text-sm font-medium text-zinc-100 backdrop-blur-md transition-all hover:border-zinc-700 hover:bg-zinc-800 hover:text-white active:scale-95"
+            className="group flex items-center justify-center gap-2 rounded-xl border border-zinc-800/70 bg-zinc-900/50 px-6 py-3 text-sm font-medium text-zinc-100 backdrop-blur-md transition-all hover:border-zinc-700 hover:bg-zinc-800 hover:text-white active:scale-95"
           >
             <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
             Download Resume (PDF)
           </a>
           <Link
             href="/contact"
-            className="rounded-xl border border-zinc-800/50 bg-transparent px-6 py-3 text-sm font-medium text-zinc-300 transition-all hover:bg-zinc-900 hover:text-zinc-100 active:scale-95"
+            className="rounded-xl border border-zinc-800/70 bg-transparent px-6 py-3 text-sm font-medium text-zinc-300 transition-all hover:bg-zinc-900 hover:text-zinc-100 active:scale-95"
           >
             Let&apos;s Talk
           </Link>
@@ -174,7 +175,7 @@ export default function HomeContent() {
           <motion.div
             variants={FADE_DOWN_ANIMATION_VARIANTS}
             key={x.title}
-            className="group relative overflow-hidden rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-zinc-700/60 hover:bg-zinc-900/50"
+            className="group relative overflow-hidden rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-zinc-700/60 hover:bg-zinc-900/50"
           >
             <div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-lg border transition-colors ${x.badge}`}>
               <x.icon className="h-5 w-5" />
@@ -219,7 +220,7 @@ export default function HomeContent() {
             <motion.div
               variants={FADE_DOWN_ANIMATION_VARIANTS}
               key={item.number}
-              className="rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-6 backdrop-blur-sm"
+              className="rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-6 backdrop-blur-sm"
             >
               <div className="text-sm font-bold text-emerald-500/50 mb-2">
                 {item.number}
@@ -370,12 +371,17 @@ export default function HomeContent() {
           What Leadership Says
         </h2>
         <div className="grid gap-6 sm:grid-cols-2">
-          <div className="relative rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-6 backdrop-blur-sm">
-            <div className="mb-4 text-4xl text-zinc-800">&quot;</div>
-            <p className="text-sm leading-relaxed text-zinc-400 mb-6 relative z-10">
-              Mohannad didn&apos;t just write code; he architected systems that
-              allowed our product lines to scale their user base exponentially
-              without degraded performance. A true technical leader.
+          <div className="group relative overflow-hidden rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-6 backdrop-blur-sm transition-colors hover:border-emerald-700/40">
+            <Quote
+              className="absolute right-5 top-5 h-14 w-14 text-emerald-500/[0.15]"
+              strokeWidth={1}
+              fill="currentColor"
+            />
+            <p className="relative z-10 mb-6 text-sm leading-relaxed text-zinc-300">
+              &ldquo;Mohannad didn&apos;t just write code; he architected systems
+              that allowed our product lines to scale their user base
+              exponentially without degraded performance. A true technical
+              leader.&rdquo;
             </p>
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-full border border-emerald-500/30 bg-emerald-500/10 text-sm font-semibold text-emerald-300">
@@ -390,15 +396,19 @@ export default function HomeContent() {
             </div>
           </div>
 
-          <div className="relative rounded-2xl border border-zinc-800/50 bg-zinc-900/30 p-6 backdrop-blur-sm">
-            <div className="mb-4 text-4xl text-zinc-800">&quot;</div>
-            <p className="text-sm leading-relaxed text-zinc-400 mb-6 relative z-10">
-              His focus on multi-tenant security and zero-downtime deployments
-              was critical to our enterprise deliverables. He brings a senior
-              mindset to every architecture discussion.
+          <div className="group relative overflow-hidden rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-6 backdrop-blur-sm transition-colors hover:border-rose-700/40">
+            <Quote
+              className="absolute right-5 top-5 h-14 w-14 text-rose-500/[0.15]"
+              strokeWidth={1}
+              fill="currentColor"
+            />
+            <p className="relative z-10 mb-6 text-sm leading-relaxed text-zinc-300">
+              &ldquo;His focus on multi-tenant security and zero-downtime
+              deployments was critical to our enterprise deliverables. He
+              brings a senior mindset to every architecture discussion.&rdquo;
             </p>
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-blue-500/30 bg-blue-500/10 text-sm font-semibold text-blue-300">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-rose-500/30 bg-rose-500/10 text-sm font-semibold text-rose-300">
                 PM
               </div>
               <div>
