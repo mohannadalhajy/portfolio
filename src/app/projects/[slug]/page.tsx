@@ -3,6 +3,7 @@ import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
 import ProjectGallery from "@/components/project-gallery";
 import { getProjectAccent } from "@/data/project-meta";
+import { siteConfig, siteUrl } from "@/lib/site";
 
 type Params = Promise<{ slug: string }>;
 
@@ -45,9 +46,37 @@ export default async function ProjectDetailsPage({
 
   const accent = getProjectAccent(project.slug);
   const Icon = accent.icon;
+  const projectUrl = `${siteUrl}/projects/${project.slug}`;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "Projects", item: `${siteUrl}/projects` },
+          { "@type": "ListItem", position: 3, name: project.title, item: projectUrl },
+        ],
+      },
+      {
+        "@type": "CreativeWork",
+        name: project.title,
+        description: project.subtitle,
+        url: projectUrl,
+        image: project.photos[0] ? `${siteUrl}${project.photos[0]}` : undefined,
+        keywords: project.stack.join(", "),
+        author: { "@type": "Person", name: siteConfig.name, url: siteUrl },
+      },
+    ],
+  };
 
   return (
     <div className="space-y-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* 🔥 HERO */}
       <div className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-gradient-to-br from-zinc-900 via-zinc-900/60 to-zinc-800 p-8">
         <div className="space-y-4">
