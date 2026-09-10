@@ -8,12 +8,13 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-semibold">Page not found</h1>
-      <p className="text-zinc-300">This page doesn’t exist.</p>
+    <div className="space-y-4 py-20 text-center">
+      <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">404</p>
+      <h1 className="font-serif text-3xl text-zinc-100">Page not found</h1>
+      <p className="text-zinc-400">This page doesn’t exist.</p>
       <Link
         href="/"
-        className="inline-block rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-2 text-sm hover:bg-zinc-900"
+        className="inline-block text-sm font-medium text-zinc-100 underline decoration-zinc-700 underline-offset-4 transition-colors hover:decoration-amber-400"
       >
         Go home
       </Link>

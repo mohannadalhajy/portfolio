@@ -1,128 +1,150 @@
 "use client";
 
-import QuickLinks from "@/components/QuickLinks";
 import ProjectGallery from "@/components/project-gallery";
+import HeroGem from "@/components/HeroGem";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Download,
-  Server,
-  Zap,
-  Cloud,
-  Monitor,
-  Database,
-  Quote,
-} from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
+
+const skills = [
+  {
+    label: "Backend & Architecture",
+    tools: "Node.js, NestJS, Microservices, REST / GraphQL, WebSockets",
+  },
+  {
+    label: "Frontend & UX",
+    tools: "TypeScript, React, Next.js, Redux / Zustand, Tailwind CSS",
+  },
+  {
+    label: "Cloud & DevOps",
+    tools: "AWS (EC2, S3, RDS, Lambda), Docker, CI/CD Pipelines",
+  },
+  {
+    label: "Databases & Caching",
+    tools: "MySQL, MongoDB, Redis",
+  },
+];
+
+const highlights = [
+  {
+    title: "Scalable Platforms",
+    desc: "Design and development of full-stack platforms with reliable backend microservices and engaging frontends.",
+  },
+  {
+    title: "Real-Time Systems",
+    desc: "Implementation of lightning-fast communication features leveraging WebSockets and Pub/Sub architectures.",
+  },
+  {
+    title: "Cloud Integrations",
+    desc: "Advanced integrations with cloud platforms from deployments to third-party authentication and payments.",
+  },
+];
+
+const philosophy = [
+  {
+    number: "01",
+    title: "Type-Safety First",
+    desc: "Enforcing strict TypeScript configurations to eliminate runtime errors before they happen.",
+  },
+  {
+    number: "02",
+    title: "Designing for Failure",
+    desc: "Building resilient microservices that gracefully handle partial outages and network partitions.",
+  },
+  {
+    number: "03",
+    title: "User-Centric Performance",
+    desc: "Prioritizing fast edge delivery, lean bundles, and optimistic UI updates for the end user.",
+  },
+];
 
 export default function HomeContent() {
   return (
-    <div className="space-y-16">
+    <div className="space-y-20">
       {/* Hero */}
       <motion.section
         initial="hidden"
         animate="show"
         viewport={{ once: true }}
         variants={STAGGER_CHILDREN}
-        className="space-y-8"
+        className="space-y-10"
       >
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+          <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="space-y-5 lg:max-w-xl">
+            <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-amber-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_2px_rgba(245,158,11,0.6)]" />
+              Available for new opportunities in UAE
+            </div>
+
+            <div className="relative">
+              <div
+                className="animate-glow-pulse pointer-events-none absolute -inset-x-10 -inset-y-8 -z-10 bg-gradient-to-r from-amber-500/10 via-transparent to-teal-500/10 blur-2xl"
+                aria-hidden="true"
+              />
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
+                Full Stack Developer
+              </p>
+              <h1 className="mt-2 font-serif text-5xl text-zinc-100 sm:text-6xl lg:text-7xl">
+                Mohannad Alhajy
+              </h1>
+            </div>
+
+            <p className="max-w-2xl text-lg leading-relaxed text-zinc-400">
+              I design and build scalable web platforms with a focus on clean
+              architecture, reliable APIs, and maintainable systems. My work
+              includes production applications across industries such as HR
+              management, legal services, car rental, and project management.
+            </p>
+
+            <div className="flex divide-x divide-zinc-800/70 pt-2">
+              <div className="pr-8">
+                <div className="font-serif text-3xl text-zinc-100">5+</div>
+                <div className="mt-1 text-xs uppercase tracking-widest text-zinc-400">
+                  Years experience
+                </div>
+              </div>
+              <div className="px-8">
+                <div className="font-serif text-3xl text-zinc-100">20+</div>
+                <div className="mt-1 text-xs uppercase tracking-widest text-zinc-400">
+                  Completed projects
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            variants={FADE_DOWN_ANIMATION_VARIANTS}
+            className="relative hidden shrink-0 self-center lg:block"
+          >
+            <HeroGem />
+          </motion.div>
+        </div>
+
         <motion.div
           variants={FADE_DOWN_ANIMATION_VARIANTS}
-          className="space-y-4"
+          className="divide-y divide-zinc-800/60 border-y border-zinc-800/60"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-zinc-800/70 bg-zinc-900/50 px-3 py-1 text-sm text-zinc-400 backdrop-blur-md">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-            </span>
-            Available for new opportunities in UAE
-          </div>
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            <span className="bg-gradient-to-br from-zinc-100 to-zinc-500 bg-clip-text text-transparent">
-              Mohannad Alhajy
-            </span>
-          </h1>
-          <p className="max-w-2xl text-lg leading-relaxed text-zinc-400 sm:text-xl">
-            Full Stack Developer<br></br> I design and build scalable web
-            platforms with a focus on clean architecture, reliable APIs, and
-            maintainable systems. My work includes production applications
-            across industries such as HR management, legal services, car rental,
-            and project management.
-          </p>
-
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm font-medium text-zinc-400">
-            <div className="flex items-center gap-2">
-              <span className="text-zinc-100 font-bold">5+</span> Years
-              Experience
+          {skills.map((s) => (
+            <div
+              key={s.label}
+              className="grid gap-1 py-4 sm:grid-cols-[200px_1fr] sm:items-baseline"
+            >
+              <div className="text-xs font-medium uppercase tracking-widest text-amber-400">
+                {s.label}
+              </div>
+              <div className="text-sm text-zinc-400">{s.tools}</div>
             </div>
-            <div className="h-4 w-px bg-zinc-800"></div>
-            <div className="flex items-center gap-2">
-              <span className="text-zinc-100 font-bold">20+</span> Completed Projects
-            </div>
-          </div>
+          ))}
         </motion.div>
 
         <motion.div
           variants={FADE_DOWN_ANIMATION_VARIANTS}
-          className="grid gap-3 sm:grid-cols-2 pt-2"
-        >
-          <div className="rounded-xl border border-zinc-800/70 bg-zinc-900/50 p-4 backdrop-blur-md transition-colors hover:border-zinc-700/60">
-            <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
-              <span className="flex h-6 w-6 items-center justify-center rounded-md border border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
-                <Server className="h-3.5 w-3.5" />
-              </span>
-              Backend & Architecture
-            </div>
-            <div className="text-sm text-zinc-400 leading-relaxed">
-              Node.js, NestJS, Microservices, REST / GraphQL, WebSockets
-            </div>
-          </div>
-
-          <div className="rounded-xl border border-zinc-800/70 bg-zinc-900/50 p-4 backdrop-blur-md transition-colors hover:border-zinc-700/60">
-            <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
-              <span className="flex h-6 w-6 items-center justify-center rounded-md border border-blue-500/30 bg-blue-500/10 text-blue-400">
-                <Monitor className="h-3.5 w-3.5" />
-              </span>
-              Frontend & UX
-            </div>
-            <div className="text-sm text-zinc-400 leading-relaxed">
-              TypeScript, React, Next.js, Redux / Zustand, Tailwind CSS
-            </div>
-          </div>
-
-          <div className="rounded-xl border border-zinc-800/70 bg-zinc-900/50 p-4 backdrop-blur-md transition-colors hover:border-zinc-700/60">
-            <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
-              <span className="flex h-6 w-6 items-center justify-center rounded-md border border-sky-500/30 bg-sky-500/10 text-sky-400">
-                <Cloud className="h-3.5 w-3.5" />
-              </span>
-              Cloud & DevOps
-            </div>
-            <div className="text-sm text-zinc-400 leading-relaxed">
-              AWS (EC2, S3, RDS, Lambda), Docker, CI/CD Pipelines
-            </div>
-          </div>
-
-          <div className="rounded-xl border border-zinc-800/70 bg-zinc-900/50 p-4 backdrop-blur-md transition-colors hover:border-zinc-700/60">
-            <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
-              <span className="flex h-6 w-6 items-center justify-center rounded-md border border-violet-500/30 bg-violet-500/10 text-violet-400">
-                <Database className="h-3.5 w-3.5" />
-              </span>
-              Databases & Caching
-            </div>
-            <div className="text-sm text-zinc-400 leading-relaxed">
-              MYSQL, MongoDB, Redis
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          variants={FADE_DOWN_ANIMATION_VARIANTS}
-          className="flex flex-wrap gap-3 pt-4"
+          className="flex flex-wrap items-center gap-6"
         >
           <Link
             href="/projects"
-            className="group flex items-center justify-center gap-2 rounded-xl bg-zinc-100 px-6 py-3 text-sm font-semibold text-zinc-900 transition-all hover:bg-white hover:ring-4 hover:ring-zinc-100/20 active:scale-95"
+            className="group inline-flex items-center gap-2 rounded-full bg-zinc-100 px-6 py-3 text-sm font-medium text-zinc-900 transition-all hover:bg-white hover:shadow-[0_0_30px_rgba(245,158,11,0.25)] active:scale-95"
           >
             View Projects
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -130,14 +152,14 @@ export default function HomeContent() {
           <a
             href="/mohannad-alhajy-cv.pdf"
             download
-            className="group flex items-center justify-center gap-2 rounded-xl border border-zinc-800/70 bg-zinc-900/50 px-6 py-3 text-sm font-medium text-zinc-100 backdrop-blur-md transition-all hover:border-zinc-700 hover:bg-zinc-800 hover:text-white active:scale-95"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-300 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-zinc-100 hover:decoration-amber-400"
           >
             <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
-            Download Resume (PDF)
+            Download Resume
           </a>
           <Link
             href="/contact"
-            className="rounded-xl border border-zinc-800/70 bg-transparent px-6 py-3 text-sm font-medium text-zinc-300 transition-all hover:bg-zinc-900 hover:text-zinc-100 active:scale-95"
+            className="text-sm font-medium text-zinc-300 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-zinc-100 hover:decoration-amber-400"
           >
             Let&apos;s Talk
           </Link>
@@ -150,40 +172,17 @@ export default function HomeContent() {
         whileInView="show"
         viewport={{ once: true, margin: "-50px" }}
         variants={STAGGER_CHILDREN}
-        className="grid gap-4 sm:grid-cols-3"
+        className="grid gap-8 border-t border-zinc-800/60 pt-10 sm:grid-cols-3 sm:divide-x sm:divide-zinc-800/60"
       >
-        {[
-          {
-            title: "Scalable Platforms",
-            desc: "Design and development of full-stack platforms with reliable backend microservices and engaging frontends.",
-            icon: Server,
-            badge: "border-emerald-500/30 bg-emerald-500/10 text-emerald-400",
-          },
-          {
-            title: "Real-Time Systems",
-            desc: "Implementation of lightning-fast communication features leveraging WebSockets and Pub/Sub architectures.",
-            icon: Zap,
-            badge: "border-amber-500/30 bg-amber-500/10 text-amber-400",
-          },
-          {
-            title: "Cloud Integrations",
-            desc: "Advanced integrations with cloud platforms from deployments to third-party authentication and payments.",
-            icon: Cloud,
-            badge: "border-sky-500/30 bg-sky-500/10 text-sky-400",
-          },
-        ].map((x) => (
+        {highlights.map((x, i) => (
           <motion.div
             variants={FADE_DOWN_ANIMATION_VARIANTS}
             key={x.title}
-            className="group relative overflow-hidden rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-zinc-700/60 hover:bg-zinc-900/50"
+            className={i > 0 ? "sm:pl-8" : ""}
           >
-            <div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-lg border transition-colors ${x.badge}`}>
-              <x.icon className="h-5 w-5" />
-            </div>
-            <h3 className="text-base font-semibold text-zinc-100">{x.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-              {x.desc}
-            </p>
+            <div className="font-serif text-4xl text-zinc-700">0{i + 1}</div>
+            <h3 className="mt-3 font-serif text-lg text-zinc-100">{x.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-zinc-400">{x.desc}</p>
           </motion.div>
         ))}
       </motion.section>
@@ -196,41 +195,21 @@ export default function HomeContent() {
         variants={STAGGER_CHILDREN}
         className="space-y-6"
       >
-        <h2 className="text-2xl font-bold tracking-tight text-zinc-100">
-          Engineering Philosophy
-        </h2>
-        <div className="grid gap-4 sm:grid-cols-3">
-          {[
-            {
-              title: "Type-Safety First",
-              desc: "Enforcing strict TypeScript configurations to eliminate runtime errors before they happen.",
-              number: "01",
-            },
-            {
-              title: "Designing for Failure",
-              desc: "Building resilient microservices that gracefully handle partial outages and network partitions.",
-              number: "02",
-            },
-            {
-              title: "User-Centric Performance",
-              desc: "Prioritizing fast edge delivery, lean bundles, and optimistic UI updates for the end user.",
-              number: "03",
-            },
-          ].map((item) => (
+        <h2 className="font-serif text-2xl text-zinc-100">Engineering Philosophy</h2>
+        <div className="divide-y divide-zinc-800/60 border-y border-zinc-800/60">
+          {philosophy.map((item) => (
             <motion.div
               variants={FADE_DOWN_ANIMATION_VARIANTS}
               key={item.number}
-              className="rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-6 backdrop-blur-sm"
+              className="flex gap-6 py-6"
             >
-              <div className="text-sm font-bold text-emerald-500/50 mb-2">
-                {item.number}
+              <div className="pt-1 font-serif text-sm text-amber-400">{item.number}</div>
+              <div>
+                <h3 className="font-serif text-lg text-zinc-100">{item.title}</h3>
+                <p className="mt-1 max-w-2xl text-sm leading-relaxed text-zinc-400">
+                  {item.desc}
+                </p>
               </div>
-              <h3 className="text-base font-semibold text-zinc-100 mb-2">
-                {item.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-zinc-400">
-                {item.desc}
-              </p>
             </motion.div>
           ))}
         </div>
@@ -244,13 +223,11 @@ export default function HomeContent() {
         variants={FADE_DOWN_ANIMATION_VARIANTS}
         className="space-y-8"
       >
-        <h2 className="text-2xl font-bold tracking-tight text-zinc-100">
-          Experience
-        </h2>
+        <h2 className="font-serif text-2xl text-zinc-100">Experience</h2>
 
         <div className="relative border-l border-zinc-800/60 ml-3 space-y-14 py-2">
           <div className="relative pl-8 group">
-            <span className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full border-2 border-zinc-800 bg-zinc-950 transition-colors group-hover:border-emerald-500 group-hover:bg-emerald-500/20"></span>
+            <span className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full border-2 border-zinc-800 bg-zinc-950 transition-colors group-hover:border-amber-500 group-hover:bg-amber-500/20"></span>
 
             <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-4">
               <div>
@@ -261,7 +238,7 @@ export default function HomeContent() {
                   </span>
                 </h3>
               </div>
-              <span className="shrink-0 text-sm font-medium text-emerald-400">
+              <span className="shrink-0 text-sm font-medium text-amber-400">
                 2021 – Present · Dubai
               </span>
             </div>
@@ -273,7 +250,7 @@ export default function HomeContent() {
 
             <ul className="list-none space-y-3 mb-6 text-sm text-zinc-400">
               <li className="flex gap-3">
-                <span className="text-emerald-500/50 mt-1">▹</span>
+                <span className="text-amber-500/50 mt-1">▹</span>
                 <span className="leading-relaxed">
                   Engineered expansive API architectures servicing varied
                   markets including Vidnik (social), Zadlaw (legal), and Exyar
@@ -281,28 +258,28 @@ export default function HomeContent() {
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-emerald-500/50 mt-1">▹</span>
+                <span className="text-amber-500/50 mt-1">▹</span>
                 <span className="leading-relaxed">
                   Orchestrated real-time messaging and video conferencing
                   capabilities for mobile-first products.
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-emerald-500/50 mt-1">▹</span>
+                <span className="text-amber-500/50 mt-1">▹</span>
                 <span className="leading-relaxed">
                   Architected and deployed responsive admin dashboards and
                   internal operational tooling via React.
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-emerald-500/50 mt-1">▹</span>
+                <span className="text-amber-500/50 mt-1">▹</span>
                 <span className="leading-relaxed">
                   Spearheaded integration of intricate UI functions like 3D
                   visualization and real-time mapping integrations.
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-emerald-500/50 mt-1">▹</span>
+                <span className="text-amber-500/50 mt-1">▹</span>
                 <span className="leading-relaxed">
                   Directed cloud deployment strategies utilizing AWS
                   infrastructure, Docker containerization, and Nginx.
@@ -367,58 +344,30 @@ export default function HomeContent() {
         variants={FADE_DOWN_ANIMATION_VARIANTS}
         className="space-y-8"
       >
-        <h2 className="text-2xl font-bold tracking-tight text-zinc-100">
-          What Leadership Says
-        </h2>
-        <div className="grid gap-6 sm:grid-cols-2">
-          <div className="group relative overflow-hidden rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-6 backdrop-blur-sm transition-colors hover:border-emerald-700/40">
-            <Quote
-              className="absolute right-5 top-5 h-14 w-14 text-emerald-500/[0.15]"
-              strokeWidth={1}
-              fill="currentColor"
-            />
-            <p className="relative z-10 mb-6 text-sm leading-relaxed text-zinc-300">
+        <h2 className="font-serif text-2xl text-zinc-100">What Leadership Says</h2>
+        <div className="grid gap-10 sm:grid-cols-2">
+          <blockquote className="border-l-2 border-amber-500/40 pl-6">
+            <p className="font-serif text-lg italic leading-relaxed text-zinc-200">
               &ldquo;Mohannad didn&apos;t just write code; he architected systems
               that allowed our product lines to scale their user base
               exponentially without degraded performance. A true technical
               leader.&rdquo;
             </p>
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-emerald-500/30 bg-emerald-500/10 text-sm font-semibold text-emerald-300">
-                TL
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-zinc-100">
-                  Team Leader
-                </div>
-                <div className="text-xs text-zinc-400">Step By Tech</div>
-              </div>
-            </div>
-          </div>
+            <footer className="mt-4 text-sm text-zinc-400">
+              <span className="text-zinc-300">Team Leader</span> · Step By Tech
+            </footer>
+          </blockquote>
 
-          <div className="group relative overflow-hidden rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-6 backdrop-blur-sm transition-colors hover:border-rose-700/40">
-            <Quote
-              className="absolute right-5 top-5 h-14 w-14 text-rose-500/[0.15]"
-              strokeWidth={1}
-              fill="currentColor"
-            />
-            <p className="relative z-10 mb-6 text-sm leading-relaxed text-zinc-300">
+          <blockquote className="border-l-2 border-amber-500/40 pl-6">
+            <p className="font-serif text-lg italic leading-relaxed text-zinc-200">
               &ldquo;His focus on multi-tenant security and zero-downtime
               deployments was critical to our enterprise deliverables. He
               brings a senior mindset to every architecture discussion.&rdquo;
             </p>
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-rose-500/30 bg-rose-500/10 text-sm font-semibold text-rose-300">
-                PM
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-zinc-100">
-                  Product Manager
-                </div>
-                <div className="text-xs text-zinc-400">Vidnik</div>
-              </div>
-            </div>
-          </div>
+            <footer className="mt-4 text-sm text-zinc-400">
+              <span className="text-zinc-300">Product Manager</span> · Vidnik
+            </footer>
+          </blockquote>
         </div>
       </motion.section>
 
@@ -430,9 +379,7 @@ export default function HomeContent() {
         variants={FADE_DOWN_ANIMATION_VARIANTS}
         className="space-y-8"
       >
-        <h2 className="text-2xl font-bold tracking-tight text-zinc-100">
-          Education
-        </h2>
+        <h2 className="font-serif text-2xl text-zinc-100">Education</h2>
 
         <div className="relative border-l border-zinc-800/60 ml-3 py-2">
           <div className="relative pl-8 group">
@@ -456,15 +403,6 @@ export default function HomeContent() {
           </div>
         </div>
       </motion.section>
-
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        variants={FADE_DOWN_ANIMATION_VARIANTS}
-      >
-        <QuickLinks />
-      </motion.div>
     </div>
   );
 }

@@ -1,12 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import SiteDots from "@/components/SiteDots";
 import Footer from "@/components/Footer";
 import SEOJsonLd from "./seo";
 import { siteConfig, siteUrl } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+});
 
 export const viewport: Viewport = {
   themeColor: "#09090b",
@@ -24,6 +30,7 @@ export const metadata: Metadata = {
 
   keywords: [
     "Mohannad Alhajy",
+    "Full Stack Developer",
     "Full Stack Engineer",
     "NestJS Developer",
     "Node.js Backend",
@@ -71,29 +78,27 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} dark`} style={{ colorScheme: "dark" }}>
-      <body className="min-h-screen bg-zinc-950 font-sans text-zinc-100 selection:bg-zinc-800 selection:text-zinc-100">
+    <html
+      lang="en"
+      className={`${inter.variable} ${fraunces.variable} dark`}
+      style={{ colorScheme: "dark" }}
+    >
+      <body className="min-h-screen bg-zinc-950 font-sans text-zinc-100 selection:bg-amber-500/30 selection:text-zinc-100">
+        {/* cinematic ambient lighting — amber + a quiet teal counter-glow, breathing slowly */}
         <div className="fixed inset-0 -z-10 h-full w-full overflow-hidden bg-zinc-950">
-          {/* faint dot-grid texture, echoes the project cover art */}
+          <div className="animate-glow-pulse absolute left-1/2 top-[-20%] h-[55rem] w-[55rem] -translate-x-1/2 rounded-full bg-amber-500/[0.07] blur-[160px]" />
           <div
-            className="absolute inset-0 opacity-[0.15]"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px)",
-              backgroundSize: "32px 32px",
-            }}
+            className="animate-glow-pulse absolute -right-40 top-[15%] h-[45rem] w-[45rem] rounded-full bg-teal-500/[0.05] blur-[160px]"
+            style={{ animationDelay: "-6s" }}
           />
-          {/* soft color blobs for depth */}
-          <div className="absolute -top-40 -left-40 h-[32rem] w-[32rem] rounded-full bg-emerald-500/[0.12] blur-[120px]" />
-          <div className="absolute -top-24 right-0 h-[28rem] w-[28rem] rounded-full bg-blue-500/[0.10] blur-[120px]" />
-          <div className="absolute top-[60vh] left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-violet-500/[0.08] blur-[140px]" />
-          {/* base wash + vignette back to pure black at the edges */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-10%,rgba(120,119,198,0.12),rgba(255,255,255,0))]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-zinc-950" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_-10%,rgba(255,255,255,0.05),rgba(255,255,255,0))]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_0%,transparent_40%,rgba(0,0,0,0.5))]" />
         </div>
         <SEOJsonLd />
-        <Navbar />
-        <main className="mx-auto w-full max-w-5xl px-4 py-10 relative z-10">{children}</main>
+        <SiteDots />
+        <main className="mx-auto w-full max-w-5xl px-4 py-10 pl-14 relative z-10 sm:pl-16">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

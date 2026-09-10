@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
 import ProjectGallery from "@/components/project-gallery";
-import { getProjectAccent, type ProjectAccent } from "@/data/project-meta";
 import { siteConfig, siteUrl } from "@/lib/site";
 
 type Params = Promise<{ slug: string }>;
@@ -44,8 +44,6 @@ export default async function ProjectDetailsPage({
   const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
 
-  const accent = getProjectAccent(project.slug);
-  const Icon = accent.icon;
   const projectUrl = `${siteUrl}/projects/${project.slug}`;
 
   const jsonLd = {
@@ -72,149 +70,76 @@ export default async function ProjectDetailsPage({
   };
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-14">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* 🔥 HERO */}
-      <div className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-gradient-to-br from-zinc-900 via-zinc-900/60 to-zinc-800 p-8">
-        <div className="space-y-4">
-          <div
-            className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border backdrop-blur-md ${accent.badge}`}
-          >
-            <Icon className="h-5 w-5" strokeWidth={2} />
-          </div>
-          <h1 className="text-4xl font-bold tracking-tight">{project.title}</h1>
-          <p className="max-w-2xl text-zinc-300 text-lg">{project.subtitle}</p>
 
-          {project.stack?.length && (
-            <div className="flex flex-wrap gap-2 pt-2">
-              {project.stack.slice(0, 6).map((s) => (
-                <span
-                  key={s}
-                  className="rounded-full bg-zinc-800/70 px-3 py-1 text-xs text-zinc-200"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
+      {/* Hero */}
+      <div className="space-y-4 border-b border-zinc-800/60 pb-10">
+        <Link
+          href="/projects"
+          className="text-xs font-medium uppercase tracking-widest text-zinc-400 transition-colors hover:text-amber-400"
+        >
+          ← All projects
+        </Link>
+        <h1 className="font-serif text-4xl text-zinc-100">{project.title}</h1>
+        <p className="max-w-2xl text-lg leading-relaxed text-zinc-400">{project.subtitle}</p>
 
-        {/* subtle glow */}
-        <div className={`absolute -top-10 -right-10 h-40 w-40 rounded-full blur-3xl ${accent.glowA}`} />
-        <div className={`absolute -bottom-16 -left-10 h-40 w-40 rounded-full blur-3xl ${accent.glowB}`} />
-      </div>
-
-      {/* 🔥 GRID SECTIONS */}
-      <div className="grid items-start gap-6 md:grid-cols-2">
-        {/* Highlights */}
-        <Section title="Highlights" accent={accent}>
-          {project.highlights.map((h) => (
-            <CardItem key={h} accent={accent}>{h}</CardItem>
-          ))}
-        </Section>
-
-        {/* Technical */}
-        {project.technicalHighlights.length > 0 && (
-          <Section title="Technical Highlights" accent={accent}>
-            {project.technicalHighlights.map((h) => (
-              <CardItem key={h} accent={accent}>{h}</CardItem>
-            ))}
-          </Section>
-        )}
-
-        {/* Contribution */}
-        {project.myContribution.length > 0 && (
-          <Section title="My Contribution" accent={accent}>
-            {project.myContribution.map((h) => (
-              <CardItem key={h} accent={accent}>{h}</CardItem>
-            ))}
-          </Section>
-        )}
-
-        {/* Challenges */}
-        {project.challengesSolved.length > 0 && (
-          <Section title="Challenges Solved" accent={accent}>
-            {project.challengesSolved.map((h) => (
-              <CardItem key={h} accent={accent}>{h}</CardItem>
-            ))}
-          </Section>
+        {project.stack.length > 0 && (
+          <p className="pt-2 text-xs uppercase tracking-wide text-zinc-400">
+            {project.stack.join(" · ")}
+          </p>
         )}
       </div>
 
-      {/* 🔥 FULL WIDTH STACK */}
-      <section className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6">
-        <h2 className="text-lg font-semibold mb-4">Tech Stack</h2>
-        <div className="flex flex-wrap gap-2">
-          {project.stack.map((s) => (
-            <span
-              key={s}
-              className="rounded-full border border-zinc-700 bg-zinc-950 px-3 py-1 text-xs text-zinc-300 hover:bg-zinc-800 transition"
-            >
-              {s}
-            </span>
-          ))}
-        </div>
-      </section>
+      {/* Sections */}
+      <div className="grid gap-10 md:grid-cols-2">
+        <Section title="Highlights" items={project.highlights} />
+        <Section title="Technical Highlights" items={project.technicalHighlights} />
+        <Section title="My Contribution" items={project.myContribution} />
+        <Section title="Challenges Solved" items={project.challengesSolved} />
+      </div>
 
-      {/* 🔥 LINKS */}
-      {project.links?.length > 0 && (
-        <section className="flex flex-wrap gap-3">
+      {/* Links */}
+      {project.links.length > 0 && (
+        <div className="flex flex-wrap gap-6 border-t border-zinc-800/60 pt-8">
           {project.links.map((l) => (
             <a
               key={l.href}
               href={l.href}
               target="_blank"
               rel="noreferrer"
-              className="rounded-xl border border-zinc-700 bg-zinc-900 px-5 py-2 text-sm hover:bg-zinc-800 transition"
+              className="text-sm font-medium text-zinc-300 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-amber-300 hover:decoration-amber-400"
             >
               {l.label}
             </a>
           ))}
-        </section>
+        </div>
       )}
-      {project.photos?.length > 0 && (
+
+      {project.photos.length > 0 && (
         <ProjectGallery images={project.photos} alt={`${project.title} screenshot`} />
       )}
     </div>
   );
 }
 
-/* 🔥 reusable section */
-function Section({
-  title,
-  accent,
-  children,
-}: {
-  title: string;
-  accent: ProjectAccent;
-  children: React.ReactNode;
-}) {
-  return (
-    <section className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 space-y-4">
-      <h2 className="flex items-center gap-2 text-lg font-semibold">
-        <span className={`h-1.5 w-4 rounded-full ${accent.glowA}`} />
-        {title}
-      </h2>
-      <div className="space-y-3">{children}</div>
-    </section>
-  );
-}
+function Section({ title, items }: { title: string; items: string[] }) {
+  if (items.length === 0) return null;
 
-/* 🔥 card item instead of boring bullets */
-function CardItem({
-  accent,
-  children,
-}: {
-  accent: ProjectAccent;
-  children: React.ReactNode;
-}) {
   return (
-    <div className="group flex gap-3 rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 text-sm text-zinc-300 transition hover:border-zinc-700 hover:bg-zinc-900">
-      <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${accent.glowA}`} />
-      <span>{children}</span>
-    </div>
+    <section className="space-y-4">
+      <h2 className="font-serif text-lg text-zinc-100">{title}</h2>
+      <ul className="space-y-3 text-sm text-zinc-400">
+        {items.map((h) => (
+          <li key={h} className="flex gap-3">
+            <span className="mt-1 text-amber-500/50">▹</span>
+            <span className="leading-relaxed">{h}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
