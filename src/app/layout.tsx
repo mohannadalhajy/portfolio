@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     siteName: `${siteConfig.name} Portfolio`,
     images: [
       {
-        url: "/og.png",
+        url: "/og.jpg",
         width: 1200,
-        height: 630,
+        height: 800,
         alt: `${siteConfig.name} Portfolio`,
       },
     ],
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: ["/og.png"],
+    images: ["/og.jpg"],
   },
 
   robots: {
