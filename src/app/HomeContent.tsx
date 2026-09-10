@@ -255,7 +255,7 @@ export default function HomeContent() {
               <div>
                 <h3 className="text-xl font-semibold text-zinc-100">
                   Full Stack Developer{" "}
-                  <span className="text-zinc-500 font-medium">
+                  <span className="text-zinc-400 font-medium">
                     — Step By Tech
                   </span>
                 </h3>
@@ -322,10 +322,10 @@ export default function HomeContent() {
               <div>
                 <h3 className="text-xl font-semibold text-zinc-100">
                   Full Stack Developer{" "}
-                  <span className="text-zinc-500 font-medium">— InfoTech</span>
+                  <span className="text-zinc-400 font-medium">— InfoTech</span>
                 </h3>
               </div>
-              <span className="shrink-0 text-sm font-medium text-zinc-500">
+              <span className="shrink-0 text-sm font-medium text-zinc-400">
                 2020 – 2021 · Dubai
               </span>
             </div>
@@ -385,7 +385,7 @@ export default function HomeContent() {
                 <div className="text-sm font-semibold text-zinc-100">
                   Team Leader
                 </div>
-                <div className="text-xs text-zinc-500">Step By Tech</div>
+                <div className="text-xs text-zinc-400">Step By Tech</div>
               </div>
             </div>
           </div>
@@ -405,7 +405,7 @@ export default function HomeContent() {
                 <div className="text-sm font-semibold text-zinc-100">
                   Product Manager
                 </div>
-                <div className="text-xs text-zinc-500">Vidnik</div>
+                <div className="text-xs text-zinc-400">Vidnik</div>
               </div>
             </div>
           </div>
@@ -434,7 +434,7 @@ export default function HomeContent() {
                   Damascus University
                 </h3>
               </div>
-              <span className="shrink-0 text-sm font-medium text-zinc-500">
+              <span className="shrink-0 text-sm font-medium text-zinc-400">
                 2015 – 2020 · Syria
               </span>
             </div>

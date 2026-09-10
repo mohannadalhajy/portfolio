@@ -63,7 +63,7 @@ export default function ProjectsContent() {
                     </span>
                   ))}
                   {remaining > 0 && (
-                    <span className="px-1 text-xs font-medium text-zinc-500">
+                    <span className="px-1 text-xs font-medium text-zinc-400">
                       +{remaining} more
                     </span>
                   )}
