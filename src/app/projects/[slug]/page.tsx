@@ -29,8 +29,12 @@ export async function generateMetadata({
     openGraph: {
       title: project.title,
       description: project.subtitle,
-      images: project.photos[0] ? [project.photos[0]] : undefined,
       type: "article",
+      // Next.js doesn't deep-merge openGraph fields with the parent layout —
+      // a child that defines its own openGraph loses the parent's `images`
+      // entirely, so fall back to the site's generated OG image explicitly
+      // rather than ending up with no share-preview image at all.
+      images: [project.photos[0] || "/opengraph-image"],
     },
   };
 }
@@ -92,6 +96,22 @@ export default async function ProjectDetailsPage({
             {project.stack.join(" · ")}
           </p>
         )}
+      </div>
+
+      {/* Case study: Problem / Approach / Result */}
+      <div className="grid gap-8 border-b border-zinc-800/60 pb-10 sm:grid-cols-3 sm:divide-x sm:divide-zinc-800/60">
+        <div>
+          <p className="text-xs font-medium uppercase tracking-widest text-amber-400">Problem</p>
+          <p className="mt-2 text-sm leading-relaxed text-zinc-300">{project.caseStudy.problem}</p>
+        </div>
+        <div className="sm:pl-8">
+          <p className="text-xs font-medium uppercase tracking-widest text-amber-400">Approach</p>
+          <p className="mt-2 text-sm leading-relaxed text-zinc-300">{project.caseStudy.approach}</p>
+        </div>
+        <div className="sm:pl-8">
+          <p className="text-xs font-medium uppercase tracking-widest text-amber-400">Result</p>
+          <p className="mt-2 text-sm leading-relaxed text-zinc-300">{project.caseStudy.result}</p>
+        </div>
       </div>
 
       {/* Sections */}

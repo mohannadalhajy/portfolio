@@ -1,7 +1,14 @@
+export type CaseStudy = {
+  problem: string;
+  approach: string;
+  result: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
   subtitle: string;
+  caseStudy: CaseStudy;
   highlights: string[];
   technicalHighlights: string[];
   myContribution: string[];
@@ -17,6 +24,14 @@ export const projects: Project[] = [
     title: "Vidnik",
     subtitle:
       "A modern halal matchmaking platform that helps Muslims connect for marriage through secure and respectful interactions. The application includes a mobile app for users and a backend system supporting authentication, profile management, matchmaking, messaging, and AI-based identity verification. The platform emphasizes privacy, guardian (wali) involvement, and culturally aligned communication.",
+    caseStudy: {
+      problem:
+        "Muslims looking for marriage needed a platform that felt safe, private, and culturally aligned — not a casual dating app — with real identity verification and guardian (wali) involvement built in from day one, not added later.",
+      approach:
+        "Architected and built the full backend for a scalable mobile app: real-time chat and video calling, AI-based identity verification via AWS Rekognition, cross-platform payment validation across Apple and Google, moderation tooling, and admin/super-admin dashboards for full platform control.",
+      result:
+        "A production platform with value-based matchmaking and privacy-first profile discovery, backed by a system engineered to hold up under concurrent real-time chat and video load.",
+    },
     myContribution: [
       "Architected and developed the full backend system for a scalable mobile application",
       "Built a real-time chat system with video calling capabilities",
@@ -91,6 +106,14 @@ export const projects: Project[] = [
     title: "Axiom",
     subtitle:
       "A scalable multi-client platform for discovering UAE properties and managing relocation services. The system integrates a web application, administrative dashboard, and Unity 3D client, powered by a modular NestJS backend supporting AI interactions, real-time communication, and cloud-based infrastructure.",
+    caseStudy: {
+      problem:
+        "Expatriates relocating to the UAE needed one place to discover properties and manage relocation services — across three very different client types (public web, admin dashboard, and a Unity 3D application) that would normally mean three separate backends.",
+      approach:
+        "Designed a single modular NestJS backend serving all three clients from shared domain modules, added Redis + Redlock to handle concurrent and race-condition-prone operations safely, and integrated AWS speech and AI services (Polly, Comprehend, OpenAI) for voice and intelligent chat interactions.",
+      result:
+        "One backend, three clients, no duplicated logic — expatriates can discover properties and manage relocation end-to-end through a single unified platform.",
+    },
     myContribution: [
       "Designed and implemented a scalable backend architecture using NestJS and TypeScript.",
       "Developed RESTful APIs supporting multiple clients including the public web platform, administrative dashboard, and Unity 3D application.",
@@ -165,6 +188,14 @@ export const projects: Project[] = [
     The platform also integrates an AI-powered conversational assistant that helps users discover cars and get booking assistance through natural language interaction.
     
     The system was designed with a scalable modular backend architecture supporting high availability, secure authentication, and integration with external cloud services.`,
+    caseStudy: {
+      problem:
+        "A car rental business needed customers to browse and book premium vehicles, with AI-assisted help discovering the right car, while giving admins full inventory and booking control — all from one backend serving three different consumers (website, dashboard, and AI assistant).",
+      approach:
+        "Built a modular NestJS backend with clear separation between the customer site, admin dashboard, and AI assistant layers; added Redis caching for frequently requested vehicle data, Firebase for real-time booking notifications, and secure multi-role authentication for both customers and staff.",
+      result:
+        "A single backend cleanly serving three different consumers, with an AI conversational layer for vehicle discovery built into the same system rather than bolted on separately.",
+    },
     myContribution: [
       "Designed and implemented the backend architecture using NestJS and TypeScript following a modular domain-driven structure.",
       "Developed RESTful APIs powering the customer-facing website, admin dashboard, and AI assistant.",
@@ -217,6 +248,14 @@ export const projects: Project[] = [
     subtitle: `A full-featured Agile project management platform designed to help teams plan, track, and deliver projects efficiently. The system supports project planning, sprint management, task tracking, team collaboration, approvals, notifications, and document management. It enables organizations to structure work using boards, epics, sprints, and tasks while maintaining visibility across teams and workflows.
 
     The backend was built with a scalable modular architecture using NestJS and MongoDB, integrating caching, cloud storage, real-time notifications, and role-based access control to support complex enterprise workflows.`,
+    caseStudy: {
+      problem:
+        "Teams needed a full Agile workflow — boards, epics, sprints, tasks, approvals, document management — with enterprise-grade access control, essentially a Jira-equivalent built from scratch.",
+      approach:
+        "Designed a flexible data model to represent Agile hierarchies (project → board → epic → sprint → task), layered in role-based permissions, Redis caching for heavy task and project queries, Firebase push notifications, and PDF report generation via Puppeteer, all covered by Jest/Supertest tests.",
+      result:
+        "A working Jira-equivalent covering the full Agile lifecycle, architected to stay maintainable as the codebase and organization grow.",
+    },
     myContribution: [
       "Designed and implemented the backend architecture using NestJS and TypeScript following a modular and scalable structure.",
       "Developed RESTful APIs supporting project management features such as projects, boards, epics, sprints, tasks, timelines, and approvals.",
@@ -283,6 +322,14 @@ export const projects: Project[] = [
     title: "Zadlaw",
     subtitle:
       "A full-featured web platform for a law firm, enabling clients to book consultation sessions and interact with services online, while providing administrators with a comprehensive dashboard to manage appointments, analytics, content, and user interactions efficiently. The backend is built with NestJS and TypeScript, ensuring scalable and secure operations.",
+    caseStudy: {
+      problem:
+        "A law firm needed clients to book consultations and interact with services online, with staff needing a dashboard covering analytics, content, appointments, and subscriptions — coordinated across appointments, legal advisory, blogs, and analytics modules without the data drifting out of sync.",
+      approach:
+        "Built the backend in NestJS/TypeScript with Microsoft Graph API integration for real Outlook calendar scheduling, Stripe for subscription billing and webhook handling, and centralized middleware and exception handling to keep every module's API responses consistent.",
+      result:
+        "Clients book and manage consultations end-to-end online; staff run the firm's appointments, billing, and content from one dashboard instead of juggling separate tools.",
+    },
     myContribution: [
       "Designed and implemented the backend architecture using NestJS and TypeScript.",
       "Developed REST APIs powering the web application and admin dashboard.",
@@ -340,6 +387,14 @@ export const projects: Project[] = [
     title: "HR Software",
     subtitle: `A comprehensive HR workforce management platform designed to streamline employee attendance tracking, task management, and organizational administration. The system enables companies to manage employees, monitor clock-in/clock-out activity, assign and track daily tasks, control permissions and roles, and manage company resources through an administrative dashboard.
     The platform supports multi-company management, allowing a super-admin to oversee multiple organizations, while each company can manage its own employees, roles, and operations. The backend architecture is built to be scalable, secure, and modular, with integrations for cloud storage, email notifications, caching, and background services.`,
+    caseStudy: {
+      problem:
+        "Companies needed to track attendance, assign tasks, and manage roles and permissions — with a single super-admin overseeing multiple independent companies without their data mixing.",
+      approach:
+        "Designed a multi-tenant architecture with isolated company data, a flexible RBAC system for dynamic permissions, a clock-in/clock-out system handling edge cases like duplicate punches, and Redis caching to keep the dashboards responsive at scale.",
+      result:
+        "One system, multiple companies, each fully isolated — with attendance, tasks, and permissions all manageable from a single super-admin view when needed.",
+    },
     myContribution: [
       "Designed and implemented the backend architecture using NestJS and TypeScript.",
       "Built RESTful APIs for HR management features including employees, tasks, roles, permissions, and attendance tracking.",
@@ -404,6 +459,14 @@ export const projects: Project[] = [
     title: "Orders Delivery System",
     subtitle:
       "Full-stack delivery platform with admin dashboard + client/driver apps and central backend.",
+    caseStudy: {
+      problem:
+        "A delivery operation needed to track orders from placement to delivery across three different apps — admin dashboard, client, and driver — sharing one source of truth.",
+      approach:
+        "Built a central Node.js/Express backend with role-based access control and real-time order-status notifications so all three apps stay in sync.",
+      result:
+        "End-to-end order tracking from placement to delivery, with the backend and dashboard both public on GitHub.",
+    },
     myContribution: [],
     challengesSolved: [],
     technicalHighlights: [],
@@ -430,6 +493,14 @@ export const projects: Project[] = [
     title: "Real Estate Management",
     subtitle:
       "Listings management system with custom search and personalized recommendations.",
+    caseStudy: {
+      problem:
+        "A property listings platform needed search that actually understood relevance, not just keyword matching, plus recommendations tailored to each user.",
+      approach:
+        "Implemented a custom search engine using a Vector Space Model rather than reaching for an off-the-shelf search service, paired with a recommendation system driven by user behavior and preferences.",
+      result:
+        "A working search-and-recommend listings platform with its own retrieval logic, backend and dashboard both public on GitHub.",
+    },
     myContribution: [],
     challengesSolved: [],
     technicalHighlights: [],
