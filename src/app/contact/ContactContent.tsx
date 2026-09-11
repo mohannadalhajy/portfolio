@@ -6,6 +6,7 @@ import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
 import { siteConfig } from "@/lib/site";
 import CopyButton from "@/components/CopyButton";
 import StatusBadge from "@/components/StatusBadge";
+import ContactForm from "@/components/ContactForm";
 
 const contactMethods = [
   {
@@ -84,30 +85,43 @@ export default function ContactContent() {
           variants={STAGGER_CHILDREN}
           className="divide-y divide-zinc-800/60 border-y border-zinc-800/60 lg:border-y-0 lg:border-l lg:pl-10"
         >
-          {contactMethods.map((method) => (
-            <motion.div
-              key={method.title}
-              variants={FADE_DOWN_ANIMATION_VARIANTS}
-              className="group relative flex items-center justify-between gap-4 py-4"
-            >
-              <a
-                href={method.href}
-                target={method.href.startsWith("http") ? "_blank" : undefined}
-                rel={method.href.startsWith("http") ? "noreferrer" : undefined}
-                aria-label={`Open ${method.title}`}
-                className="absolute inset-0 z-0"
-              />
-              <div className="pointer-events-none min-w-0">
-                <div className="text-sm font-medium text-zinc-100">{method.title}</div>
-                <div className="truncate text-xs text-zinc-400">{method.subtitle}</div>
-              </div>
-              <div className="relative z-10 flex shrink-0 items-center gap-3">
-                <CopyButton value={method.copyValue} label={`Copy ${method.title.toLowerCase()}`} />
-                <ArrowUpRight className="pointer-events-none h-4 w-4 text-zinc-600 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-amber-400" />
-              </div>
-            </motion.div>
-          ))}
+          {contactMethods.map((method) => {
+            const isExternal = method.href.startsWith("http");
+            return (
+              <motion.div
+                key={method.title}
+                variants={FADE_DOWN_ANIMATION_VARIANTS}
+                className="group relative flex items-center justify-between gap-4 py-4"
+              >
+                <a
+                  href={method.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noreferrer" : undefined}
+                  aria-label={`Open ${method.title}`}
+                  className="absolute inset-0 z-0"
+                />
+                <div className="pointer-events-none min-w-0">
+                  <div className="text-sm font-medium text-zinc-100">{method.title}</div>
+                  <div className="truncate text-xs text-zinc-400">{method.subtitle}</div>
+                </div>
+                <div className="relative z-10 flex shrink-0 items-center gap-3">
+                  <CopyButton value={method.copyValue} label={`Copy ${method.title.toLowerCase()}`} />
+                  <ArrowUpRight className="pointer-events-none h-4 w-4 text-zinc-600 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-amber-400" />
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
+      </div>
+
+      <div className="space-y-6 border-t border-zinc-800/60 pt-10">
+        <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="space-y-1.5">
+          <h2 className="font-serif text-xl text-zinc-100">Send a message</h2>
+          <p className="text-sm text-zinc-400">
+            Prefer a form? Fill this out and it&apos;ll land straight in my inbox.
+          </p>
+        </motion.div>
+        <ContactForm />
       </div>
     </motion.div>
   );
