@@ -458,7 +458,7 @@ export const projects: Project[] = [
     slug: "orders-delivery-system",
     title: "Orders Delivery System",
     subtitle:
-      "Full-stack delivery platform with admin dashboard + client/driver apps and central backend.",
+      "Full-stack delivery platform with an admin dashboard, client and driver apps, and a central backend.",
     caseStudy: {
       problem:
         "A delivery operation needed to track orders from placement to delivery across three different apps — admin dashboard, client, and driver — sharing one source of truth.",

@@ -10,7 +10,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-serif",
-  weight: ["400", "500", "600"],
+  // only weight 400 is used anywhere on the site — 500/600 were dead
+  // font-file downloads
+  weight: ["400"],
   style: ["normal", "italic"],
 });
 
@@ -74,7 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${inter.variable} ${fraunces.variable} dark`}
       style={{ colorScheme: "dark" }}
     >
-      <body className="min-h-screen bg-zinc-950 font-sans text-zinc-100 selection:bg-amber-500/30 selection:text-zinc-100">
+      <body className="flex min-h-screen flex-col bg-zinc-950 font-sans text-zinc-100 selection:bg-amber-500/30 selection:text-zinc-100">
         {/* cinematic ambient lighting — amber + a quiet teal counter-glow, breathing slowly */}
         <div className="fixed inset-0 -z-10 h-full w-full overflow-hidden bg-zinc-950">
           <div className="animate-glow-pulse absolute left-1/2 top-[-20%] h-[55rem] w-[55rem] -translate-x-1/2 rounded-full bg-amber-500/[0.07] blur-[160px]" />
@@ -86,8 +88,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_0%,transparent_40%,rgba(0,0,0,0.5))]" />
         </div>
         <SEOJsonLd />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:border focus:border-zinc-800 focus:bg-zinc-950 focus:px-4 focus:py-2 focus:text-sm focus:text-zinc-100"
+        >
+          Skip to content
+        </a>
         <SiteDots />
-        <main className="mx-auto w-full max-w-5xl px-4 py-10 pl-14 relative z-10 sm:pl-16">
+        <main
+          id="main-content"
+          tabIndex={-1}
+          className="mx-auto w-full max-w-5xl flex-1 px-4 py-10 pl-14 relative z-10 sm:pl-16 focus:outline-none"
+        >
           {children}
         </main>
         <Footer />

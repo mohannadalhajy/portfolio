@@ -100,16 +100,17 @@ export default async function ProjectDetailsPage({
 
       {/* Case study: Problem / Approach / Result */}
       <div className="grid gap-8 border-b border-zinc-800/60 pb-10 sm:grid-cols-3 sm:divide-x sm:divide-zinc-800/60">
+        <h2 className="sr-only">Case Study</h2>
         <div>
-          <p className="text-xs font-medium uppercase tracking-widest text-amber-400">Problem</p>
+          <h3 className="text-xs font-medium uppercase tracking-widest text-amber-400">Problem</h3>
           <p className="mt-2 text-sm leading-relaxed text-zinc-300">{project.caseStudy.problem}</p>
         </div>
         <div className="sm:pl-8">
-          <p className="text-xs font-medium uppercase tracking-widest text-amber-400">Approach</p>
+          <h3 className="text-xs font-medium uppercase tracking-widest text-amber-400">Approach</h3>
           <p className="mt-2 text-sm leading-relaxed text-zinc-300">{project.caseStudy.approach}</p>
         </div>
         <div className="sm:pl-8">
-          <p className="text-xs font-medium uppercase tracking-widest text-amber-400">Result</p>
+          <h3 className="text-xs font-medium uppercase tracking-widest text-amber-400">Result</h3>
           <p className="mt-2 text-sm leading-relaxed text-zinc-300">{project.caseStudy.result}</p>
         </div>
       </div>

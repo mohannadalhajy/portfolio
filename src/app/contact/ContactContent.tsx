@@ -5,6 +5,7 @@ import { MapPin, Clock, Download, ArrowUpRight } from "lucide-react";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
 import { siteConfig } from "@/lib/site";
 import CopyButton from "@/components/CopyButton";
+import StatusBadge from "@/components/StatusBadge";
 
 const contactMethods = [
   {
@@ -47,10 +48,7 @@ export default function ContactContent() {
         <p className="text-lg text-zinc-400">
           Get in touch for new opportunities and collaborations.
         </p>
-        <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-amber-400">
-          <span className="h-1.5 w-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_2px_rgba(245,158,11,0.6)]" />
-          Available for new opportunities in UAE
-        </div>
+        <StatusBadge />
       </motion.div>
 
       <div className="grid gap-10 border-t border-zinc-800/60 pt-10 lg:grid-cols-2">
