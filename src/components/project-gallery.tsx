@@ -18,7 +18,11 @@ export default function ProjectGallery({
 }) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const selectedImage = selectedIndex !== null ? images[selectedIndex] : null;
+  const isOpen = selectedIndex !== null;
   const touchStartX = useRef<number | null>(null);
+  const dialogRef = useRef<HTMLDivElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
   const showNext = useCallback(
     () => setSelectedIndex((i) => (i === null ? i : (i + 1) % images.length)),
@@ -29,13 +33,55 @@ export default function ProjectGallery({
     [images.length],
   );
 
+  const openAt = (index: number, trigger: HTMLElement) => {
+    triggerRef.current = trigger;
+    setSelectedIndex(index);
+  };
+
+  // Keyboard shortcuts + focus trap. Keyed off `isOpen` rather than
+  // `selectedIndex` so it doesn't tear down and reattach on every
+  // next/prev navigation.
   useEffect(() => {
-    if (selectedIndex === null) return;
+    if (!isOpen) return;
 
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setSelectedIndex(null);
-      if (e.key === "ArrowRight") showNext();
-      if (e.key === "ArrowLeft") showPrev();
+      if (e.key === "Escape") {
+        setSelectedIndex(null);
+        return;
+      }
+      if (e.key === "ArrowRight") {
+        showNext();
+        return;
+      }
+      if (e.key === "ArrowLeft") {
+        showPrev();
+        return;
+      }
+      if (e.key === "Tab") {
+        const dialog = dialogRef.current;
+        if (!dialog) return;
+
+        const focusable = Array.from(
+          dialog.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])',
+          ),
+        );
+        if (focusable.length === 0) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const active = document.activeElement;
+
+        if (e.shiftKey) {
+          if (active === first || !dialog.contains(active)) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else if (active === last || !dialog.contains(active)) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
 
     document.addEventListener("keydown", onKeyDown);
@@ -45,7 +91,21 @@ export default function ProjectGallery({
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = "";
     };
-  }, [selectedIndex, showNext, showPrev]);
+  }, [isOpen, showNext, showPrev]);
+
+  // Move focus into the dialog on open and return it to the thumbnail
+  // that opened it on close, so keyboard/screen-reader users aren't
+  // dropped back at the top of the page.
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const trigger = triggerRef.current;
+    closeButtonRef.current?.focus();
+
+    return () => {
+      trigger?.focus();
+    };
+  }, [isOpen]);
 
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -68,7 +128,7 @@ export default function ProjectGallery({
             <button
               key={img}
               type="button"
-              onClick={() => setSelectedIndex(i)}
+              onClick={(e) => openAt(i, e.currentTarget)}
               className="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-2xl border border-zinc-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
               aria-label={`View ${alt} ${i + 1} of ${images.length} full size`}
             >
@@ -88,6 +148,7 @@ export default function ProjectGallery({
       {selectedImage &&
         createPortal(
           <div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label={`${alt} preview`}
@@ -97,6 +158,7 @@ export default function ProjectGallery({
             onTouchEnd={onTouchEnd}
           >
             <button
+              ref={closeButtonRef}
               type="button"
               onClick={() => setSelectedIndex(null)}
               aria-label="Close preview"
