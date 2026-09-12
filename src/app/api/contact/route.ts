@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { checkRateLimit } from "@/lib/rate-limit";
 import { siteConfig } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -20,7 +21,26 @@ function escapeHtml(value: string) {
 // invocations instead of being rebuilt on every request.
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
+function getClientIp(request: Request) {
+  // Vercel appends the connecting client's IP as the first entry of
+  // x-forwarded-for; there's no trusted lower-level source in a serverless
+  // route handler.
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  if (forwardedFor) return forwardedFor.split(",")[0].trim();
+  return request.headers.get("x-real-ip") ?? "unknown";
+}
+
 export async function POST(request: Request) {
+  const ip = getClientIp(request);
+  const { success, reset } = await checkRateLimit(ip);
+  if (!success) {
+    const retryAfterSeconds = Math.max(0, Math.ceil((reset - Date.now()) / 1000));
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later." },
+      { status: 429, headers: { "Retry-After": String(retryAfterSeconds) } }
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();
