@@ -3,6 +3,7 @@
 import ProjectGallery from "@/components/project-gallery";
 import { motion } from "framer-motion";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
+import { technologies } from "@/data/skills";
 
 const focusAreas = [
   "Building scalable full-stack web applications",
@@ -18,22 +19,6 @@ const experienceAreas = [
   "Real-time communication and messaging",
   "Cloud integrations and distributed services",
   "API design and system architecture",
-];
-
-const technologies = [
-  "TypeScript",
-  "JavaScript",
-  "Node.js",
-  "NestJS",
-  "React",
-  "Next.js",
-  "MongoDB",
-  "MySQL",
-  "Redis",
-  "RabbitMQ",
-  "AWS",
-  "Docker",
-  "Nginx",
 ];
 
 const philosophy = [
@@ -212,41 +197,6 @@ export default function AboutContent() {
         </div>
       </motion.section>
 
-      {/* Testimonials */}
-      <motion.section
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-50px" }}
-        variants={FADE_DOWN_ANIMATION_VARIANTS}
-        className="space-y-8 border-t border-zinc-800/60 pt-10"
-      >
-        <h2 className="font-serif text-2xl text-zinc-100">Testimonials</h2>
-        <div className="grid gap-10 sm:grid-cols-2">
-          <blockquote className="border-l-2 border-amber-500/40 pl-6">
-            <p className="font-serif text-lg italic leading-relaxed text-zinc-200">
-              &ldquo;Mohannad didn&apos;t just write code; he architected systems
-              that allowed our product lines to scale their user base
-              exponentially without degraded performance. A true technical
-              leader.&rdquo;
-            </p>
-            <footer className="mt-4 text-sm text-zinc-400">
-              <span className="text-zinc-300">Team Leader</span> · Step By Tech
-            </footer>
-          </blockquote>
-
-          <blockquote className="border-l-2 border-amber-500/40 pl-6">
-            <p className="font-serif text-lg italic leading-relaxed text-zinc-200">
-              &ldquo;His focus on multi-tenant security and zero-downtime
-              deployments was critical to our enterprise deliverables. He
-              brings a senior mindset to every architecture discussion.&rdquo;
-            </p>
-            <footer className="mt-4 text-sm text-zinc-400">
-              <span className="text-zinc-300">Product Manager</span> · Vidnik
-            </footer>
-          </blockquote>
-        </div>
-      </motion.section>
-
       {/* Education */}
       <motion.section
         initial="hidden"
@@ -280,6 +230,11 @@ export default function AboutContent() {
         className="space-y-6 border-t border-zinc-800/60 pt-10"
       >
         <h2 className="font-serif text-2xl text-zinc-100">Engineering Philosophy</h2>
+        <p className="max-w-3xl text-sm leading-relaxed text-zinc-400">
+          I believe in building software that is simple, reliable, and
+          maintainable — with clean architecture and clear domain boundaries
+          that let systems evolve as products grow.
+        </p>
         <div className="divide-y divide-zinc-800/60 border-y border-zinc-800/60">
           {philosophy.map((item) => (
             <motion.div
@@ -314,20 +269,6 @@ export default function AboutContent() {
             </span>
           ))}
         </div>
-      </motion.div>
-
-      <motion.div
-        variants={FADE_DOWN_ANIMATION_VARIANTS}
-        className="border-t border-zinc-800/60 pt-10"
-      >
-        <h2 className="font-serif text-lg text-zinc-100">How I Work</h2>
-        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
-          I believe in building software that is simple, reliable, and
-          maintainable. My approach focuses on clean architecture, clear domain
-          boundaries, and systems that can evolve as products grow. I enjoy
-          solving complex engineering problems and delivering high-quality
-          user experiences.
-        </p>
       </motion.div>
     </motion.div>
   );

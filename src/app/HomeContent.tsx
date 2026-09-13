@@ -6,38 +6,20 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
+import { skillGroups } from "@/data/skills";
 
-const skills = [
+const testimonials = [
   {
-    label: "Backend & Architecture",
-    tools: "Node.js, NestJS, Microservices, REST / GraphQL, WebSockets",
+    quote:
+      "Mohannad didn't just write code; he architected systems that allowed our product lines to scale their user base exponentially without degraded performance. A true technical leader.",
+    name: "Team Leader",
+    company: "Step By Tech",
   },
   {
-    label: "Frontend & UX",
-    tools: "TypeScript, React, Next.js, Redux / Zustand, Tailwind CSS",
-  },
-  {
-    label: "Cloud & DevOps",
-    tools: "AWS (EC2, S3, RDS, Lambda), Docker, CI/CD Pipelines",
-  },
-  {
-    label: "Databases & Caching",
-    tools: "MySQL, MongoDB, Redis",
-  },
-];
-
-const highlights = [
-  {
-    title: "Scalable Platforms",
-    desc: "Design and development of full-stack platforms with reliable backend microservices and engaging frontends.",
-  },
-  {
-    title: "Real-Time Systems",
-    desc: "Implementation of lightning-fast communication features leveraging WebSockets and Pub/Sub architectures.",
-  },
-  {
-    title: "Cloud Integrations",
-    desc: "Advanced integrations with cloud platforms from deployments to third-party authentication and payments.",
+    quote:
+      "His focus on multi-tenant security and zero-downtime deployments was critical to our enterprise deliverables. He brings a senior mindset to every architecture discussion.",
+    name: "Product Manager",
+    company: "Vidnik",
   },
 ];
 
@@ -100,7 +82,7 @@ export default function HomeContent() {
           variants={FADE_DOWN_ANIMATION_VARIANTS}
           className="divide-y divide-zinc-800/60 border-y border-zinc-800/60"
         >
-          {skills.map((s) => (
+          {skillGroups.map((s) => (
             <div
               key={s.label}
               className="grid gap-1 py-4 sm:grid-cols-[200px_1fr] sm:items-baseline"
@@ -112,55 +94,61 @@ export default function HomeContent() {
             </div>
           ))}
         </motion.div>
-
-        <motion.div
-          variants={FADE_DOWN_ANIMATION_VARIANTS}
-          className="flex flex-wrap items-center gap-6"
-        >
-          <Link
-            href="/projects"
-            className="group inline-flex items-center gap-2 rounded-full bg-zinc-100 px-6 py-3 text-sm font-medium text-zinc-900 transition-all hover:bg-white hover:shadow-[0_0_30px_rgba(245,158,11,0.25)] active:scale-95"
-          >
-            View Projects
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
-          <a
-            href="/mohannad-alhajy-cv.pdf"
-            download
-            className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-300 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-zinc-100 hover:decoration-amber-400"
-          >
-            <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
-            Download Resume
-          </a>
-          <Link
-            href="/contact"
-            className="text-sm font-medium text-zinc-300 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-zinc-100 hover:decoration-amber-400"
-          >
-            Let&apos;s Talk
-          </Link>
-        </motion.div>
       </motion.section>
 
-      {/* Highlights */}
+      {/* Testimonials — social proof placed right before the CTA below */}
       <motion.section
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-50px" }}
         variants={STAGGER_CHILDREN}
-        className="grid gap-8 border-t border-zinc-800/60 pt-10 sm:grid-cols-3 sm:divide-x sm:divide-zinc-800/60"
+        className="grid gap-10 border-t border-zinc-800/60 pt-10 sm:grid-cols-2"
       >
-        {highlights.map((x, i) => (
-          <motion.div
+        {testimonials.map((t) => (
+          <motion.blockquote
             variants={FADE_DOWN_ANIMATION_VARIANTS}
-            key={x.title}
-            className={i > 0 ? "sm:pl-8" : ""}
+            key={t.name}
+            className="border-l-2 border-amber-500/40 pl-6"
           >
-            <div className="font-serif text-4xl text-zinc-700">0{i + 1}</div>
-            <h3 className="mt-3 font-serif text-lg text-zinc-100">{x.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-zinc-400">{x.desc}</p>
-          </motion.div>
+            <p className="font-serif text-lg italic leading-relaxed text-zinc-200">
+              &ldquo;{t.quote}&rdquo;
+            </p>
+            <footer className="mt-4 text-sm text-zinc-400">
+              <span className="text-zinc-300">{t.name}</span> · {t.company}
+            </footer>
+          </motion.blockquote>
         ))}
       </motion.section>
+
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={FADE_DOWN_ANIMATION_VARIANTS}
+        className="flex flex-wrap items-center gap-6 border-t border-zinc-800/60 pt-10"
+      >
+        <Link
+          href="/projects"
+          className="group inline-flex items-center gap-2 rounded-full bg-zinc-100 px-6 py-3 text-sm font-medium text-zinc-900 transition-all hover:bg-white hover:shadow-[0_0_30px_rgba(245,158,11,0.25)] active:scale-95"
+        >
+          View Projects
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </Link>
+        <a
+          href="/mohannad-alhajy-cv.pdf"
+          download
+          className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-300 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-zinc-100 hover:decoration-amber-400"
+        >
+          <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
+          Download Resume
+        </a>
+        <Link
+          href="/contact"
+          className="text-sm font-medium text-zinc-300 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-zinc-100 hover:decoration-amber-400"
+        >
+          Let&apos;s Talk
+        </Link>
+      </motion.div>
     </div>
   );
 }

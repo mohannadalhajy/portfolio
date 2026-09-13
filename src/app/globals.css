@@ -45,3 +45,88 @@ body {
     animation: none;
   }
 }
+
+/* hero gem — gentle float, like it's suspended */
+@keyframes gem-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-gem-float {
+  animation: gem-float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gem-float {
+    animation: none;
+  }
+}
+
+/* global hover motion — every interactive element gets a subtle lift + scale */
+a,
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+summary,
+label[for],
+select {
+  transition:
+    transform 0.2s ease-out,
+    filter 0.2s ease-out;
+}
+
+a:hover,
+button:hover:not(:disabled),
+[role="button"]:hover,
+input[type="submit"]:hover:not(:disabled),
+input[type="button"]:hover:not(:disabled),
+summary:hover,
+label[for]:hover,
+select:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+a:active,
+button:active:not(:disabled),
+[role="button"]:active,
+input[type="submit"]:active:not(:disabled),
+input[type="button"]:active:not(:disabled),
+summary:active {
+  transform: translateY(0) scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a,
+  button,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  summary,
+  label[for],
+  select {
+    transition: none;
+  }
+
+  a:hover,
+  button:hover:not(:disabled),
+  [role="button"]:hover,
+  input[type="submit"]:hover:not(:disabled),
+  input[type="button"]:hover:not(:disabled),
+  summary:hover,
+  label[for]:hover,
+  select:hover,
+  a:active,
+  button:active:not(:disabled),
+  [role="button"]:active,
+  input[type="submit"]:active:not(:disabled),
+  input[type="button"]:active:not(:disabled),
+  summary:active {
+    transform: none;
+  }
+}
