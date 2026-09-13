@@ -57,10 +57,6 @@ export default function HomeContent() {
             <StatusBadge />
 
             <div className="relative">
-              <div
-                className="animate-glow-pulse pointer-events-none absolute -inset-x-10 -inset-y-8 -z-10 bg-gradient-to-r from-amber-500/10 via-transparent to-teal-500/10 blur-2xl"
-                aria-hidden="true"
-              />
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
                 Full Stack Developer
               </p>
