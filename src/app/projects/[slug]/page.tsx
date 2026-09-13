@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
 import ProjectGallery from "@/components/project-gallery";
@@ -80,14 +81,16 @@ export default async function ProjectDetailsPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
+      <Link
+        href="/projects"
+        className="group inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-zinc-400 transition-colors hover:text-amber-400"
+      >
+        <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1" />
+        All projects
+      </Link>
+
       {/* Hero */}
       <div className="space-y-4 border-b border-zinc-800/60 pb-10">
-        <Link
-          href="/projects"
-          className="text-xs font-medium uppercase tracking-widest text-zinc-400 transition-colors hover:text-amber-400"
-        >
-          ← All projects
-        </Link>
         <h1 className="font-serif text-4xl text-zinc-100">{project.title}</h1>
         <p className="max-w-2xl text-lg leading-relaxed text-zinc-400">{project.subtitle}</p>
 
