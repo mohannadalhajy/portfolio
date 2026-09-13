@@ -20,6 +20,7 @@ const fraunces = Fraunces({
 
 export const viewport: Viewport = {
   themeColor: "#09090b",
+  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
@@ -78,7 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${inter.variable} ${fraunces.variable} dark`}
       style={{ colorScheme: "dark" }}
     >
-      <body className="flex min-h-screen flex-col bg-zinc-950 font-sans text-zinc-100 selection:bg-amber-500/30 selection:text-zinc-100">
+      <body className="flex min-h-dvh flex-col bg-zinc-950 font-sans text-zinc-100 selection:bg-amber-500/30 selection:text-zinc-100">
         <MotionConfig reducedMotion="user">
           {/* cinematic ambient lighting — amber + a quiet teal counter-glow, breathing slowly */}
           <div className="fixed inset-0 -z-10 h-full w-full overflow-hidden bg-zinc-950">
@@ -101,7 +102,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main
             id="main-content"
             tabIndex={-1}
-            className="mx-auto w-full max-w-5xl flex-1 px-4 py-10 pl-14 relative z-10 sm:pl-16 focus:outline-none"
+            className="mx-auto w-full max-w-5xl flex-1 px-4 pb-32 pt-10 relative z-10 sm:pb-10 sm:pl-16 focus:outline-none"
           >
             {children}
           </main>

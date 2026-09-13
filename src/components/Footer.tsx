@@ -16,7 +16,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-zinc-900">
       <div className="mx-auto w-full max-w-5xl px-4 py-8 space-y-6 text-sm text-zinc-400">
-        <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-6 gap-y-2">
+        {/* <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-6 gap-y-2">
           {links.map((l) => {
             const isActive = pathname === l.href;
             return (
@@ -32,7 +32,7 @@ export default function Footer() {
               </Link>
             );
           })}
-        </nav>
+        </nav> */}
 
         <div className="flex flex-col gap-2 border-t border-zinc-900 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Mohannad Alhajy</p>
