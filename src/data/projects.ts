@@ -177,7 +177,14 @@ export const projects: Project[] = [
       "AWS CloudFront",
     ],
     links: [],
-    photos: [],
+    photos: [
+      "/aqxom/axiom-website-home.png",
+      "/aqxom/axiom-website-about.png",
+      "/aqxom/axiom-admin-dashboard.png",
+      "/aqxom/axiom-admin-listings.png",
+      "/aqxom/axiom-admin-new-listing.png",
+      "/aqxom/axiom-admin-login.png",
+    ],
   },
   {
     slug: "exyar",
