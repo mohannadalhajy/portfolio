@@ -50,7 +50,7 @@ export default function ContactForm() {
       <motion.div
         variants={FADE_DOWN_ANIMATION_VARIANTS}
         role="status"
-        className="flex items-center gap-2 rounded-lg border border-emerald-800/40 bg-emerald-950/20 px-4 py-4 text-sm text-emerald-300"
+        className="flex items-center gap-2 rounded-lg border border-emerald-300/60 bg-emerald-50 px-4 py-4 text-sm text-emerald-700 dark:border-emerald-800/40 dark:bg-emerald-950/20 dark:text-emerald-300"
       >
         <CheckCircle2 className="h-4 w-4 shrink-0" />
         Thanks for reaching out — I&apos;ll get back to you soon.
@@ -79,7 +79,7 @@ export default function ContactForm() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-1.5">
-          <label htmlFor="name" className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+          <label htmlFor="name" className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
             Name
           </label>
           <input
@@ -89,12 +89,12 @@ export default function ContactForm() {
             required
             maxLength={100}
             disabled={status === "submitting"}
-            className="w-full rounded-lg border border-zinc-800/60 bg-zinc-950/60 px-3 py-2 text-sm text-zinc-100 outline-none transition-colors placeholder:text-zinc-600 focus:border-amber-400/60 disabled:opacity-60"
+            className="w-full rounded-lg border border-zinc-300 bg-zinc-50 px-3 py-2 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-amber-500/60 disabled:opacity-60 dark:border-zinc-800/60 dark:bg-zinc-950/60 dark:text-zinc-100 dark:placeholder:text-zinc-600 dark:focus:border-amber-400/60"
             placeholder="Jane Doe"
           />
         </div>
         <div className="space-y-1.5">
-          <label htmlFor="email" className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+          <label htmlFor="email" className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
             Email
           </label>
           <input
@@ -104,14 +104,14 @@ export default function ContactForm() {
             required
             maxLength={254}
             disabled={status === "submitting"}
-            className="w-full rounded-lg border border-zinc-800/60 bg-zinc-950/60 px-3 py-2 text-sm text-zinc-100 outline-none transition-colors placeholder:text-zinc-600 focus:border-amber-400/60 disabled:opacity-60"
+            className="w-full rounded-lg border border-zinc-300 bg-zinc-50 px-3 py-2 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-amber-500/60 disabled:opacity-60 dark:border-zinc-800/60 dark:bg-zinc-950/60 dark:text-zinc-100 dark:placeholder:text-zinc-600 dark:focus:border-amber-400/60"
             placeholder="jane@example.com"
           />
         </div>
       </div>
 
       <div className="space-y-1.5">
-        <label htmlFor="message" className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+        <label htmlFor="message" className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
           Message
         </label>
         <textarea
@@ -121,13 +121,13 @@ export default function ContactForm() {
           rows={5}
           maxLength={5000}
           disabled={status === "submitting"}
-          className="w-full resize-none rounded-lg border border-zinc-800/60 bg-zinc-950/60 px-3 py-2 text-sm text-zinc-100 outline-none transition-colors placeholder:text-zinc-600 focus:border-amber-400/60 disabled:opacity-60"
+          className="w-full resize-none rounded-lg border border-zinc-300 bg-zinc-50 px-3 py-2 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-amber-500/60 disabled:opacity-60 dark:border-zinc-800/60 dark:bg-zinc-950/60 dark:text-zinc-100 dark:placeholder:text-zinc-600 dark:focus:border-amber-400/60"
           placeholder="What are you working on?"
         />
       </div>
 
       {status === "error" && (
-        <div role="alert" className="flex items-center gap-2 text-sm text-red-400">
+        <div role="alert" className="flex items-center gap-2 text-sm text-red-600 dark:text-red-400">
           <AlertCircle className="h-4 w-4 shrink-0" />
           {errorMessage}
         </div>
@@ -136,7 +136,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="group inline-flex items-center gap-2 rounded-lg bg-amber-400 px-4 py-2.5 text-sm font-medium text-zinc-950 transition-colors hover:bg-amber-300 disabled:cursor-not-allowed disabled:opacity-60"
+        className="group inline-flex items-center gap-2 rounded-lg bg-amber-500 px-4 py-2.5 text-sm font-medium text-zinc-950 transition-colors hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-amber-400 dark:hover:bg-amber-300"
       >
         {status === "submitting" ? "Sending..." : "Send message"}
         <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

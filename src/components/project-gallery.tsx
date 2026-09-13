@@ -129,7 +129,7 @@ export default function ProjectGallery({
               key={img}
               type="button"
               onClick={(e) => openAt(i, e.currentTarget)}
-              className="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-2xl border border-zinc-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
+              className="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-2xl border border-zinc-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 dark:border-zinc-800 dark:focus-visible:ring-zinc-400"
               aria-label={`View ${alt} ${i + 1} of ${images.length} full size`}
             >
               <Image
@@ -162,7 +162,7 @@ export default function ProjectGallery({
               type="button"
               onClick={() => setSelectedIndex(null)}
               aria-label="Close preview"
-              className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900/80 text-zinc-300 transition-colors hover:bg-zinc-800 hover:text-white"
+              className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-zinc-600 bg-zinc-900/80 text-zinc-200 transition-colors hover:bg-zinc-800 hover:text-white"
             >
               <X className="h-5 w-5" />
             </button>
@@ -176,7 +176,7 @@ export default function ProjectGallery({
                     showPrev();
                   }}
                   aria-label="Previous photo"
-                  className="absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900/80 text-zinc-300 transition-colors hover:bg-zinc-800 hover:text-white sm:left-4"
+                  className="absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-zinc-600 bg-zinc-900/80 text-zinc-200 transition-colors hover:bg-zinc-800 hover:text-white sm:left-4"
                 >
                   <ChevronLeft className="h-6 w-6" />
                 </button>
@@ -187,7 +187,7 @@ export default function ProjectGallery({
                     showNext();
                   }}
                   aria-label="Next photo"
-                  className="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900/80 text-zinc-300 transition-colors hover:bg-zinc-800 hover:text-white sm:right-4"
+                  className="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-zinc-600 bg-zinc-900/80 text-zinc-200 transition-colors hover:bg-zinc-800 hover:text-white sm:right-4"
                 >
                   <ChevronRight className="h-6 w-6" />
                 </button>
@@ -206,7 +206,7 @@ export default function ProjectGallery({
             </div>
 
             {images.length > 1 && (
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-zinc-900/80 px-3 py-1 text-xs text-zinc-300">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-zinc-900/80 px-3 py-1 text-xs text-zinc-200">
                 {selectedIndex! + 1} / {images.length}
               </div>
             )}
