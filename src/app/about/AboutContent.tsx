@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import ProjectGallery from "@/components/project-gallery";
 import { motion } from "framer-motion";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
@@ -48,23 +49,41 @@ export default function AboutContent() {
       variants={STAGGER_CHILDREN}
       className="space-y-16"
     >
-      <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="space-y-5">
-        <h1 className="font-serif text-3xl text-zinc-900 dark:text-zinc-100 sm:text-4xl">About Me</h1>
-        <div className="max-w-3xl space-y-4 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-          <p>
-            Full Stack Developer with 5+ years of experience developing scalable
-            backend systems using Node.js, NestJS, and TypeScript. Skilled in
-            designing REST APIs, database structures, and writing clean,
-            maintainable code. Experienced in building modern web interfaces
-            using React and Next.js.
-          </p>
-          <p>
-            I&apos;ve contributed to multiple production platforms including
-            social apps, legal services, car rentals, HR management, and project
-            management systems. My work focuses on building reliable systems
-            that integrate real-world services such as payments, messaging,
-            real-time communication, and cloud infrastructure.
-          </p>
+      <motion.div
+        variants={FADE_DOWN_ANIMATION_VARIANTS}
+        className="flex flex-col-reverse gap-8 sm:flex-row sm:items-start sm:gap-10"
+      >
+        <div className="max-w-3xl space-y-5">
+          <h1 className="font-serif text-3xl text-zinc-900 dark:text-zinc-100 sm:text-4xl">About Me</h1>
+          <div className="space-y-4 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <p>
+              Full Stack Developer with 5+ years of experience developing scalable
+              backend systems using Node.js, NestJS, and TypeScript. Skilled in
+              designing REST APIs, database structures, and writing clean,
+              maintainable code. Experienced in building modern web interfaces
+              using React and Next.js.
+            </p>
+            <p>
+              I&apos;ve contributed to multiple production platforms including
+              social apps, legal services, car rentals, HR management, and project
+              management systems. My work focuses on building reliable systems
+              that integrate real-world services such as payments, messaging,
+              real-time communication, and cloud infrastructure.
+            </p>
+          </div>
+        </div>
+
+        <div className="mx-auto w-40 shrink-0 sm:mx-0 sm:w-48">
+          <div className="overflow-hidden rounded-2xl border border-zinc-200 shadow-sm dark:border-zinc-800/60">
+            <Image
+              src="/mohannad-alhajy.webp"
+              alt="Mohannad Alhajy"
+              width={480}
+              height={720}
+              className="h-auto w-full object-cover"
+              priority
+            />
+          </div>
         </div>
       </motion.div>
 

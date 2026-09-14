@@ -12,13 +12,15 @@ const testimonials = [
   {
     quote:
       "Mohannad didn't just write code; he architected systems that allowed our product lines to scale their user base exponentially without degraded performance. A true technical leader.",
-    name: "Team Leader",
+    name: "Bilal Tahir",
+    role: "Team Leader",
     company: "Step By Tech",
   },
   {
     quote:
       "His focus on multi-tenant security and zero-downtime deployments was critical to our enterprise deliverables. He brings a senior mindset to every architecture discussion.",
-    name: "Product Manager",
+    name: "Nabeel Iqbal",
+    role: "Product Manager",
     company: "Vidnik",
   },
 ];
@@ -114,7 +116,8 @@ export default function HomeContent() {
               &ldquo;{t.quote}&rdquo;
             </p>
             <footer className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
-              <span className="text-zinc-700 dark:text-zinc-300">{t.name}</span> · {t.company}
+              <span className="text-zinc-700 dark:text-zinc-300">{t.name}</span> · {t.role},{" "}
+              {t.company}
             </footer>
           </motion.blockquote>
         ))}
