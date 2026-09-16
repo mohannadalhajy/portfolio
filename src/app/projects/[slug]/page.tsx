@@ -118,13 +118,8 @@ export default async function ProjectDetailsPage({
         </div>
       </div>
 
-      {/* Sections */}
-      <div className="grid gap-10 md:grid-cols-2">
-        <Section title="Highlights" items={project.highlights} />
-        <Section title="Technical Highlights" items={project.technicalHighlights} />
-        <Section title="My Contribution" items={project.myContribution} />
-        <Section title="Challenges Solved" items={project.challengesSolved} />
-      </div>
+      {/* What I built */}
+      <Section title="What I Built" items={project.myContribution} />
 
       {/* Links */}
       {project.links.length > 0 && (

@@ -42,7 +42,7 @@ export default function HomeContent() {
 
             <div className="relative">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-600 dark:text-zinc-400">
-                Full Stack Developer
+                Backend Engineer · Dubai
               </p>
               <h1 className="mt-2 font-serif text-5xl text-zinc-900 dark:text-zinc-100 sm:text-6xl lg:text-7xl">
                 Mohannad Alhajy
@@ -50,10 +50,12 @@ export default function HomeContent() {
             </div>
 
             <p className="max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-              I design and build scalable web platforms with a focus on clean
-              architecture, reliable APIs, and maintainable systems. My work
-              includes production applications across industries such as HR
-              management, legal services, car rental, and project management.
+              I build the backends behind cross-platform payments, multi-tenant
+              SaaS, and real-time systems — Apple and Google billing that
+              reconciles, one platform serving many companies without leaking
+              data between them, and chat and notifications that hold up under
+              load. Based in Dubai, shipping production systems for HR, legal,
+              proptech, and social platforms.
             </p>
 
             <div className="flex divide-x divide-zinc-200 dark:divide-zinc-800/70 pt-2">

@@ -32,35 +32,31 @@ export default function ProjectsContent() {
           const remaining = p.stack.length - visibleTags.length;
 
           return (
-            <motion.div
-              variants={FADE_DOWN_ANIMATION_VARIANTS}
-              key={p.slug}
-              className="group relative py-6"
-            >
+            <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} key={p.slug}>
               <Link
                 href={`/projects/${p.slug}`}
-                className="absolute inset-0"
                 aria-label={`View ${p.title} details`}
-              />
+                className="group block py-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/60"
+              >
+                <div className="flex items-baseline justify-between gap-4">
+                  <h2 className="flex items-baseline gap-3 font-serif text-xl text-zinc-900 dark:text-zinc-100 transition-colors group-hover:text-amber-600 dark:group-hover:text-amber-300">
+                    <span className="font-sans text-xs font-medium tracking-widest text-amber-600/70 dark:text-amber-500/50">
+                      {ROMAN[i] ?? i + 1}
+                    </span>
+                    {p.title}
+                  </h2>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-zinc-400 dark:text-zinc-600 transition-all group-hover:translate-x-1 group-hover:text-amber-600 dark:group-hover:text-amber-400" />
+                </div>
 
-              <div className="flex items-baseline justify-between gap-4">
-                <h2 className="flex items-baseline gap-3 font-serif text-xl text-zinc-900 dark:text-zinc-100 transition-colors group-hover:text-amber-600 dark:group-hover:text-amber-300">
-                  <span className="font-sans text-xs font-medium tracking-widest text-amber-600/70 dark:text-amber-500/50">
-                    {ROMAN[i] ?? i + 1}
-                  </span>
-                  {p.title}
-                </h2>
-                <ArrowRight className="h-4 w-4 shrink-0 text-zinc-400 dark:text-zinc-600 transition-all group-hover:translate-x-1 group-hover:text-amber-600 dark:group-hover:text-amber-400" />
-              </div>
+                <p className="mt-2 max-w-2xl line-clamp-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                  {p.subtitle}
+                </p>
 
-              <p className="mt-2 max-w-2xl line-clamp-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                {p.subtitle}
-              </p>
-
-              <p className="mt-3 text-xs uppercase tracking-wide text-zinc-600 dark:text-zinc-400">
-                {visibleTags.join(" · ")}
-                {remaining > 0 && ` · +${remaining} more`}
-              </p>
+                <p className="mt-3 text-xs uppercase tracking-wide text-zinc-600 dark:text-zinc-400">
+                  {visibleTags.join(" · ")}
+                  {remaining > 0 && ` · +${remaining} more`}
+                </p>
+              </Link>
             </motion.div>
           );
         })}

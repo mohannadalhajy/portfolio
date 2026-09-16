@@ -4,7 +4,7 @@ import Image from "next/image";
 import ProjectGallery from "@/components/project-gallery";
 import { motion } from "framer-motion";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
-import { technologies } from "@/data/skills";
+import { technologyGroups } from "@/data/skills";
 
 const focusAreas = [
   "Building scalable full-stack web applications",
@@ -25,18 +25,23 @@ const experienceAreas = [
 const philosophy = [
   {
     number: "01",
-    title: "Type-Safety First",
-    desc: "Enforcing strict TypeScript configurations to eliminate runtime errors before they happen.",
+    title: "I stopped splitting services early",
+    desc: "I used to reach for microservices on day one. After debugging one payment flow across four repos and three queues, I changed my mind: I now ship a modular monolith with hard internal boundaries and only split out a service once it has its own scaling or failure profile. Most teams pay the distributed-systems tax years before they get anything back for it.",
   },
   {
     number: "02",
-    title: "Designing for Failure",
-    desc: "Building resilient microservices that gracefully handle partial outages and network partitions.",
+    title: "Money code should be boring and idempotent",
+    desc: "Every payment or subscription handler I write assumes the webhook will arrive twice, out of order, and after the user closed the tab. That means an idempotency key on every write and state derived from the provider rather than from my own optimism. It is slower to build and I would defend it in any review — a duplicate charge costs more trust than a month of velocity.",
   },
   {
     number: "03",
-    title: "User-Centric Performance",
-    desc: "Prioritizing fast edge delivery, lean bundles, and optimistic UI updates for the end user.",
+    title: "Real-time is a product decision, not a tech one",
+    desc: "Sockets everywhere is a tempting default, and mostly the wrong one. I reserve persistent connections for things that genuinely change while you watch — chat, presence, live status — and let polling or plain requests carry the rest. The tradeoff I accept: a slightly less impressive demo, in exchange for reconnect logic I can actually reason about at 3am.",
+  },
+  {
+    number: "04",
+    title: "AI writes the first draft, never the last word",
+    desc: "I use models the way I would use a fast, tireless junior: scaffolding, test fixtures, migrations, the tedious middle of a refactor. What I do not delegate is understanding. Every line that ships is one I have read and could defend without the chat window open, and anything touching payments, auth, or data I own goes through my own hands first. The speedup is real, but it lands in the boring parts on purpose — reviewing code nobody understands is how you end up with a system nobody can change.",
   },
 ];
 
@@ -134,45 +139,42 @@ export default function AboutContent() {
             accent
           >
             <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-6 max-w-2xl leading-relaxed">
-              Led development of high-impact backend systems and dynamic product
-              lines using Node.js, NestJS, and TypeScript.
+              Led backend development across several product lines using
+              Node.js, NestJS, and TypeScript.
             </p>
 
             <ul className="list-none space-y-3 mb-6 text-sm text-zinc-600 dark:text-zinc-400">
               <li className="flex gap-3">
                 <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Engineered expansive API architectures servicing varied
-                  markets including Vidnik (social), Zadlaw (legal), and Exyar
-                  (auto).
+                  Built the APIs behind Vidnik (social), Zadlaw (legal), and
+                  Exyar (auto).
                 </span>
               </li>
               <li className="flex gap-3">
                 <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Orchestrated real-time messaging and video conferencing
-                  capabilities for mobile-first products.
+                  Shipped real-time messaging and video calling for
+                  mobile-first products.
                 </span>
               </li>
               <li className="flex gap-3">
                 <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Architected and deployed responsive admin dashboards and
-                  internal operational tooling via React.
+                  Built admin dashboards and internal tooling in React.
                 </span>
               </li>
               <li className="flex gap-3">
                 <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Spearheaded integration of intricate UI functions like 3D
-                  visualization and real-time mapping integrations.
+                  Added 3D visualization and live mapping to the product
+                  front ends.
                 </span>
               </li>
               <li className="flex gap-3">
                 <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Directed cloud deployment strategies utilizing AWS
-                  infrastructure, Docker containerization, and Nginx.
+                  Ran deployments on AWS with Docker and Nginx.
                 </span>
               </li>
             </ul>
@@ -192,23 +194,22 @@ export default function AboutContent() {
               <li className="flex gap-3">
                 <span className="text-zinc-400 dark:text-zinc-600 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Designed highly secure multi-tenant capabilities, enabling
-                  total data isolation for enterprise organizational customers.
+                  Built multi-tenancy with full data isolation for enterprise
+                  customers.
                 </span>
               </li>
               <li className="flex gap-3">
                 <span className="text-zinc-400 dark:text-zinc-600 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Oversaw continuous data integrations, rigorously enforcing
-                  standards to ensure maximum data reliability and
-                  compliance.
+                  Maintained ongoing data integrations and the standards that
+                  kept them reliable.
                 </span>
               </li>
               <li className="flex gap-3">
                 <span className="text-zinc-400 dark:text-zinc-600 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Co-architected foundational systems, emphasizing zero-downtime
-                  maintenance and robust system optimization tools.
+                  Helped design core systems for zero-downtime releases, plus
+                  the tooling around them.
                 </span>
               </li>
             </ul>
@@ -250,9 +251,8 @@ export default function AboutContent() {
       >
         <h2 className="font-serif text-2xl text-zinc-900 dark:text-zinc-100">Engineering Philosophy</h2>
         <p className="max-w-3xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-          I believe in building software that is simple, reliable, and
-          maintainable — with clean architecture and clear domain boundaries
-          that let systems evolve as products grow.
+          Three things I&apos;ve argued for often enough to write down — one of
+          which I used to believe the opposite of.
         </p>
         <div className="divide-y divide-zinc-200 dark:divide-zinc-800/60 border-y border-zinc-200 dark:border-zinc-800/60">
           {philosophy.map((item) => (
@@ -278,14 +278,27 @@ export default function AboutContent() {
         className="space-y-4 border-t border-zinc-200 dark:border-zinc-800/60 pt-10"
       >
         <h2 className="font-serif text-lg text-zinc-900 dark:text-zinc-100">Technologies</h2>
-        <div className="flex flex-wrap gap-2">
-          {technologies.map((tech) => (
-            <span
-              key={tech}
-              className="rounded-full border border-zinc-200 dark:border-zinc-800/60 px-3 py-1 text-sm text-zinc-700 dark:text-zinc-300"
-            >
-              {tech}
-            </span>
+        <p className="max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          The stack behind the projects I&apos;ve shipped — everything listed
+          here is something I&apos;ve used in production.
+        </p>
+        <div className="space-y-6 pt-2">
+          {technologyGroups.map((group) => (
+            <div key={group.label} className="space-y-3">
+              <h3 className="text-xs font-medium uppercase tracking-wider text-amber-700/80 dark:text-amber-500/60">
+                {group.label}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {group.items.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-full border border-zinc-200 dark:border-zinc-800/60 px-3 py-1 text-sm text-zinc-700 dark:text-zinc-300"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </motion.div>

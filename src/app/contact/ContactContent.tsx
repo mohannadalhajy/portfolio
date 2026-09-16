@@ -91,23 +91,22 @@ export default function ContactContent() {
               <motion.div
                 key={method.title}
                 variants={FADE_DOWN_ANIMATION_VARIANTS}
-                className="group relative flex items-center justify-between gap-4 py-4"
+                className="group flex items-center justify-between gap-4 py-4"
               >
                 <a
                   href={method.href}
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noreferrer" : undefined}
                   aria-label={`Open ${method.title}`}
-                  className="absolute inset-0 z-0"
-                />
-                <div className="pointer-events-none min-w-0">
-                  <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{method.title}</div>
-                  <div className="truncate text-xs text-zinc-600 dark:text-zinc-400">{method.subtitle}</div>
-                </div>
-                <div className="relative z-10 flex shrink-0 items-center gap-3">
-                  <CopyButton value={method.copyValue} label={`Copy ${method.title.toLowerCase()}`} />
-                  <ArrowUpRight className="pointer-events-none h-4 w-4 text-zinc-400 dark:text-zinc-600 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-amber-600 dark:group-hover:text-amber-400" />
-                </div>
+                  className="flex min-w-0 flex-1 items-center justify-between gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/60"
+                >
+                  <div className="min-w-0">
+                    <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{method.title}</div>
+                    <div className="truncate text-xs text-zinc-600 dark:text-zinc-400">{method.subtitle}</div>
+                  </div>
+                  <ArrowUpRight className="h-4 w-4 shrink-0 text-zinc-400 dark:text-zinc-600 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-amber-600 dark:group-hover:text-amber-400" />
+                </a>
+                <CopyButton value={method.copyValue} label={`Copy ${method.title.toLowerCase()}`} />
               </motion.div>
             );
           })}
