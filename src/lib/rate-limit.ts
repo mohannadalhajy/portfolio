@@ -24,6 +24,22 @@ const ratelimit = redis
 
 let warnedMissingConfig = false;
 
+// One-shot marker used to collapse repeat events (e.g. several requests from
+// the same visitor for the same file) into a single notification. Returns
+// true the first time a key is seen within `ttlSeconds`. Fails open — with no
+// Redis configured, every event notifies rather than none.
+export async function shouldNotify(key: string, ttlSeconds: number): Promise<boolean> {
+  if (!redis) return true;
+  try {
+    const stored = await redis.set(`notify:${key}`, "1", { nx: true, ex: ttlSeconds });
+    return stored === "OK";
+  } catch (err) {
+    console.error("shouldNotify check failed:", err);
+    return true;
+  }
+}
+
+
 export type RateLimitResult = {
   success: boolean;
   limit: number;

@@ -1,6 +1,11 @@
 export const siteUrl = "https://mohannad-alhajy.vercel.app";
 
-export const resumeUrl = "/mohannad-alhajy-cv.pdf";
+// The static PDF in /public.
+export const resumeFile = "/mohannad-alhajy-cv.pdf";
+
+// Links point at the API route instead of the file so downloads can be
+// emailed; the route streams the PDF from `resumeFile`.
+export const resumeUrl = "/api/resume";
 export const resumeUpdated = "Sept 2026";
 
 export const siteConfig = {
