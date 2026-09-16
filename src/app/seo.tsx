@@ -9,7 +9,7 @@ export default function SEOJsonLd() {
           "@context": "https://schema.org",
           "@type": "Person",
           name: siteConfig.name,
-          jobTitle: "Full Stack Developer",
+          jobTitle: ["Full Stack Developer", "Backend Engineer"],
           url: siteUrl,
           image: `${siteUrl}/og.jpg`,
           email: siteConfig.email,

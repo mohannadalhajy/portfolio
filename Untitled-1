@@ -1,0 +1,594 @@
+
+Different question — let me read the actual copy.
+
+Bash Read site config and home copy
+IN
+cat src/lib/site.ts && echo "=====HOME=====" && cat src/app/HomeContent.tsx
+
+OUT
+export const siteUrl = "https://mohannad-alhajy.vercel.app";
+
+export const siteConfig = {
+  name: "Mohannad Alhajy",
+  title: "Mohannad Alhajy | Full Stack Developer",
+  description:
+    "Full Stack Developer building scalable APIs, real-time systems, and subscription/payment flows using Node.js & NestJS.",
+  email: "mohannad.alhajy@gmail.com",
+  github: "https://github.com/mohannadalhajy",
+  linkedin: "https://linkedin.com/in/mohannad-alhajy",
+};
+=====HOME=====
+"use client";
+
+import HeroGem from "@/components/HeroGem";
+import StatusBadge from "@/components/StatusBadge";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight, Download } from "lucide-react";
+import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
+import { skillGroups } from "@/data/skills";
+
+const testimonials = [
+  {
+    quote:
+      "Mohannad didn't just write code; he architected systems that allowed our product lines to scale their user base exponentially without degraded performance. A true technical leader.",
+    name: "Bilal Tahir",
+    role: "Team Leader",
+    company: "Step By Tech",
+  },
+  {
+    quote:
+      "His focus on multi-tenant security and zero-downtime deployments was critical to our enterprise deliverables. He brings a senior mindset to every architecture discussion.",
+    name: "Nabeel Iqbal",
+    role: "Product Manager",
+    company: "Vidnik",
+  },
+];
+
+export default function HomeContent() {
+  return (
+    <div className="space-y-20">
+      {/* Hero */}
+      <motion.section
+        initial="hidden"
+        animate="show"
+        viewport={{ once: true }}
+        variants={STAGGER_CHILDREN}
+        className="space-y-10"
+      >
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+          <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="space-y-5 lg:max-w-xl">
+            <StatusBadge />
+
+            <div className="relative">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-600 dark:text-zinc-400">
+                Full Stack Developer
+              </p>
+              <h1 className="mt-2 font-serif text-5xl text-zinc-900 dark:text-zinc-100 sm:text-6xl lg:text-7xl">
+                Mohannad Alhajy
+              </h1>
+            </div>
+
+            <p className="max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+              I design and build scalable web platforms with a focus on clean
+              architecture, reliable APIs, and maintainable systems. My work
+              includes production applications across industries such as HR
+              management, legal services, car rental, and project management.
+            </p>
+
+            <div className="flex divide-x divide-zinc-200 dark:divide-zinc-800/70 pt-2">
+              <div className="pr-8">
+                <div className="font-serif text-3xl text-zinc-900 dark:text-zinc-100">5+</div>
+                <div className="mt-1 text-xs uppercase tracking-widest text-zinc-600 dark:text-zinc-400">
+                  Years experience
+                </div>
+              </div>
+              <div className="px-8">
+                <div className="font-serif text-3xl text-zinc-900 dark:text-zinc-100">20+</div>
+                <div className="mt-1 text-xs uppercase tracking-widest text-zinc-600 dark:text-zinc-400">
+                  Completed projects
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            variants={FADE_DOWN_ANIMATION_VARIANTS}
+            className="relative hidden shrink-0 self-center lg:block"
+          >
+            <HeroGem />
+          </motion.div>
+        </div>
+
+        <motion.div
+          variants={FADE_DOWN_ANIMATION_VARIANTS}
+          className="divide-y divide-zinc-200 dark:divide-zinc-800/60 border-y border-zinc-200 dark:border-zinc-800/60"
+        >
+          {skillGroups.map((s) => (
+            <div
+              key={s.label}
+              className="grid gap-1 py-4 sm:grid-cols-[200px_1fr] sm:items-baseline"
+            >
+              <div className="text-xs font-medium uppercase tracking-widest text-amber-600 dark:text-amber-400">
+                {s.label}
+              </div>
+              <div className="text-sm text-zinc-600 dark:text-zinc-400">{s.tools}</div>
+            </div>
+          ))}
+        </motion.div>
+      </motion.section>
+
+      {/* Testimonials — social proof placed right before the CTA below */}
+      <motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={STAGGER_CHILDREN}
+        className="grid gap-10 border-t border-zinc-200 dark:border-zinc-800/60 pt-10 sm:grid-cols-2"
+      >
+        {testimonials.map((t) => (
+          <motion.blockquote
+            variants={FADE_DOWN_ANIMATION_VARIANTS}
+            key={t.name}
+            className="border-l-2 border-amber-500/40 pl-6"
+          >
+            <p className="font-serif text-lg italic leading-relaxed text-zinc-800 dark:text-zinc-200">
+              &ldquo;{t.quote}&rdquo;
+            </p>
+            <footer className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
+              <span className="text-zinc-700 dark:text-zinc-300">{t.name}</span> · {t.role},{" "}
+              {t.company}
+            </footer>
+          </motion.blockquote>
+        ))}
+      </motion.section>
+
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={FADE_DOWN_ANIMATION_VARIANTS}
+        className="flex flex-wrap items-center gap-6 border-t border-zinc-200 dark:border-zinc-800/60 pt-10"
+      >
+        <Link
+          href="/projects"
+          className="group inline-flex items-center gap-2 rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-zinc-50 transition-all hover:bg-zinc-800 hover:shadow-[0_0_30px_rgba(245,158,11,0.25)] active:scale-95 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white"
+        >
+          View Projects
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </Link>
+        <a
+          href="/mohannad-alhajy-cv.pdf"
+          download
+          className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-zinc-900 hover:decoration-amber-400 dark:text-zinc-300 dark:decoration-zinc-700 dark:hover:text-zinc-100"
+        >
+          <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
+          Download Resume
+        </a>
+        <Link
+          href="/contact"
+          className="text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-zinc-900 hover:decoration-amber-400 dark:text-zinc-300 dark:decoration-zinc-700 dark:hover:text-zinc-100"
+        >
+          Let&apos;s Talk
+        </Link>
+      </motion.div>
+    </div>
+  );
+}
+Bash Read skills and projects data
+IN
+cat src/data/skills.ts && echo "=====PROJECTS DATA=====" && sed -n 1,120p src/data/projects.ts
+
+OUT
+// Single source of truth for the stack shown on Home (grouped, terse) and
+// About (flat list) — keeps the two from drifting out of sync.
+export const skillGroups = [
+  {
+    label: "Backend & Architecture",
+    tools: "Node.js, NestJS, Microservices, REST / GraphQL, WebSockets",
+  },
+  {
+    label: "Frontend & UX",
+    tools: "TypeScript, React, Next.js, Redux / Zustand, Tailwind CSS",
+  },
+  {
+    label: "Cloud & DevOps",
+    tools: "AWS (EC2, S3, RDS, Lambda), Docker, CI/CD Pipelines",
+  },
+  {
+    label: "Databases & Caching",
+    tools: "MySQL, MongoDB, Redis",
+  },
+];
+
+export const technologies = [
+  "TypeScript",
+  "JavaScript",
+  "Node.js",
+  "NestJS",
+  "React",
+  "Next.js",
+  "MongoDB",
+  "MySQL",
+  "Redis",
+  "RabbitMQ",
+  "AWS",
+  "Docker",
+  "Nginx",
+];
+=====PROJECTS DATA=====
+export type CaseStudy = {
+  problem: string;
+  approach: string;
+  result: string;
+};
+
+export type Project = {
+  slug: string;
+  title: string;
+  subtitle: string;
+  caseStudy: CaseStudy;
+  highlights: string[];
+  technicalHighlights: string[];
+  myContribution: string[];
+  challengesSolved: string[];
+  stack: string[];
+  photos: string[];
+  links: { label: string; href: string }[];
+};
+
+export const projects: Project[] = [
+  {
+    slug: "vidnik",
+    title: "Vidnik",
+    subtitle:
+      "A modern halal matchmaking platform that helps Muslims connect for marriage through secure and respectful interactions. The application includes a mobile app for users and a backend system supporting authentication, profile management, matchmaking, messaging, and AI-based identity verification. The platform emphasizes privacy, guardian (wali) involvement, and culturally aligned communication.",
+    caseStudy: {
+      problem:
+        "Muslims looking for marriage needed a platform that felt safe, private, and culturally aligned — not a casual dating app — with real identity verification and guardian (wali) involvement built in from day one, not added later.",
+      approach:
+        "Architected and built the full backend for a scalable mobile app: real-time chat and video calling, AI-based identity verification via AWS Rekognition, cross-platform payment validation across Apple and Google, moderation tooling, and admin/super-admin dashboards for full platform control.",
+      result:
+        "A production platform with value-based matchmaking and privacy-first profile discovery, backed by a system engineered to hold up under concurrent real-time chat and video load.",
+    },
+    myContribution: [
+      "Architected and developed the full backend system for a scalable mobile application",
+      "Built a real-time chat system with video calling capabilities",
+      "Implemented secure payment integrations with Google Play & Apple App Store",
+      "Integrated QuickBooks for automated financial and transaction management",
+      "Developed admin & super admin dashboards for full platform control",
+      "Built a customer support system for handling user issues and moderation",
+      "Designed and optimized scalable APIs, authentication, and data models",
+    ],
+    challengesSolved: [
+      "Designed a scalable architecture to support real-time chat and video communication",
+      "Handled secure cross-platform payment validation (Apple + Google ecosystems)",
+      "Built moderation tools using image recognition services",
+      "Ensured high performance under concurrent users using caching and async processing",
+    ],
+    technicalHighlights: [
+      "Real-time communication using WebSockets (Socket.IO)",
+      "Payment validation & subscription handling (Google Play / Apple Store)",
+      "Cloud integrations (AWS Rekognition, Secrets Manager)",
+      "Messaging & event-driven systems (Google Pub/Sub)",
+      "Image processing & moderation pipelines",
+      "Background jobs & schedulers (Cron jobs)",
+      "Caching & performance optimization (Redis)",
+      "Secure authentication (JWT, OAuth – Apple / Google)",
+      "Logging & monitoring (Winston)",
+    ],
+    highlights: [
+      "Value-based matchmaking focused on marriage, not casual dating",
+      "Detailed profiles including faith, family background, and personal goals",
+      "Smart discovery system based on location, preferences, and compatibility",
+      "Privacy-first experience with respectful, principle-driven interactions",
+    ],
+    stack: [
+      "NestJS",
+      "Node.js",
+      "TypeScript",
+      "Express",
+      "React",
+      "Next.js",
+      "MySQL",
+      "MongoDB",
+      "QuickBooks",
+      "Redis",
+      "AWS S3",
+      "AWS SES",
+      "AWS Rekognition",
+      "AWS Secrets Manager",
+      "AWS EC2",
+      "AWS ECS",
+      "AWS CloudFront",
+    ],
+    links: [],
+    photos: [
+      "/vidnik/vidnik-photo-8.webp",
+      "/vidnik/vidnik-photo-1.webp",
+      "/vidnik/vidnik-photo-13.webp",
+      "/vidnik/vidnik-photo-16.webp",
+      "/vidnik/vidnik-photo-3.webp",
+      "/vidnik/vidnik-photo-4.webp",
+      "/vidnik/vidnik-photo-5.webp",
+      "/vidnik/vidnik-photo-7.webp",  
+      "/vidnik/vidnik-photo-9.webp",
+      "/vidnik/vidnik-photo-21.webp",
+      "/vidnik/vidnik-photo-22.webp",
+      "/vidnik/vidnik-photo-23.webp",
+      "/vidnik/vidnik-photo-24.webp",
+    ],
+  },
+  {
+    slug: "axiom",
+    title: "Axiom",
+    subtitle:
+      "A scalable multi-client platform for discovering UAE properties and managing relocation services. The system integrates a web application, administrative dashboard, and Unity 3D client, powered by a modular NestJS backend supporting AI interactions, real-time communication, and cloud-based infrastructure.",
+    caseStudy: {
+      problem:
+        "Expatriates relocating to the UAE needed one place to discover properties and manage relocation services — across three very different client types (public web, admin dashboard, and a Unity 3D application) that would normally mean three separate backends.",
+      approach:
+        "Designed a single modular NestJS backend serving all three clients from shared domain modules, added Redis + Redlock to handle concurrent and race-condition-prone operations safely, and integrated AWS speech and AI services (Polly, Comprehend, OpenAI) for voice and intelligent chat interactions.",
+      result:
+        "One backend, three clients, no duplicated logic — expatriates can discover properties and manage relocation end-to-end through a single unified platform.",
+    },
+    myContribution: [
+      "Designed and implemented a scalable backend architecture using NestJS and TypeScript.",
+      "Developed RESTful APIs supporting multiple clients including the public web platform, administrative dashboard, and Unity 3D application.",
+      "Implemented secure authentication and authorization using JWT and OAuth strategies.",
+      "Integrated AWS cloud services such as S3 for media storage, SES for email delivery, Polly for speech synthesis, and Comprehend for text analysis.",
+Bash Read about page copy
+IN
+sed -n 1,160p src/app/about/AboutContent.tsx
+
+OUT
+"use client";
+
+import Image from "next/image";
+import ProjectGallery from "@/components/project-gallery";
+import { motion } from "framer-motion";
+import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
+import { technologies } from "@/data/skills";
+
+const focusAreas = [
+  "Building scalable full-stack web applications",
+  "Designing clean and maintainable backend architectures",
+  "Developing responsive and modern frontend interfaces",
+  "Implementing real-time features and messaging systems",
+  "Integrating cloud services, APIs, and third-party platforms",
+];
+
+const experienceAreas = [
+  "Scalable web platforms and SaaS products",
+  "Payment and subscription systems",
+  "Real-time communication and messaging",
+  "Cloud integrations and distributed services",
+  "API design and system architecture",
+];
+
+const philosophy = [
+  {
+    number: "01",
+    title: "Type-Safety First",
+    desc: "Enforcing strict TypeScript configurations to eliminate runtime errors before they happen.",
+  },
+  {
+    number: "02",
+    title: "Designing for Failure",
+    desc: "Building resilient microservices that gracefully handle partial outages and network partitions.",
+  },
+  {
+    number: "03",
+    title: "User-Centric Performance",
+    desc: "Prioritizing fast edge delivery, lean bundles, and optimistic UI updates for the end user.",
+  },
+];
+
+export default function AboutContent() {
+  return (
+    <motion.div
+      initial="hidden"
+      animate="show"
+      viewport={{ once: true }}
+      variants={STAGGER_CHILDREN}
+      className="space-y-16"
+    >
+      <motion.div
+        variants={FADE_DOWN_ANIMATION_VARIANTS}
+        className="flex flex-col-reverse gap-8 sm:flex-row sm:items-start sm:gap-10"
+      >
+        <div className="max-w-3xl space-y-5">
+          <h1 className="font-serif text-3xl text-zinc-900 dark:text-zinc-100 sm:text-4xl">About Me</h1>
+          <div className="space-y-4 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <p>
+              Full Stack Developer with 5+ years of experience developing scalable
+              backend systems using Node.js, NestJS, and TypeScript. Skilled in
+              designing REST APIs, database structures, and writing clean,
+              maintainable code. Experienced in building modern web interfaces
+              using React and Next.js.
+            </p>
+            <p>
+              I&apos;ve contributed to multiple production platforms including
+              social apps, legal services, car rentals, HR management, and project
+              management systems. My work focuses on building reliable systems
+              that integrate real-world services such as payments, messaging,
+              real-time communication, and cloud infrastructure.
+            </p>
+          </div>
+        </div>
+
+        <div className="mx-auto w-40 shrink-0 sm:mx-0 sm:w-48">
+          <div className="overflow-hidden rounded-2xl border border-zinc-200 shadow-sm dark:border-zinc-800/60">
+            <Image
+              src="/mohannad-alhajy.webp"
+              alt="Mohannad Alhajy"
+              width={480}
+              height={720}
+              className="h-auto w-full object-cover"
+              priority
+            />
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        variants={FADE_DOWN_ANIMATION_VARIANTS}
+        className="grid gap-10 border-t border-zinc-200 dark:border-zinc-800/60 pt-10 sm:grid-cols-2 sm:divide-x sm:divide-zinc-200 dark:sm:divide-zinc-800/60"
+      >
+        <div>
+          <h2 className="font-serif text-lg text-zinc-900 dark:text-zinc-100">What I Focus On</h2>
+          <ul className="mt-4 space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
+            {focusAreas.map((item) => (
+              <li key={item} className="flex gap-3">
+                <span className="mt-1 text-amber-600/70 dark:text-amber-500/50">▹</span>
+                <span className="leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="sm:pl-10">
+          <h2 className="font-serif text-lg text-zinc-900 dark:text-zinc-100">Experience Areas</h2>
+          <ul className="mt-4 space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
+            {experienceAreas.map((item) => (
+              <li key={item} className="flex gap-3">
+                <span className="mt-1 text-amber-600/70 dark:text-amber-500/50">▹</span>
+                <span className="leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </motion.div>
+
+      {/* Experience */}
+      <motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={FADE_DOWN_ANIMATION_VARIANTS}
+        className="space-y-8 border-t border-zinc-200 dark:border-zinc-800/60 pt-10"
+      >
+        <h2 className="font-serif text-2xl text-zinc-900 dark:text-zinc-100">Experience</h2>
+
+        <div className="relative border-l border-zinc-200 dark:border-zinc-800/60 ml-3 space-y-14 py-2">
+          <TimelineItem
+            title="Full Stack Developer"
+            meta="— Step By Tech"
+            date="2021 – Present · Dubai"
+            accent
+          >
+            <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-6 max-w-2xl leading-relaxed">
+              Led development of high-impact backend systems and dynamic product
+              lines using Node.js, NestJS, and TypeScript.
+            </p>
+
+            <ul className="list-none space-y-3 mb-6 text-sm text-zinc-600 dark:text-zinc-400">
+              <li className="flex gap-3">
+                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
+                <span className="leading-relaxed">
+                  Engineered expansive API architectures servicing varied
+                  markets including Vidnik (social), Zadlaw (legal), and Exyar
+                  (auto).
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
+                <span className="leading-relaxed">
+                  Orchestrated real-time messaging and video conferencing
+                  capabilities for mobile-first products.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
+                <span className="leading-relaxed">
+                  Architected and deployed responsive admin dashboards and
+Bash Check project links and result claims
+IN
+grep -n "slug:\|links: \[" src/data/projects.ts | head -40 && echo "=== result fields ===" && grep -n -A3 "result:" src/data/projects.ts | grep -v "^--" | head -60
+
+OUT
+8:  slug: string;
+23:    slug: "vidnik",
+86:    links: [],
+104:    slug: "axiom",
+179:    links: [],
+190:    slug: "exyar",
+248:    links: [],
+263:    slug: "pms",
+334:    links: [],
+348:    slug: "zadlaw",
+409:    links: [],
+423:    slug: "hr-software",
+491:    links: [],
+504:    slug: "save-in-gold-crm",
+552:    links: [],
+566:    slug: "orders-delivery-system",
+587:    links: [
+600:    slug: "real-estate-management",
+621:    links: [
+=== result fields ===
+4:  result: string;
+5-};
+6-
+7-export type Project = {
+32:      result:
+33-        "A production platform with value-based matchmaking and privacy-first profile discovery, backed by a system engineered to hold up under concurrent real-time chat and video load.",
+34-    },
+35-    myContribution: [
+113:      result:
+114-        "One backend, three clients, no duplicated logic — expatriates can discover properties and manage relocation end-to-end through a single unified platform.",
+115-    },
+116-    myContribution: [
+202:      result:
+203-        "A single backend cleanly serving three different consumers, with an AI conversational layer for vehicle discovery built into the same system rather than bolted on separately.",
+204-    },
+205-    myContribution: [
+273:      result:
+274-        "A working Jira-equivalent covering the full Agile lifecycle, architected to stay maintainable as the codebase and organization grow.",
+275-    },
+276-    myContribution: [
+357:      result:
+358-        "Clients book and manage consultations end-to-end online; staff run the firm's appointments, billing, and content from one dashboard instead of juggling separate tools.",
+359-    },
+360-    myContribution: [
+432:      result:
+433-        "One system, multiple companies, each fully isolated — with attendance, tasks, and permissions all manageable from a single super-admin view when needed.",
+434-    },
+435-    myContribution: [
+514:      result:
+515-        "A production CRM in daily use managing tens of thousands of leads and tasks across multiple lead sources, with clean role separation between Admin, Sales Manager, and Sales Agent access levels.",
+516-    },
+517-    myContribution: [
+575:      result:
+576-        "End-to-end order tracking from placement to delivery, with the backend and dashboard both public on GitHub.",
+577-    },
+578-    myContribution: [],
+609:      result:
+610-        "A working search-and-recommend listings platform with its own retrieval logic, backend and dashboard both public on GitHub.",
+611-    },
+612-    myContribution: [],
+The engineering content is solid and the case-study structure (problem → approach → result) is the right skeleton. The problems are in what fills it.
+
+1. There are almost no numbers. This is the single biggest gap. Every result field describes a shape, not an outcome:
+
+"backed by a system engineered to hold up under concurrent real-time chat and video load" — projects.ts:33
+
+"Engineered to hold up" is a statement of intent. A reader can't tell if it held 50 users or 50,000. Only Save In Gold has a real figure ("tens of thousands of leads"), and it's the most convincing line in the file. You have the data — p95 latency, concurrent sessions, records processed, deploy frequency, cost saved. Put one hard number in each result. That change alone does more than everything else on this list.
+
+2. Four list fields per project say the same thing four times. highlights, technicalHighlights, myContribution, challengesSolved — for Vidnik, "built real-time chat with video calling" appears in all four plus caseStudy.approach. That's ~35 bullets per project. Nobody reads bullet 12. I'd collapse to two: What I built (5 bullets max, your work) and Stack (already there). Fold the interesting parts of challengesSolved into the case study's approach, which is where a technical reader actually looks.
+
+3. links: [] on 7 of 9 projects. "Can I see it?" is the first question anyone asks. If these are under NDA or internal, say that explicitly — an empty space reads as "nothing to show," while "Private — client platform, screenshots only" reads as a real job. The two projects with GitHub links are the only ones a reader can verify.
+
+4. The testimonials are a credibility risk. "A true technical leader," "He brings a senior mindset to every architecture discussion" — the register doesn't sound like a Team Leader writing quickly; it sounds like marketing copy. If they're genuine LinkedIn recommendations, link each one to the recommender's profile and the doubt disappears. If they're paraphrased, either get the real wording or cut them. Unverifiable praise costs more than no praise.
+
+5. Thesaurus verbs on About. "Engineered expansive API architectures," "Orchestrated real-time messaging," "Architected and deployed responsive admin dashboards" — AboutContent.tsx:141-160. Senior engineers write "Built" and "Led." The inflated verb reads as compensating.
+
+6. Missing context that hiring managers screen on: no dates per project, no team size, no role scope. "Architected and developed the full backend" — alone, or leading three people? Both are good answers; the absence invites the less flattering guess.
+
+7. The Vidnik subtitle is a 4-line paragraph (projects.ts:26) but the projects list renders it line-clamp-2. It's written for a slot that truncates it. One sentence, then let the case study carry the rest.
+
+8. The philosophy section is interchangeable. "Type-Safety First," "Designing for Failure," "User-Centric Performance" could appear on any developer's site. Replace with an opinion only you'd hold — something you changed your mind about, or a tradeoff you'd defend.
+
+9. The hero says what you do, not who you're for. "I design and build scalable web platforms…" — true of everyone. You have an actual specialty visible in the work: cross-platform payments, multi-tenant SaaS, and real-time systems, built in Dubai. Lead with that.
+
+The highest-leverage sequence: add numbers to the nine result fields, then resolve the links question, then cut the bullet redundancy. Want me to restructure the Project type and rewrite the copy for one project as a template you can check before I do the rest? I'd need the actual metrics from you for the result lines — I won't invent those.

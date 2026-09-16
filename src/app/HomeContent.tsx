@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
 import { skillGroups } from "@/data/skills";
+import { resumeUrl, resumeUpdated } from "@/lib/site";
 
 const testimonials = [
   {
@@ -42,7 +43,7 @@ export default function HomeContent() {
 
             <div className="relative">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-600 dark:text-zinc-400">
-                Backend Engineer · Dubai
+                Full Stack Developer · Backend-Heavy · Dubai
               </p>
               <h1 className="mt-2 font-serif text-5xl text-zinc-900 dark:text-zinc-100 sm:text-6xl lg:text-7xl">
                 Mohannad Alhajy
@@ -50,12 +51,13 @@ export default function HomeContent() {
             </div>
 
             <p className="max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-              I build the backends behind cross-platform payments, multi-tenant
-              SaaS, and real-time systems — Apple and Google billing that
-              reconciles, one platform serving many companies without leaking
-              data between them, and chat and notifications that hold up under
-              load. Based in Dubai, shipping production systems for HR, legal,
-              proptech, and social platforms.
+              Full stack, weighted to the backend. I build the systems behind
+              cross-platform payments, multi-tenant SaaS, and real-time features
+              — Apple and Google billing that reconciles, one platform serving
+              many companies without leaking data between them, chat and
+              notifications that hold up under load — then ship the React and
+              Next.js dashboards that operate them. Based in Dubai, shipping
+              production systems for HR, legal, proptech, and social platforms.
             </p>
 
             <div className="flex divide-x divide-zinc-200 dark:divide-zinc-800/70 pt-2">
@@ -65,12 +67,16 @@ export default function HomeContent() {
                   Years experience
                 </div>
               </div>
-              <div className="px-8">
+              <Link
+                href="/projects"
+                className="group px-8 transition-opacity hover:opacity-80"
+              >
                 <div className="font-serif text-3xl text-zinc-900 dark:text-zinc-100">20+</div>
-                <div className="mt-1 text-xs uppercase tracking-widest text-zinc-600 dark:text-zinc-400">
+                <div className="mt-1 flex items-center gap-1 text-xs uppercase tracking-widest text-zinc-600 dark:text-zinc-400">
                   Completed projects
+                  <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                 </div>
-              </div>
+              </Link>
             </div>
           </motion.div>
 
@@ -139,14 +145,19 @@ export default function HomeContent() {
           View Projects
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Link>
-        <a
-          href="/mohannad-alhajy-cv.pdf"
-          download
-          className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-zinc-900 hover:decoration-amber-400 dark:text-zinc-300 dark:decoration-zinc-700 dark:hover:text-zinc-100"
-        >
-          <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
-          Download Resume
-        </a>
+        <span className="inline-flex items-center gap-2">
+          <a
+            href={resumeUrl}
+            download
+            className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-zinc-900 hover:decoration-amber-400 dark:text-zinc-300 dark:decoration-zinc-700 dark:hover:text-zinc-100"
+          >
+            <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
+            Download Resume
+          </a>
+          <span className="text-xs font-medium text-zinc-500 dark:text-zinc-500">
+            Updated {resumeUpdated}
+          </span>
+        </span>
         <Link
           href="/contact"
           className="text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-zinc-900 hover:decoration-amber-400 dark:text-zinc-300 dark:decoration-zinc-700 dark:hover:text-zinc-100"

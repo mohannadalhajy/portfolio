@@ -6,22 +6,6 @@ import { motion } from "framer-motion";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
 import { technologyGroups } from "@/data/skills";
 
-const focusAreas = [
-  "Building scalable full-stack web applications",
-  "Designing clean and maintainable backend architectures",
-  "Developing responsive and modern frontend interfaces",
-  "Implementing real-time features and messaging systems",
-  "Integrating cloud services, APIs, and third-party platforms",
-];
-
-const experienceAreas = [
-  "Scalable web platforms and SaaS products",
-  "Payment and subscription systems",
-  "Real-time communication and messaging",
-  "Cloud integrations and distributed services",
-  "API design and system architecture",
-];
-
 const philosophy = [
   {
     number: "01",
@@ -62,11 +46,13 @@ export default function AboutContent() {
           <h1 className="font-serif text-3xl text-zinc-900 dark:text-zinc-100 sm:text-4xl">About Me</h1>
           <div className="space-y-4 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
             <p>
-              Full Stack Developer with 5+ years of experience developing scalable
-              backend systems using Node.js, NestJS, and TypeScript. Skilled in
-              designing REST APIs, database structures, and writing clean,
-              maintainable code. Experienced in building modern web interfaces
-              using React and Next.js.
+              Full Stack Developer with 5+ years of experience, weighted toward
+              the backend: scalable systems in Node.js, NestJS, and TypeScript,
+              REST API and database design, and the integration work — payments,
+              real-time messaging, cloud infrastructure — that has to be correct
+              under load. I ship the frontend too, in React and Next.js, most
+              often the dashboards and admin consoles that operate what I built
+              on the server.
             </p>
             <p>
               I&apos;ve contributed to multiple production platforms including
@@ -92,34 +78,37 @@ export default function AboutContent() {
         </div>
       </motion.div>
 
-      <motion.div
-        variants={FADE_DOWN_ANIMATION_VARIANTS}
-        className="grid gap-10 border-t border-zinc-200 dark:border-zinc-800/60 pt-10 sm:grid-cols-2 sm:divide-x sm:divide-zinc-200 dark:sm:divide-zinc-800/60"
+      {/* Engineering Philosophy */}
+      <motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={STAGGER_CHILDREN}
+        className="space-y-6 border-t border-zinc-200 dark:border-zinc-800/60 pt-10"
       >
-        <div>
-          <h2 className="font-serif text-lg text-zinc-900 dark:text-zinc-100">What I Focus On</h2>
-          <ul className="mt-4 space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
-            {focusAreas.map((item) => (
-              <li key={item} className="flex gap-3">
-                <span className="mt-1 text-amber-600/70 dark:text-amber-500/50">▹</span>
-                <span className="leading-relaxed">{item}</span>
-              </li>
-            ))}
-          </ul>
+        <h2 className="font-serif text-2xl text-zinc-900 dark:text-zinc-100">Engineering Philosophy</h2>
+        <p className="max-w-3xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          Four things I&apos;ve argued for often enough to write down — one of
+          which I used to believe the opposite of.
+        </p>
+        <div className="divide-y divide-zinc-200 dark:divide-zinc-800/60 border-y border-zinc-200 dark:border-zinc-800/60">
+          {philosophy.map((item) => (
+            <motion.div
+              variants={FADE_DOWN_ANIMATION_VARIANTS}
+              key={item.number}
+              className="flex gap-6 py-6"
+            >
+              <div className="pt-1 font-serif text-sm text-amber-600 dark:text-amber-400">{item.number}</div>
+              <div>
+                <h3 className="font-serif text-lg text-zinc-900 dark:text-zinc-100">{item.title}</h3>
+                <p className="mt-1 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                  {item.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
-
-        <div className="sm:pl-10">
-          <h2 className="font-serif text-lg text-zinc-900 dark:text-zinc-100">Experience Areas</h2>
-          <ul className="mt-4 space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
-            {experienceAreas.map((item) => (
-              <li key={item} className="flex gap-3">
-                <span className="mt-1 text-amber-600/70 dark:text-amber-500/50">▹</span>
-                <span className="leading-relaxed">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </motion.div>
+      </motion.section>
 
       {/* Experience */}
       <motion.section
@@ -238,38 +227,6 @@ export default function AboutContent() {
               Engineering
             </p>
           </TimelineItem>
-        </div>
-      </motion.section>
-
-      {/* Engineering Philosophy */}
-      <motion.section
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-50px" }}
-        variants={STAGGER_CHILDREN}
-        className="space-y-6 border-t border-zinc-200 dark:border-zinc-800/60 pt-10"
-      >
-        <h2 className="font-serif text-2xl text-zinc-900 dark:text-zinc-100">Engineering Philosophy</h2>
-        <p className="max-w-3xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-          Three things I&apos;ve argued for often enough to write down — one of
-          which I used to believe the opposite of.
-        </p>
-        <div className="divide-y divide-zinc-200 dark:divide-zinc-800/60 border-y border-zinc-200 dark:border-zinc-800/60">
-          {philosophy.map((item) => (
-            <motion.div
-              variants={FADE_DOWN_ANIMATION_VARIANTS}
-              key={item.number}
-              className="flex gap-6 py-6"
-            >
-              <div className="pt-1 font-serif text-sm text-amber-600 dark:text-amber-400">{item.number}</div>
-              <div>
-                <h3 className="font-serif text-lg text-zinc-900 dark:text-zinc-100">{item.title}</h3>
-                <p className="mt-1 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                  {item.desc}
-                </p>
-              </div>
-            </motion.div>
-          ))}
         </div>
       </motion.section>
 
