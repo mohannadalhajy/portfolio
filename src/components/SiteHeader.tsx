@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { resumeUrl, siteConfig } from "@/lib/site";
 
 const pages = [
+  { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
@@ -26,7 +27,10 @@ export default function SiteHeader() {
 
         <nav aria-label="Main" className="flex items-center gap-1">
           {pages.map((p) => {
-            const isActive = pathname === p.href || pathname.startsWith(`${p.href}/`);
+            const isActive =
+              p.href === "/"
+                ? pathname === "/"
+                : pathname === p.href || pathname.startsWith(`${p.href}/`);
             return (
               <Link
                 key={p.href}

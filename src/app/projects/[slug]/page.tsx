@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
 import ProjectGallery from "@/components/project-gallery";
@@ -50,6 +50,14 @@ export default async function ProjectDetailsPage({
   if (!project) return notFound();
 
   const projectUrl = `${siteUrl}/projects/${project.slug}`;
+
+  // Sequential paging follows the order of the `projects` array, which is the
+  // same order the index lists them in — so "next" always means "the one
+  // below this on /projects". Deliberately non-wrapping: at either end the
+  // slot falls back to the index so the reader is never dropped.
+  const index = projects.findIndex((p) => p.slug === project.slug);
+  const previous = index > 0 ? projects[index - 1] : null;
+  const next = index < projects.length - 1 ? projects[index + 1] : null;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -141,6 +149,58 @@ export default async function ProjectDetailsPage({
       {project.photos.length > 0 && (
         <ProjectGallery images={project.photos} alt={`${project.title} screenshot`} />
       )}
+
+      <nav
+        aria-label="More projects"
+        className="grid gap-3 border-t border-zinc-200 pt-8 dark:border-zinc-800/60 sm:grid-cols-2"
+      >
+        {previous ? (
+          <Link
+            href={`/projects/${previous.slug}`}
+            rel="prev"
+            className="group flex flex-col gap-1 rounded-xl border border-zinc-200 p-4 transition-colors hover:border-amber-500/40 dark:border-zinc-800/60 dark:hover:border-amber-500/40"
+          >
+            <span className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-zinc-500 dark:text-zinc-500">
+              <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1" />
+              Previous
+            </span>
+            <span className="font-serif text-lg text-zinc-900 dark:text-zinc-100">
+              {previous.title}
+            </span>
+          </Link>
+        ) : (
+          <span className="hidden sm:block" />
+        )}
+
+        {next ? (
+          <Link
+            href={`/projects/${next.slug}`}
+            rel="next"
+            className="group flex flex-col gap-1 rounded-xl border border-zinc-200 p-4 transition-colors hover:border-amber-500/40 dark:border-zinc-800/60 dark:hover:border-amber-500/40 sm:items-end sm:text-right"
+          >
+            <span className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-zinc-500 dark:text-zinc-500">
+              Next
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
+            <span className="font-serif text-lg text-zinc-900 dark:text-zinc-100">
+              {next.title}
+            </span>
+          </Link>
+        ) : (
+          <Link
+            href="/projects"
+            className="group flex flex-col gap-1 rounded-xl border border-zinc-200 p-4 transition-colors hover:border-amber-500/40 dark:border-zinc-800/60 dark:hover:border-amber-500/40 sm:items-end sm:text-right"
+          >
+            <span className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-zinc-500 dark:text-zinc-500">
+              Browse
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
+            <span className="font-serif text-lg text-zinc-900 dark:text-zinc-100">
+              All projects
+            </span>
+          </Link>
+        )}
+      </nav>
     </div>
   );
 }
