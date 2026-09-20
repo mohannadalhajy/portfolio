@@ -93,10 +93,65 @@ export default function AboutContent() {
 
         <div className="relative border-l border-zinc-200 dark:border-zinc-800/60 ml-3 space-y-14 py-2">
           <TimelineItem
+            title="Backend Developer"
+            meta="— Save In Gold"
+            date="2026 – Present · Dubai"
+            accent
+          >
+            <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-6 max-w-2xl leading-relaxed">
+              Lead backend developer on three production CRM platforms
+              (SaveInGold, MENA, BBH).
+            </p>
+
+            <ul className="list-none space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
+              <li className="flex gap-3">
+                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
+                <span className="leading-relaxed">
+                  Built a full WhatsApp Business (WATI) integration: two-way
+                  webhooks, template broadcasts, 24h session tracking, S3 media
+                  handling, and a unified agent inbox with real-time unread
+                  counts.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
+                <span className="leading-relaxed">
+                  Designed a cron-driven follow-up engine (auto task creation,
+                  overdue escalation, agent-absence shifting) made
+                  multi-instance safe with a Redis + MongoDB distributed lock.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
+                <span className="leading-relaxed">
+                  Cut dashboard and report latency on 300K+ leads by rewriting
+                  role-scoped queries as MongoDB aggregation pipelines with
+                  compound indexes.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
+                <span className="leading-relaxed">
+                  Added a Redis cache layer with circuit-breaking and automatic
+                  MongoDB fallback, so the API degrades gracefully instead of
+                  failing.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
+                <span className="leading-relaxed">
+                  Integrated the Neo trading/KYC API with cached token rotation;
+                  built RBAC across six roles, JWT rotation, and bilingual
+                  (EN/AR) responses.
+                </span>
+              </li>
+            </ul>
+          </TimelineItem>
+
+          <TimelineItem
             title="Full Stack Developer"
             meta="— Step By Tech"
-            date="2021 – Present · Dubai"
-            accent
+            date="2021 – 2026 · Dubai"
           >
             <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-6 max-w-2xl leading-relaxed">
               Led backend development across several product lines using
@@ -105,34 +160,34 @@ export default function AboutContent() {
 
             <ul className="list-none space-y-3 mb-6 text-sm text-zinc-600 dark:text-zinc-400">
               <li className="flex gap-3">
-                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
+                <span className="text-zinc-400 dark:text-zinc-600 mt-1">▹</span>
                 <span className="leading-relaxed">
                   Built the APIs behind Vidnik (social), Zadlaw (legal), and
                   Exyar (auto).
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
+                <span className="text-zinc-400 dark:text-zinc-600 mt-1">▹</span>
                 <span className="leading-relaxed">
                   Shipped real-time messaging and video calling for
                   mobile-first products.
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
+                <span className="text-zinc-400 dark:text-zinc-600 mt-1">▹</span>
                 <span className="leading-relaxed">
                   Built admin dashboards and internal tooling in React.
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
+                <span className="text-zinc-400 dark:text-zinc-600 mt-1">▹</span>
                 <span className="leading-relaxed">
                   Added 3D visualization and live mapping to the product
                   front ends.
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
+                <span className="text-zinc-400 dark:text-zinc-600 mt-1">▹</span>
                 <span className="leading-relaxed">
                   Ran deployments on AWS with Docker and Nginx.
                 </span>
