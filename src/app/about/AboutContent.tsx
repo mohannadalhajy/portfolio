@@ -46,8 +46,9 @@ export default function AboutContent() {
           <h1 className="font-serif text-3xl text-zinc-900 dark:text-zinc-100 sm:text-4xl">About Me</h1>
           <div className="space-y-4 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
             <p>
-              Full Stack Developer with 5+ years of experience, weighted toward
-              the backend: scalable systems in Node.js, NestJS, and TypeScript,
+              Senior Software Engineer / Backend Engineer — a Full Stack
+              Developer with 5+ years of experience, weighted toward the
+              backend: scalable systems in Node.js, NestJS, and TypeScript,
               REST API and database design, and the integration work — payments,
               real-time messaging, cloud infrastructure — that has to be correct
               under load. I ship the frontend too, in React and Next.js, most

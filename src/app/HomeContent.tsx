@@ -43,7 +43,7 @@ export default function HomeContent() {
 
             <div className="relative">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-600 dark:text-zinc-400">
-                Full Stack Developer · Backend-Heavy · Dubai
+                Senior Software Engineer · Backend Engineer · Full Stack · Dubai
               </p>
               <h1 className="mt-2 font-serif text-5xl text-zinc-900 dark:text-zinc-100 sm:text-6xl lg:text-7xl">
                 Mohannad Alhajy
@@ -51,7 +51,8 @@ export default function HomeContent() {
             </div>
 
             <p className="max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Full stack, weighted to the backend. I build the systems behind
+              Senior Software Engineer and Backend Engineer, full stack with
+              the weight on the backend. I build the systems behind
               cross-platform payments, multi-tenant SaaS, and real-time features
               — Apple and Google billing that reconciles, one platform serving
               many companies without leaking data between them, chat and

@@ -7,8 +7,9 @@ import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
 import { resumeUrl, resumeViewUrl, resumeUpdated, siteConfig } from "@/lib/site";
 
 const highlights = [
+  { label: "Title", value: "Senior Software Engineer" },
   { label: "Experience", value: "5+ years" },
-  { label: "Focus", value: "Backend & APIs" },
+  { label: "Focus", value: "Backend Engineering & APIs" },
   { label: "Stack", value: "Node.js · NestJS · TypeScript" },
   { label: "Based in", value: "Dubai, UAE" },
 ];
@@ -25,7 +26,8 @@ export default function ResumeContent() {
         <h1 className="font-serif text-3xl text-zinc-900 dark:text-zinc-100 sm:text-4xl">Resume</h1>
         <p className="text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
           Read it here, or take a copy with you. Below is the same document I
-          send to hiring teams — scalable APIs, real-time systems, and
+          send to hiring teams for Senior Software Engineer and Backend
+          Engineer roles — scalable APIs, real-time systems, and
           subscription and payment flows in production for 30,000+ users.
         </p>
         <p className="text-sm text-zinc-500 dark:text-zinc-500">Last updated {resumeUpdated}</p>
@@ -63,10 +65,14 @@ export default function ResumeContent() {
 
       <motion.dl
         variants={FADE_DOWN_ANIMATION_VARIANTS}
-        className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-zinc-200 bg-zinc-200 sm:grid-cols-4 dark:border-zinc-800/60 dark:bg-zinc-800/60"
+        className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-zinc-200 bg-zinc-200 sm:grid-cols-5 dark:border-zinc-800/60 dark:bg-zinc-800/60"
       >
         {highlights.map((item) => (
-          <div key={item.label} className="bg-zinc-50 px-4 py-4 dark:bg-zinc-950">
+          <div
+            key={item.label}
+            // five tiles: the last one fills the row on the two-column phone layout
+            className="bg-zinc-50 px-4 py-4 max-sm:last:col-span-2 dark:bg-zinc-950"
+          >
             <dt className="text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-500">
               {item.label}
             </dt>
