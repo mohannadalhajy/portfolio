@@ -60,7 +60,7 @@ export default function SiteDots() {
               aria-current={isActive ? "page" : undefined}
               className={`flex-1 whitespace-nowrap rounded-full px-3 py-2 text-center text-[10px] font-medium uppercase tracking-[0.15em] transition-all duration-300 ${
                 isActive
-                  ? "bg-teal-400/10 text-teal-200 shadow-[0_0_16px_1px_rgba(45,212,191,0.25)] ring-1 ring-inset ring-teal-400/40"
+                  ? "bg-teal-400/10 text-teal-700 dark:text-teal-200 shadow-[0_0_16px_1px_rgba(45,212,191,0.25)] ring-1 ring-inset ring-teal-400/40"
                   : "text-zinc-500 dark:text-zinc-500"
               }`}
             >

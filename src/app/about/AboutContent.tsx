@@ -78,38 +78,6 @@ export default function AboutContent() {
         </div>
       </motion.div>
 
-      {/* Engineering Philosophy */}
-      <motion.section
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-50px" }}
-        variants={STAGGER_CHILDREN}
-        className="space-y-6 border-t border-zinc-200 dark:border-zinc-800/60 pt-10"
-      >
-        <h2 className="font-serif text-2xl text-zinc-900 dark:text-zinc-100">Engineering Philosophy</h2>
-        <p className="max-w-3xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-          Four things I&apos;ve argued for often enough to write down — one of
-          which I used to believe the opposite of.
-        </p>
-        <div className="divide-y divide-zinc-200 dark:divide-zinc-800/60 border-y border-zinc-200 dark:border-zinc-800/60">
-          {philosophy.map((item) => (
-            <motion.div
-              variants={FADE_DOWN_ANIMATION_VARIANTS}
-              key={item.number}
-              className="flex gap-6 py-6"
-            >
-              <div className="pt-1 font-serif text-sm text-amber-600 dark:text-amber-400">{item.number}</div>
-              <div>
-                <h3 className="font-serif text-lg text-zinc-900 dark:text-zinc-100">{item.title}</h3>
-                <p className="mt-1 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                  {item.desc}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-
       {/* Experience */}
       <motion.section
         initial="hidden"
@@ -203,6 +171,38 @@ export default function AboutContent() {
               </li>
             </ul>
           </TimelineItem>
+        </div>
+      </motion.section>
+
+      {/* Engineering Philosophy */}
+      <motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={STAGGER_CHILDREN}
+        className="space-y-6 border-t border-zinc-200 dark:border-zinc-800/60 pt-10"
+      >
+        <h2 className="font-serif text-2xl text-zinc-900 dark:text-zinc-100">Engineering Philosophy</h2>
+        <p className="max-w-3xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          Four things I&apos;ve argued for often enough to write down — one of
+          which I used to believe the opposite of.
+        </p>
+        <div className="divide-y divide-zinc-200 dark:divide-zinc-800/60 border-y border-zinc-200 dark:border-zinc-800/60">
+          {philosophy.map((item) => (
+            <motion.div
+              variants={FADE_DOWN_ANIMATION_VARIANTS}
+              key={item.number}
+              className="flex gap-6 py-6"
+            >
+              <div className="pt-1 font-serif text-sm text-amber-600 dark:text-amber-400">{item.number}</div>
+              <div>
+                <h3 className="font-serif text-lg text-zinc-900 dark:text-zinc-100">{item.title}</h3>
+                <p className="mt-1 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                  {item.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </motion.section>
 
