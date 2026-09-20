@@ -43,7 +43,7 @@ export default function HomeContent() {
 
             <div className="relative">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-600 dark:text-zinc-400">
-                Senior Software Engineer · Backend Engineer · Full Stack · Dubai
+                Senior Software Engineer · Backend-Focused Full Stack · Dubai
               </p>
               <h1 className="mt-2 font-serif text-5xl text-zinc-900 dark:text-zinc-100 sm:text-6xl lg:text-7xl">
                 Mohannad Alhajy
@@ -51,14 +51,14 @@ export default function HomeContent() {
             </div>
 
             <p className="max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Senior Software Engineer and Backend Engineer, full stack with
-              the weight on the backend. I build the systems behind
-              cross-platform payments, multi-tenant SaaS, and real-time features
-              — Apple and Google billing that reconciles, one platform serving
-              many companies without leaking data between them, chat and
-              notifications that hold up under load — then ship the React and
-              Next.js dashboards that operate them. Based in Dubai, shipping
-              production systems for HR, legal, proptech, and social platforms.
+              Senior Software Engineer, backend-focused full stack: I build the
+              systems behind cross-platform payments, multi-tenant SaaS, and
+              real-time features, then ship the React and Next.js dashboards
+              that operate them. That means Apple and Google billing that
+              reconciles, one platform serving many companies without leaking
+              data between them, and chat and notifications that hold up under
+              load — in production for HR, legal, proptech, and social
+              platforms, from Dubai.
             </p>
 
             <div className="flex divide-x divide-zinc-200 dark:divide-zinc-800/70 pt-2">

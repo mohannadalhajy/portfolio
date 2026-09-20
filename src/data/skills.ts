@@ -39,9 +39,6 @@ export const technologyGroups = [
       "LiveKit",
       "JWT",
       "Passport.js",
-      "class-validator",
-      "Multer",
-      "Helmet",
       "Rate Limiting",
     ],
   },
@@ -146,12 +143,25 @@ export const technologyGroups = [
       "Cypress",
       "Testing Library",
       "ESLint",
-      "Prettier",
       "Storybook",
       "Webpack",
-      "Git",
     ],
   },
+];
+
+// The handful I'd want a reader to leave with. Everything else on the About
+// page sits behind a toggle so this list is what gets read first.
+export const primaryTechnologies = [
+  "TypeScript",
+  "Node.js",
+  "NestJS",
+  "React",
+  "Next.js",
+  "MongoDB",
+  "PostgreSQL",
+  "Redis",
+  "AWS Lambda",
+  "Docker",
 ];
 
 // Flat view, derived so it can never drift from the grouped source above.

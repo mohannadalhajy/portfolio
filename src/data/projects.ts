@@ -7,6 +7,8 @@ export type CaseStudy = {
 export type Project = {
   slug: string;
   title: string;
+  /** One line on the hard part — shown in the projects list (<=120 chars). */
+  tagline: string;
   subtitle: string;
   caseStudy: CaseStudy;
   myContribution: string[];
@@ -17,6 +19,8 @@ export type Project = {
 const vidnikProject = {
   slug: "vidnik",
   title: "Vidnik",
+  tagline:
+    "Matchmaking backend with AWS Rekognition liveness checks, OpenAI photo moderation, and Apple/Google payment validation.",
   subtitle:
     "A modern halal matchmaking platform that helps Muslims connect for marriage through secure and respectful interactions. The application includes a mobile app for users and a backend system supporting authentication, profile management, matchmaking, messaging, and AI-based identity verification. The platform emphasizes privacy, guardian (wali) involvement, and culturally aligned communication.",
   caseStudy: {
@@ -74,6 +78,8 @@ const vidnikProject = {
 const vidnikCrmProject = {
   slug: "vidnik-crm",
   title: "Vidnik CRM",
+  tagline:
+    "Admin console where ~87 permission keys resolve both sidebar and routing, across ~90 moderation and revenue screens.",
   subtitle: `The internal operations console behind the Vidnik matchmaking platform — a role-based admin system covering user moderation, AI-assisted identity verification review, guardian (wali) oversight, matchmaking analytics, subscription and coin revenue, and a full customer support desk.
 
     Built for four distinct staff roles (Super Admin, Sub Admin, Tech Support, Customer Service) with granular per-screen permissions, so each team sees only the tools its job requires.`,
@@ -142,6 +148,8 @@ const vidnikCrmProject = {
 const axiomProject = {
   slug: "axiom",
   title: "Axiom",
+  tagline:
+    "One modular NestJS backend for four clients, with Whisper/Polly voice for Unity and Redlock locking on booking races.",
   subtitle:
     "A scalable multi-client platform for discovering UAE properties and managing relocation services. The system integrates a web application, administrative dashboard, and Unity 3D client, powered by a modular NestJS backend supporting AI interactions, real-time communication, and cloud-based infrastructure.",
   caseStudy: {
@@ -196,6 +204,8 @@ const axiomProject = {
 const exyarProject = {
   slug: "exyar",
   title: "Exyar",
+  tagline:
+    "One NestJS backend serving a booking site, an admin dashboard, and an API-key-gated AI gateway for car discovery.",
   subtitle: `A full-featured luxury car rental platform that allows users to browse and book premium vehicles through a web application while administrators manage inventory, bookings, and customers through an administrative dashboard.
     
     The platform also integrates an AI-powered conversational assistant that helps users discover cars and get booking assistance through natural language interaction.
@@ -234,6 +244,8 @@ const exyarProject = {
 const pmsProject = {
   slug: "pms",
   title: "PMS",
+  tagline:
+    "Agile data model from project to board, epic, sprint and task, under granular RBAC and Redis-cached task queries.",
   subtitle: `A full-featured Agile project management platform designed to help teams plan, track, and deliver projects efficiently. The system supports project planning, sprint management, task tracking, team collaboration, approvals, notifications, and document management. It enables organizations to structure work using boards, epics, sprints, and tasks while maintaining visibility across teams and workflows.
 
     The backend was built with a scalable modular architecture using NestJS and MongoDB, integrating caching, cloud storage, real-time notifications, and role-based access control to support complex enterprise workflows.`,
@@ -284,6 +296,8 @@ const pmsProject = {
 const zadlawProject = {
   slug: "zadlaw",
   title: "Zadlaw",
+  tagline:
+    "Consultations that book real Outlook slots via Microsoft Graph, auto-attach Zoom links, and bill through Stripe.",
   subtitle:
     "A full-featured web platform for a law firm, enabling clients to book consultation sessions and interact with services online, while providing administrators with a comprehensive dashboard to manage appointments, analytics, content, and user interactions efficiently. The backend is built with NestJS and TypeScript, ensuring scalable and secure operations.",
   caseStudy: {
@@ -333,6 +347,8 @@ const zadlawProject = {
 const hrSoftware = {
   slug: "hr-software",
   title: "HR Software",
+  tagline:
+    "Multi-tenant RBAC backend with isolated per-company data and a clock-in system that handles duplicate punches.",
   subtitle: `A comprehensive HR workforce management platform designed to streamline employee attendance tracking, task management, and organizational administration. The system enables companies to manage employees, monitor clock-in/clock-out activity, assign and track daily tasks, control permissions and roles, and manage company resources through an administrative dashboard.
     The platform supports multi-company management, allowing a super-admin to oversee multiple organizations, while each company can manage its own employees, roles, and operations. The backend architecture is built to be scalable, secure, and modular, with integrations for cloud storage, email notifications, caching, and background services.`,
   caseStudy: {
@@ -378,6 +394,8 @@ const hrSoftware = {
 const SIGProject = {
   slug: "save-in-gold-crm",
   title: "Save In Gold CRM",
+  tagline:
+    "Lead pipeline for 300k+ leads with cron-driven auto-assignment, overdue escalation, and Socket.IO dashboard updates.",
   subtitle: `A multi-role CRM built for Save In Gold's sales operation, managing leads, agents, tasks, and customer conversations across three access levels: Admin, Sales Manager, and Sales Agent.
 
     The platform tracks leads from multiple acquisition sources (mobile app, kiosk, website, social media), assigns them to agents, manages follow-up tasks, and centralizes customer communication in a unified inbox — all backed by role-based dashboards and reporting.`,
@@ -413,6 +431,8 @@ const SIGProject = {
 const ordersProject = {
   slug: "orders-delivery-system",
   title: "Orders Delivery System",
+  tagline:
+    "One Express backend keeping admin, client, and driver apps in sync through real-time order-status notifications.",
   subtitle:
     "Full-stack delivery platform with an admin dashboard, client and driver apps, and a central backend.",
   caseStudy: {
@@ -444,6 +464,8 @@ const ordersProject = {
 const realestateProject = {
   slug: "real-estate-management",
   title: "Real Estate Management",
+  tagline:
+    "Custom Vector Space Model search engine instead of an off-the-shelf service, plus behavior-driven recommendations.",
   subtitle:
     "Listings management system with custom search and personalized recommendations.",
   caseStudy: {

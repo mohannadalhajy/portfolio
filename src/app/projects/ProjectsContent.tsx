@@ -27,7 +27,7 @@ export default function ProjectsContent() {
       <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="space-y-2">
         <h1 className="font-serif text-3xl text-zinc-900 dark:text-zinc-100 sm:text-4xl">Projects</h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-400">
-          Selected work focusing on scalable backends, payments, and real-time systems.
+          Work focused on scalable backends, payments, and real-time systems.
         </p>
       </motion.div>
 
@@ -76,8 +76,8 @@ export default function ProjectsContent() {
                     <ArrowRight className="h-4 w-4 shrink-0 text-zinc-400 dark:text-zinc-600 transition-all group-hover:translate-x-1 group-hover:text-amber-600 dark:group-hover:text-amber-400" />
                   </div>
 
-                  <p className="mt-2 max-w-2xl line-clamp-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                    {p.subtitle}
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                    {p.tagline}
                   </p>
 
                   <p className="mt-3 text-xs uppercase tracking-wide text-zinc-600 dark:text-zinc-400">

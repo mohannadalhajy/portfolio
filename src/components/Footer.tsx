@@ -45,7 +45,7 @@ export default function Footer() {
             </a>
             <span className="flex items-center gap-2">
               <Link href={resumePage} className={linkClass}>
-                Résumé
+                Resume
               </Link>
               <span className="text-xs text-zinc-500 dark:text-zinc-500">
                 Updated {resumeUpdated}

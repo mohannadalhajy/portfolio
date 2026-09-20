@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import ProjectGallery from "@/components/project-gallery";
 import { motion } from "framer-motion";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
-import { technologyGroups } from "@/data/skills";
+import { primaryTechnologies, technologyGroups } from "@/data/skills";
 import TechIcon from "@/components/tech-icon";
 
 const philosophy = [
@@ -47,9 +48,8 @@ export default function AboutContent() {
           <h1 className="font-serif text-3xl text-zinc-900 dark:text-zinc-100 sm:text-4xl">About Me</h1>
           <div className="space-y-4 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
             <p>
-              Senior Software Engineer / Backend Engineer — a Full Stack
-              Developer with 5+ years of experience, weighted toward the
-              backend: scalable systems in Node.js, NestJS, and TypeScript,
+              Senior Software Engineer, backend-focused full stack, with 5+
+              years of experience: scalable systems in Node.js, NestJS, and TypeScript,
               REST API and database design, and the integration work — payments,
               real-time messaging, cloud infrastructure — that has to be correct
               under load. I ship the frontend too, in React and Next.js, most
@@ -238,10 +238,49 @@ export default function AboutContent() {
       >
         <h2 className="font-serif text-lg text-zinc-900 dark:text-zinc-100">Technologies</h2>
         <p className="max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-          The stack behind the projects I&apos;ve shipped — everything listed
-          here is something I&apos;ve used in production.
+          What I reach for on almost every project, and what I&apos;d be happy
+          to be questioned on in depth.
         </p>
-        <div className="space-y-6 pt-2">
+        <TechnologyWall />
+      </motion.div>
+    </motion.div>
+  );
+}
+
+/* Primary stack up front; the full grouped list stays one click away so the
+   depth is available without burying the ten things that matter. */
+function TechnologyWall() {
+  const [showAll, setShowAll] = useState(false);
+
+  return (
+    <div className="space-y-6 pt-2">
+      <div className="flex flex-wrap gap-2">
+        {primaryTechnologies.map((tech) => (
+          <span
+            key={tech}
+            className="inline-flex items-center gap-1.5 rounded-full border border-amber-600/30 bg-amber-500/10 px-3 py-1 text-sm font-medium text-amber-900 dark:border-amber-500/30 dark:text-amber-200"
+          >
+            <TechIcon name={tech} />
+            {tech}
+          </span>
+        ))}
+      </div>
+
+      <button
+        type="button"
+        onClick={() => setShowAll((v) => !v)}
+        aria-expanded={showAll}
+        className="text-sm text-zinc-600 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:decoration-zinc-700 dark:hover:text-zinc-100"
+      >
+        {showAll ? "Hide full stack" : "Show the full stack"}
+      </button>
+
+      {showAll && (
+        <div className="space-y-6">
+          <p className="max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            Everything below has shipped in production on the projects listed
+            above.
+          </p>
           {technologyGroups.map((group) => (
             <div key={group.label} className="space-y-3">
               <h3 className="text-xs font-medium uppercase tracking-wider text-amber-700/80 dark:text-amber-500/60">
@@ -251,7 +290,7 @@ export default function AboutContent() {
                 {group.items.map((tech) => (
                   <span
                     key={tech}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 dark:border-zinc-800/60 px-3 py-1 text-sm text-zinc-700 dark:text-zinc-300"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 px-3 py-1 text-sm text-zinc-700 dark:border-zinc-800/60 dark:text-zinc-300"
                   >
                     <TechIcon name={tech} />
                     {tech}
@@ -261,8 +300,8 @@ export default function AboutContent() {
             </div>
           ))}
         </div>
-      </motion.div>
-    </motion.div>
+      )}
+    </div>
   );
 }
 

@@ -13,11 +13,9 @@ import {
   PenLine,
   Puzzle,
   ScrollText,
-  Shield,
   ShieldCheck,
   Smartphone,
   Timer,
-  Upload,
   Users,
   type LucideIcon,
 } from "lucide-react";
@@ -28,9 +26,6 @@ import { brandIcons } from "@/data/tech-icons";
 const fallbackIcons: Record<string, LucideIcon> = {
   SQL: Database,
   "REST APIs": Braces,
-  "class-validator": ShieldCheck,
-  Multer: Upload,
-  Helmet: Shield,
   "Rate Limiting": Gauge,
   Redlock: KeyRound,
   Zustand: Blocks,

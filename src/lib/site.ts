@@ -19,9 +19,9 @@ export const resumeUpdated = "Sept 2026";
 
 export const siteConfig = {
   name: "Mohannad Alhajy",
-  title: "Mohannad Alhajy | Senior Software Engineer (Backend / Full Stack)",
+  title: "Mohannad Alhajy | Senior Software Engineer, Backend-Focused Full Stack",
   description:
-    "Senior Software Engineer and Backend Engineer, full stack \u2014 scalable APIs, real-time systems, and subscription/payment flows in Node.js & NestJS, serving 30,000+ users in production.",
+    "Senior Software Engineer, backend-focused full stack \u2014 scalable APIs, real-time systems, and subscription/payment flows in Node.js & NestJS, serving 30,000+ users in production.",
   email: "mohannad.alhajy@gmail.com",
   github: "https://github.com/mohannadalhajy",
   linkedin: "https://linkedin.com/in/mohannad-alhajy",
