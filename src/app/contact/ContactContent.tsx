@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { MapPin, Clock, Download, Eye, ArrowUpRight } from "lucide-react";
+import { MapPin, Clock, Download, Eye, ArrowUpRight, Mail } from "lucide-react";
+import { WhatsAppIcon, LinkedInIcon, GitHubIcon } from "@/components/BrandIcons";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
 import { siteConfig, resumeUrl, resumePage, resumeUpdated } from "@/lib/site";
 import CopyButton from "@/components/CopyButton";
@@ -12,24 +13,28 @@ import ContactForm from "@/components/ContactForm";
 const contactMethods = [
   {
     title: "Email",
+    icon: Mail,
     subtitle: siteConfig.email,
     href: `mailto:${siteConfig.email}`,
     copyValue: siteConfig.email,
   },
   {
     title: "WhatsApp",
-    subtitle: "+971 50 998 7098",
-    href: "https://wa.me/971509987098?text=Hello%20Mohannad%2C%20I%20saw%20your%20portfolio",
+    icon: WhatsAppIcon,
+    subtitle: siteConfig.phone,
+    href: siteConfig.whatsapp,
     copyValue: "+971509987098",
   },
   {
     title: "LinkedIn",
+    icon: LinkedInIcon,
     subtitle: "mohannad-alhajy",
     href: siteConfig.linkedin,
     copyValue: siteConfig.linkedin,
   },
   {
     title: "GitHub",
+    icon: GitHubIcon,
     subtitle: "@mohannadalhajy",
     href: siteConfig.github,
     copyValue: siteConfig.github,
@@ -105,9 +110,12 @@ export default function ContactContent() {
                   aria-label={`Open ${method.title}`}
                   className="flex min-w-0 flex-1 items-center justify-between gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/60"
                 >
-                  <div className="min-w-0">
-                    <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{method.title}</div>
-                    <div className="truncate text-xs text-zinc-600 dark:text-zinc-400">{method.subtitle}</div>
+                  <div className="flex min-w-0 items-center gap-3">
+                    <method.icon className="h-5 w-5 shrink-0 text-zinc-500 transition-colors group-hover:text-amber-600 dark:text-zinc-500 dark:group-hover:text-amber-400" />
+                    <div className="min-w-0">
+                      <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{method.title}</div>
+                      <div className="truncate text-xs text-zinc-600 dark:text-zinc-400">{method.subtitle}</div>
+                    </div>
                   </div>
                   <ArrowUpRight className="h-4 w-4 shrink-0 text-zinc-400 dark:text-zinc-600 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-amber-600 dark:group-hover:text-amber-400" />
                 </a>

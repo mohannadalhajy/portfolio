@@ -5,6 +5,7 @@ import ProjectGallery from "@/components/project-gallery";
 import { motion } from "framer-motion";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
 import { technologyGroups } from "@/data/skills";
+import TechIcon from "@/components/tech-icon";
 
 const philosophy = [
   {
@@ -250,8 +251,9 @@ export default function AboutContent() {
                 {group.items.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-full border border-zinc-200 dark:border-zinc-800/60 px-3 py-1 text-sm text-zinc-700 dark:text-zinc-300"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 dark:border-zinc-800/60 px-3 py-1 text-sm text-zinc-700 dark:text-zinc-300"
                   >
+                    <TechIcon name={tech} />
                     {tech}
                   </span>
                 ))}

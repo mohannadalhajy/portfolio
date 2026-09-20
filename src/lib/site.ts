@@ -25,4 +25,7 @@ export const siteConfig = {
   email: "mohannad.alhajy@gmail.com",
   github: "https://github.com/mohannadalhajy",
   linkedin: "https://linkedin.com/in/mohannad-alhajy",
+  phone: "+971 50 998 7098",
+  whatsapp:
+    "https://wa.me/971509987098?text=Hello%20Mohannad%2C%20I%20saw%20your%20portfolio",
 };

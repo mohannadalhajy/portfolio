@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { Mail } from "lucide-react";
+import { WhatsAppIcon, LinkedInIcon, GitHubIcon } from "@/components/BrandIcons";
 import { resumePage, resumeUpdated, siteConfig } from "@/lib/site";
 
 const linkClass =
-  "underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-zinc-900 hover:decoration-amber-400 dark:decoration-zinc-700 dark:hover:text-zinc-100";
+  "inline-flex items-center gap-1.5 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-zinc-900 hover:decoration-amber-400 dark:decoration-zinc-700 dark:hover:text-zinc-100";
 
 export default function Footer() {
   return (
@@ -11,7 +13,17 @@ export default function Footer() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <nav aria-label="Contact" className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <a href={`mailto:${siteConfig.email}`} className={linkClass}>
+              <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
               {siteConfig.email}
+            </a>
+            <a
+              href={siteConfig.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={linkClass}
+            >
+              <WhatsAppIcon className="h-4 w-4 shrink-0" />
+              WhatsApp
             </a>
             <a
               href={siteConfig.linkedin}
@@ -19,6 +31,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className={linkClass}
             >
+              <LinkedInIcon className="h-4 w-4 shrink-0" />
               LinkedIn
             </a>
             <a
@@ -27,6 +40,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className={linkClass}
             >
+              <GitHubIcon className="h-4 w-4 shrink-0" />
               GitHub
             </a>
             <span className="flex items-center gap-2">
