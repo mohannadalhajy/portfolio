@@ -63,3 +63,7 @@ Thumbs.db
 # redis
 dump.rdb
 *.rdb
+
+# scratch notes
+CRM Vidnik
+Untitled-*
