@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { MotionConfig } from "framer-motion";
 import "./globals.css";
 import SiteDots from "@/components/SiteDots";
+import SiteHeader from "@/components/SiteHeader";
 import Footer from "@/components/Footer";
 import ThemeToggle from "@/components/ThemeToggle";
 import SEOJsonLd from "./seo";
@@ -116,11 +117,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             Skip to content
           </a>
           <ThemeToggle />
+          <SiteHeader />
           <SiteDots />
           <main
             id="main-content"
             tabIndex={-1}
-            className="mx-auto w-full max-w-5xl flex-1 px-4 pb-32 pt-10 relative z-10 sm:pb-10 sm:pl-16 focus:outline-none"
+            className="mx-auto w-full max-w-5xl flex-1 px-4 pb-32 pt-10 relative z-10 sm:pb-10 focus:outline-none"
           >
             {children}
           </main>

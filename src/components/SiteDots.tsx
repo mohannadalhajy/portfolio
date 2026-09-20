@@ -41,49 +41,9 @@ export default function SiteDots() {
     };
   }, []);
 
+  // pill tab bar — mobile only; the desktop nav lives in SiteHeader
   return (
-    <>
-      {/* dot rail — desktop/tablet only */}
-      <nav
-        aria-label="Site navigation"
-        className="fixed left-6 top-1/2 z-50 hidden -translate-y-1/2 flex-col gap-5 rounded-full border border-zinc-200 bg-zinc-50/60 px-2.5 py-5 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/60 sm:flex"
-      >
-        {pages.map((p) => {
-          const isActive = pathname === p.href;
-          return (
-            <Link
-              key={p.href}
-              href={p.href}
-              aria-label={p.label}
-              aria-current={isActive ? "page" : undefined}
-              className="group relative flex h-6 w-6 items-center justify-center"
-            >
-              <span className="relative grid h-3 w-3 shrink-0 place-items-center">
-                <span
-                  className={`h-1.5 w-1.5 rounded-full transition-all duration-500 ease-out ${
-                    isActive
-                      ? "scale-125 bg-teal-300 shadow-[0_0_8px_2px_rgba(45,212,191,0.7)]"
-                      : "bg-zinc-400 group-hover:scale-125 group-hover:bg-teal-300 group-hover:shadow-[0_0_8px_2px_rgba(45,212,191,0.7)] dark:bg-zinc-500"
-                  }`}
-                />
-                <span
-                  className={`absolute inset-0 rounded-full border transition-all duration-700 ease-out ${
-                    isActive
-                      ? "scale-[2.1] border-amber-400/60 opacity-100"
-                      : "scale-100 border-transparent opacity-0 group-hover:scale-[2.1] group-hover:border-amber-400/40 group-hover:opacity-100"
-                  }`}
-                />
-              </span>
-              <span className="pointer-events-none absolute left-7 -translate-x-1 whitespace-nowrap rounded-full border border-teal-400/30 bg-zinc-50/90 px-5 py-3 text-xs uppercase tracking-[0.2em] text-zinc-800 opacity-0 shadow-[0_0_20px_2px_rgba(45,212,191,0.15)] backdrop-blur transition-all duration-500 ease-out group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100 dark:bg-zinc-950/90 dark:text-zinc-200">
-                {p.label}
-              </span>
-            </Link>
-          );
-        })}
-      </nav>
-
-      {/* pill tab bar — mobile only */}
-      <nav
+    <nav
         aria-label="Site navigation"
         className="fixed inset-x-4 z-50 flex items-center justify-between gap-1 rounded-full border border-zinc-200 bg-zinc-50/80 px-1.5 py-1.5 shadow-lg backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/80 sm:hidden"
         style={{
@@ -108,7 +68,6 @@ export default function SiteDots() {
             </Link>
           );
         })}
-      </nav>
-    </>
+    </nav>
   );
 }
