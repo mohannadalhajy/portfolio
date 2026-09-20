@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
 import ProjectGallery from "@/components/project-gallery";
@@ -107,6 +107,23 @@ export default async function ProjectDetailsPage({
             {project.stack.join(" · ")}
           </p>
         )}
+
+        {project.links.length > 0 && (
+          <div className="flex flex-wrap gap-3 pt-4">
+            {project.links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-2 rounded-full border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-800 transition-colors hover:border-amber-500 hover:text-amber-600 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-amber-400 dark:hover:text-amber-300"
+              >
+                {l.label}
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </a>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Case study: Problem / Approach / Result */}
@@ -128,23 +145,6 @@ export default async function ProjectDetailsPage({
 
       {/* What I built */}
       <Section title="What I Built" items={project.myContribution} />
-
-      {/* Links */}
-      {project.links.length > 0 && (
-        <div className="flex flex-wrap gap-6 border-t border-zinc-200 dark:border-zinc-800/60 pt-8">
-          {project.links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-amber-600 hover:decoration-amber-500 dark:text-zinc-300 dark:decoration-zinc-700 dark:hover:text-amber-300 dark:hover:decoration-amber-400"
-            >
-              {l.label}
-            </a>
-          ))}
-        </div>
-      )}
 
       {project.photos.length > 0 && (
         <ProjectGallery images={project.photos} alt={`${project.title} screenshot`} />

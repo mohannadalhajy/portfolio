@@ -292,7 +292,12 @@ const zadlawProject = {
     "Stripe",
     "AWS",
   ],
-  links: [],
+  links: [
+    {
+      label: "Live Website",
+      href: "https://arashzad.com",
+    },
+  ],
   photos: [
     "/zadlaw/zadlaw-website-home.webp",
     "/zadlaw/zadlaw-admin-dashboard.webp",
