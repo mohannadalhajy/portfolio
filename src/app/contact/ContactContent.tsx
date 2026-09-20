@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { MapPin, Clock, Download, ArrowUpRight } from "lucide-react";
+import { MapPin, Clock, Download, Eye, ArrowUpRight } from "lucide-react";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
-import { siteConfig, resumeUrl, resumeUpdated } from "@/lib/site";
+import { siteConfig, resumeUrl, resumePage, resumeUpdated } from "@/lib/site";
 import CopyButton from "@/components/CopyButton";
 import StatusBadge from "@/components/StatusBadge";
 import ContactForm from "@/components/ContactForm";
@@ -72,14 +73,13 @@ export default function ContactContent() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <a
-              href={resumeUrl}
-              download
+            <Link
+              href={resumePage}
               className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-4 transition-colors hover:decoration-amber-500 dark:text-zinc-100 dark:decoration-zinc-700 dark:hover:decoration-amber-400"
             >
-              <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
-              Download Resume
-            </a>
+              <Eye className="h-4 w-4" />
+              View Resume
+            </Link>
             <span className="text-xs font-medium text-zinc-500 dark:text-zinc-500">
               Updated {resumeUpdated}
             </span>

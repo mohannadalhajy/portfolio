@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { resumeUrl, siteConfig } from "@/lib/site";
+import { resumePage, siteConfig } from "@/lib/site";
 
 const pages = [
   { href: "/", label: "Home" },
@@ -46,13 +46,24 @@ export default function SiteHeader() {
               </Link>
             );
           })}
-          <a
-            href={resumeUrl}
-            download
-            className="ml-2 rounded-full border border-teal-500/40 px-3 py-1.5 text-sm text-teal-700 transition-colors hover:border-teal-500/70 hover:bg-teal-500/10 dark:text-teal-300"
-          >
-            Resume
-          </a>
+          <span className="ml-2 inline-flex items-center overflow-hidden rounded-full border border-teal-500/40 transition-colors hover:border-teal-500/70">
+            <Link
+              href={resumePage}
+              aria-current={pathname === resumePage ? "page" : undefined}
+              className="px-3 py-1.5 text-sm text-teal-700 transition-colors hover:bg-teal-500/10 dark:text-teal-300"
+            >
+              Resume
+            </Link>
+            {/* <a
+              href={resumeUrl}
+              download
+              aria-label="Download resume"
+              title="Download resume"
+              className="border-l border-teal-500/40 px-2.5 py-1.5 text-teal-700 transition-colors hover:bg-teal-500/10 dark:text-teal-300"
+            >
+              <Download className="h-3.5 w-3.5" />
+            </a> */}
+          </span>
         </nav>
       </div>
     </header>

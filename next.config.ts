@@ -22,6 +22,17 @@ const nextConfig: NextConfig = {
         headers: securityHeaders,
       },
       {
+        // The resume page embeds this route in an <object>, which is a nested
+        // browsing context — the global X-Frame-Options: DENY blocks that even
+        // same-origin. Relax it to same-origin framing for the PDF only. Listed
+        // after the catch-all so it overrides it (later rule wins).
+        source: "/api/resume",
+        headers: [
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self'" },
+        ],
+      },
+      {
         // Static assets in public/ are content-stable; serve them from cache.
         source: "/:path*.(png|jpg|jpeg|webp|avif|ico|pdf)",
         headers: [

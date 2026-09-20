@@ -6,6 +6,15 @@ export const resumeFile = "/mohannad-alhajy-cv.pdf";
 // Links point at the API route instead of the file so downloads can be
 // emailed; the route streams the PDF from `resumeFile`.
 export const resumeUrl = "/api/resume";
+
+// Same route, but asks it to serve the PDF inline so the browser's viewer
+// opens it instead of committing the visitor to a download. Used by the
+// preview embed on `resumePage` and the "open in new tab" links.
+export const resumeViewUrl = "/api/resume?view=1";
+
+// The framed resume page — where "view" links point, so visitors land in the
+// site rather than on a bare PDF.
+export const resumePage = "/resume";
 export const resumeUpdated = "Sept 2026";
 
 export const siteConfig = {

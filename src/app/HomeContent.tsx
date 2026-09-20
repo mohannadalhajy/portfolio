@@ -4,10 +4,10 @@ import HeroGem from "@/components/HeroGem";
 import StatusBadge from "@/components/StatusBadge";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Eye } from "lucide-react";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
 import { skillGroups } from "@/data/skills";
-import { resumeUrl, resumeUpdated } from "@/lib/site";
+import { resumeUrl, resumePage, resumeUpdated } from "@/lib/site";
 
 const testimonials = [
   {
@@ -146,14 +146,13 @@ export default function HomeContent() {
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Link>
         <span className="inline-flex items-center gap-2">
-          <a
-            href={resumeUrl}
-            download
+          <Link
+            href={resumePage}
             className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-zinc-900 hover:decoration-amber-400 dark:text-zinc-300 dark:decoration-zinc-700 dark:hover:text-zinc-100"
           >
-            <Download className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
-            Download Resume
-          </a>
+            <Eye className="h-4 w-4" />
+            View Resume
+          </Link>
           <span className="text-xs font-medium text-zinc-500 dark:text-zinc-500">
             Updated {resumeUpdated}
           </span>

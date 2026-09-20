@@ -40,7 +40,7 @@ async function notify(details: Record<string, string>) {
     const { error } = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: siteConfig.email,
-      subject: "Someone downloaded your resume",
+      subject: `Someone ${details.Action} your resume`,
       text: rows.map(([key, value]) => `${key}: ${value}`).join("\n"),
       html: rows
         .map(([key, value]) => `<p><strong>${key}:</strong> ${escapeHtml(value)}</p>`)
@@ -53,7 +53,11 @@ async function notify(details: Record<string, string>) {
 }
 
 export async function GET(request: Request) {
+  // `?view=1` renders the PDF in the browser; anything else downloads it.
+  const inline = new URL(request.url).searchParams.get("view") !== null;
+
   const details = {
+    Action: inline ? "viewed" : "downloaded",
     IP: getClientIp(request),
     Referrer: request.headers.get("referer") ?? "direct",
     "User agent": request.headers.get("user-agent") ?? "unknown",
@@ -81,7 +85,7 @@ export async function GET(request: Request) {
   return new NextResponse(upstream.body, {
     headers: {
       "Content-Type": "application/pdf",
-      "Content-Disposition": `attachment; filename="${resumeFile.replace(/^\//, "")}"`,
+      "Content-Disposition": `${inline ? "inline" : "attachment"}; filename="${resumeFile.replace(/^\//, "")}"`,
       "Cache-Control": "no-store",
     },
   });
