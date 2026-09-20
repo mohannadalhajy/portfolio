@@ -48,20 +48,21 @@ export default function AboutContent() {
           <h1 className="font-serif text-3xl text-zinc-900 dark:text-zinc-100 sm:text-4xl">About Me</h1>
           <div className="space-y-4 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
             <p>
-              Senior Software Engineer, backend-focused full stack, with 5+
-              years of experience: scalable systems in Node.js, NestJS, and TypeScript,
-              REST API and database design, and the integration work — payments,
-              real-time messaging, cloud infrastructure — that has to be correct
-              under load. I ship the frontend too, in React and Next.js, most
-              often the dashboards and admin consoles that operate what I built
-              on the server.
+              I came to backend work through the parts of a product that break
+              quietly. I studied Software and Information Systems Engineering in
+              Damascus, started in Dubai in 2020 on enterprise systems where a
+              tenant leaking data was the worst thing that could happen, and
+              have spent the five years since owning the seams — billing,
+              webhooks, sockets, deploys — where somebody else&apos;s service
+              meets mine and neither one can be trusted to behave.
             </p>
             <p>
-              I&apos;ve contributed to multiple production platforms including
-              social apps, legal services, car rentals, HR management, and project
-              management systems. My work focuses on building reliable systems
-              that integrate real-world services such as payments, messaging,
-              real-time communication, and cloud infrastructure.
+              That work shaped a fairly opinionated way of building: fewer
+              moving pieces than the architecture diagram wants, writes that
+              survive being replayed, and a strong preference for the boring
+              solution I can debug at 3am over the clever one I can demo. Some
+              of it I changed my mind about the hard way. The four below are the
+              ones I&apos;d actually argue for.
             </p>
           </div>
         </div>

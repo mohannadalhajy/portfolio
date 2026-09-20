@@ -38,7 +38,10 @@ export default function HomeContent() {
         className="space-y-10"
       >
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
-          <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="space-y-5 lg:max-w-xl">
+          <motion.div
+            variants={FADE_DOWN_ANIMATION_VARIANTS}
+            className="space-y-5 lg:max-w-xl"
+          >
             <StatusBadge />
 
             <div className="relative">
@@ -51,19 +54,20 @@ export default function HomeContent() {
             </div>
 
             <p className="max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Senior Software Engineer, backend-focused full stack: I build the
-              systems behind cross-platform payments, multi-tenant SaaS, and
-              real-time features, then ship the React and Next.js dashboards
-              that operate them. That means Apple and Google billing that
-              reconciles, one platform serving many companies without leaking
-              data between them, and chat and notifications that hold up under
-              load — in production for HR, legal, proptech, and social
-              platforms, from Dubai.
+              I'm a backend-focused full stack engineer with 5+ years of
+              experience building the systems behind payments, multi-tenant
+              SaaS, and real-time features, then shipping the React and Next.js
+              dashboards that operate them. My work is live in HR, legal,
+              proptech, automotive, and social platforms, from Dubai. I care
+              about billing that reconciles, tenant data that never leaks, and
+              chat and notifications that hold up under load.
             </p>
 
             <div className="flex divide-x divide-zinc-200 dark:divide-zinc-800/70 pt-2">
               <div className="pr-8">
-                <div className="font-serif text-3xl text-zinc-900 dark:text-zinc-100">5+</div>
+                <div className="font-serif text-3xl text-zinc-900 dark:text-zinc-100">
+                  5+
+                </div>
                 <div className="mt-1 text-xs uppercase tracking-widest text-zinc-600 dark:text-zinc-400">
                   Years experience
                 </div>
@@ -72,7 +76,9 @@ export default function HomeContent() {
                 href="/projects"
                 className="group px-8 transition-opacity hover:opacity-80"
               >
-                <div className="font-serif text-3xl text-zinc-900 dark:text-zinc-100">20+</div>
+                <div className="font-serif text-3xl text-zinc-900 dark:text-zinc-100">
+                  20+
+                </div>
                 <div className="mt-1 flex items-center gap-1 text-xs uppercase tracking-widest text-zinc-600 dark:text-zinc-400">
                   Completed projects
                   <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
@@ -101,7 +107,9 @@ export default function HomeContent() {
               <div className="text-xs font-medium uppercase tracking-widest text-amber-600 dark:text-amber-400">
                 {s.label}
               </div>
-              <div className="text-sm text-zinc-600 dark:text-zinc-400">{s.tools}</div>
+              <div className="text-sm text-zinc-600 dark:text-zinc-400">
+                {s.tools}
+              </div>
             </div>
           ))}
         </motion.div>
@@ -125,8 +133,8 @@ export default function HomeContent() {
               &ldquo;{t.quote}&rdquo;
             </p>
             <footer className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
-              <span className="text-zinc-700 dark:text-zinc-300">{t.name}</span> · {t.role},{" "}
-              {t.company}
+              <span className="text-zinc-700 dark:text-zinc-300">{t.name}</span>{" "}
+              · {t.role}, {t.company}
             </footer>
           </motion.blockquote>
         ))}
