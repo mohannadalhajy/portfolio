@@ -1,12 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { projects } from "@/data/projects";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
 
 const MAX_VISIBLE_TAGS = 4;
+
+// Rows above the fold load eagerly; the rest are lazy so the list
+// doesn't pull ~10 screenshots on first paint.
+const EAGER_THUMBNAILS = 3;
 
 const ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
 
@@ -20,47 +25,67 @@ export default function ProjectsContent() {
       className="space-y-12"
     >
       <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="space-y-2">
-        <h1 className="font-serif text-3xl text-zinc-100 sm:text-4xl">Projects</h1>
-        <p className="text-lg text-zinc-400">
-          Selected work focusing on scalable backends, payments, and real-time systems.
+        <h1 className="font-serif text-3xl text-zinc-900 dark:text-zinc-100 sm:text-4xl">Projects</h1>
+        <p className="text-lg text-zinc-600 dark:text-zinc-400">
+          Work focused on scalable backends, payments, and real-time systems.
         </p>
       </motion.div>
 
-      <div className="divide-y divide-zinc-800/60 border-y border-zinc-800/60">
+      <div className="divide-y divide-zinc-200 dark:divide-zinc-800/60 border-y border-zinc-200 dark:border-zinc-800/60">
         {projects.map((p, i) => {
           const visibleTags = p.stack.slice(0, MAX_VISIBLE_TAGS);
           const remaining = p.stack.length - visibleTags.length;
+          const thumbnail = p.photos[0];
 
           return (
-            <motion.div
-              variants={FADE_DOWN_ANIMATION_VARIANTS}
-              key={p.slug}
-              className="group relative py-6"
-            >
+            <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} key={p.slug}>
               <Link
                 href={`/projects/${p.slug}`}
-                className="absolute inset-0"
                 aria-label={`View ${p.title} details`}
-              />
+                className="group flex gap-4 py-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/60 sm:gap-6"
+              >
+                <div className="relative aspect-[4/3] w-28 shrink-0 overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900 sm:w-40">
+                  {thumbnail ? (
+                    <Image
+                      src={thumbnail}
+                      alt={`${p.title} screenshot`}
+                      fill
+                      sizes="(min-width: 640px) 160px, 112px"
+                      loading={i < EAGER_THUMBNAILS ? "eager" : "lazy"}
+                      fetchPriority={i < EAGER_THUMBNAILS ? "high" : "auto"}
+                      className="object-cover transition duration-300 group-hover:scale-105"
+                    />
+                  ) : (
+                    <span
+                      aria-hidden
+                      className="flex h-full w-full items-center justify-center font-serif text-2xl text-zinc-400 dark:text-zinc-600"
+                    >
+                      {ROMAN[i] ?? i + 1}
+                    </span>
+                  )}
+                </div>
 
-              <div className="flex items-baseline justify-between gap-4">
-                <h2 className="flex items-baseline gap-3 font-serif text-xl text-zinc-100 transition-colors group-hover:text-amber-300">
-                  <span className="font-sans text-xs font-medium tracking-widest text-amber-500/50">
-                    {ROMAN[i] ?? i + 1}
-                  </span>
-                  {p.title}
-                </h2>
-                <ArrowRight className="h-4 w-4 shrink-0 text-zinc-600 transition-all group-hover:translate-x-1 group-hover:text-amber-400" />
-              </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h2 className="flex items-baseline gap-3 font-serif text-xl text-zinc-900 dark:text-zinc-100 transition-colors group-hover:text-amber-600 dark:group-hover:text-amber-300">
+                      <span className="font-sans text-xs font-medium tracking-widest text-amber-600/70 dark:text-amber-500/50">
+                        {ROMAN[i] ?? i + 1}
+                      </span>
+                      {p.title}
+                    </h2>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-zinc-400 dark:text-zinc-600 transition-all group-hover:translate-x-1 group-hover:text-amber-600 dark:group-hover:text-amber-400" />
+                  </div>
 
-              <p className="mt-2 max-w-2xl line-clamp-2 text-sm leading-relaxed text-zinc-400">
-                {p.subtitle}
-              </p>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                    {p.tagline}
+                  </p>
 
-              <p className="mt-3 text-xs uppercase tracking-wide text-zinc-400">
-                {visibleTags.join(" · ")}
-                {remaining > 0 && ` · +${remaining} more`}
-              </p>
+                  <p className="mt-3 text-xs uppercase tracking-wide text-zinc-600 dark:text-zinc-400">
+                    {visibleTags.join(" · ")}
+                    {remaining > 0 && ` · +${remaining} more`}
+                  </p>
+                </div>
+              </Link>
             </motion.div>
           );
         })}

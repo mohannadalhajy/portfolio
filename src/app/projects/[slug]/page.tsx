@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
 import ProjectGallery from "@/components/project-gallery";
@@ -50,6 +51,14 @@ export default async function ProjectDetailsPage({
 
   const projectUrl = `${siteUrl}/projects/${project.slug}`;
 
+  // Sequential paging follows the order of the `projects` array, which is the
+  // same order the index lists them in — so "next" always means "the one
+  // below this on /projects". Deliberately non-wrapping: at either end the
+  // slot falls back to the index so the reader is never dropped.
+  const index = projects.findIndex((p) => p.slug === project.slug);
+  const previous = index > 0 ? projects[index - 1] : null;
+  const next = index < projects.length - 1 ? projects[index + 1] : null;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -80,59 +89,56 @@ export default async function ProjectDetailsPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
+      <Link
+        href="/projects"
+        className="group inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-zinc-600 transition-colors hover:text-amber-600 dark:text-zinc-400 dark:hover:text-amber-400"
+      >
+        <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1" />
+        All projects
+      </Link>
+
       {/* Hero */}
-      <div className="space-y-4 border-b border-zinc-800/60 pb-10">
-        <Link
-          href="/projects"
-          className="text-xs font-medium uppercase tracking-widest text-zinc-400 transition-colors hover:text-amber-400"
-        >
-          ← All projects
-        </Link>
-        <h1 className="font-serif text-4xl text-zinc-100">{project.title}</h1>
-        <p className="max-w-2xl text-lg leading-relaxed text-zinc-400">{project.subtitle}</p>
+      <div className="space-y-4 border-b border-zinc-200 dark:border-zinc-800/60 pb-10">
+        <h1 className="font-serif text-4xl text-zinc-900 dark:text-zinc-100">{project.title}</h1>
+        <p className="max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">{project.subtitle}</p>
 
         {project.stack.length > 0 && (
-          <p className="pt-2 text-xs uppercase tracking-wide text-zinc-400">
+          <p className="pt-2 text-xs uppercase tracking-wide text-zinc-600 dark:text-zinc-400">
             {project.stack.join(" · ")}
           </p>
         )}
       </div>
 
       {/* Case study: Problem / Approach / Result */}
-      <div className="grid gap-8 border-b border-zinc-800/60 pb-10 sm:grid-cols-3 sm:divide-x sm:divide-zinc-800/60">
+      <div className="grid gap-8 border-b border-zinc-200 dark:border-zinc-800/60 pb-10 sm:grid-cols-3 sm:divide-x sm:divide-zinc-200 dark:sm:divide-zinc-800/60">
         <h2 className="sr-only">Case Study</h2>
         <div>
-          <h3 className="text-xs font-medium uppercase tracking-widest text-amber-400">Problem</h3>
-          <p className="mt-2 text-sm leading-relaxed text-zinc-300">{project.caseStudy.problem}</p>
+          <h3 className="text-xs font-medium uppercase tracking-widest text-amber-600 dark:text-amber-400">Problem</h3>
+          <p className="mt-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">{project.caseStudy.problem}</p>
         </div>
         <div className="sm:pl-8">
-          <h3 className="text-xs font-medium uppercase tracking-widest text-amber-400">Approach</h3>
-          <p className="mt-2 text-sm leading-relaxed text-zinc-300">{project.caseStudy.approach}</p>
+          <h3 className="text-xs font-medium uppercase tracking-widest text-amber-600 dark:text-amber-400">Approach</h3>
+          <p className="mt-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">{project.caseStudy.approach}</p>
         </div>
         <div className="sm:pl-8">
-          <h3 className="text-xs font-medium uppercase tracking-widest text-amber-400">Result</h3>
-          <p className="mt-2 text-sm leading-relaxed text-zinc-300">{project.caseStudy.result}</p>
+          <h3 className="text-xs font-medium uppercase tracking-widest text-amber-600 dark:text-amber-400">Result</h3>
+          <p className="mt-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">{project.caseStudy.result}</p>
         </div>
       </div>
 
-      {/* Sections */}
-      <div className="grid gap-10 md:grid-cols-2">
-        <Section title="Highlights" items={project.highlights} />
-        <Section title="Technical Highlights" items={project.technicalHighlights} />
-        <Section title="My Contribution" items={project.myContribution} />
-        <Section title="Challenges Solved" items={project.challengesSolved} />
-      </div>
+      {/* What I built */}
+      <Section title="What I Built" items={project.myContribution} />
 
       {/* Links */}
       {project.links.length > 0 && (
-        <div className="flex flex-wrap gap-6 border-t border-zinc-800/60 pt-8">
+        <div className="flex flex-wrap gap-6 border-t border-zinc-200 dark:border-zinc-800/60 pt-8">
           {project.links.map((l) => (
             <a
               key={l.href}
               href={l.href}
               target="_blank"
               rel="noreferrer"
-              className="text-sm font-medium text-zinc-300 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-amber-300 hover:decoration-amber-400"
+              className="text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-amber-600 hover:decoration-amber-500 dark:text-zinc-300 dark:decoration-zinc-700 dark:hover:text-amber-300 dark:hover:decoration-amber-400"
             >
               {l.label}
             </a>
@@ -143,6 +149,58 @@ export default async function ProjectDetailsPage({
       {project.photos.length > 0 && (
         <ProjectGallery images={project.photos} alt={`${project.title} screenshot`} />
       )}
+
+      <nav
+        aria-label="More projects"
+        className="grid gap-3 border-t border-zinc-200 pt-8 dark:border-zinc-800/60 sm:grid-cols-2"
+      >
+        {previous ? (
+          <Link
+            href={`/projects/${previous.slug}`}
+            rel="prev"
+            className="group flex flex-col gap-1 rounded-xl border border-zinc-200 p-4 transition-colors hover:border-amber-500/40 dark:border-zinc-800/60 dark:hover:border-amber-500/40"
+          >
+            <span className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-zinc-500 dark:text-zinc-500">
+              <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1" />
+              Previous
+            </span>
+            <span className="font-serif text-lg text-zinc-900 dark:text-zinc-100">
+              {previous.title}
+            </span>
+          </Link>
+        ) : (
+          <span className="hidden sm:block" />
+        )}
+
+        {next ? (
+          <Link
+            href={`/projects/${next.slug}`}
+            rel="next"
+            className="group flex flex-col gap-1 rounded-xl border border-zinc-200 p-4 transition-colors hover:border-amber-500/40 dark:border-zinc-800/60 dark:hover:border-amber-500/40 sm:items-end sm:text-right"
+          >
+            <span className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-zinc-500 dark:text-zinc-500">
+              Next
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
+            <span className="font-serif text-lg text-zinc-900 dark:text-zinc-100">
+              {next.title}
+            </span>
+          </Link>
+        ) : (
+          <Link
+            href="/projects"
+            className="group flex flex-col gap-1 rounded-xl border border-zinc-200 p-4 transition-colors hover:border-amber-500/40 dark:border-zinc-800/60 dark:hover:border-amber-500/40 sm:items-end sm:text-right"
+          >
+            <span className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-zinc-500 dark:text-zinc-500">
+              Browse
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
+            <span className="font-serif text-lg text-zinc-900 dark:text-zinc-100">
+              All projects
+            </span>
+          </Link>
+        )}
+      </nav>
     </div>
   );
 }
@@ -152,11 +210,11 @@ function Section({ title, items }: { title: string; items: string[] }) {
 
   return (
     <section className="space-y-4">
-      <h2 className="font-serif text-lg text-zinc-100">{title}</h2>
-      <ul className="space-y-3 text-sm text-zinc-400">
+      <h2 className="font-serif text-lg text-zinc-900 dark:text-zinc-100">{title}</h2>
+      <ul className="space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
         {items.map((h) => (
           <li key={h} className="flex gap-3">
-            <span className="mt-1 text-amber-500/50">▹</span>
+            <span className="mt-1 text-amber-600/70 dark:text-amber-500/50">▹</span>
             <span className="leading-relaxed">{h}</span>
           </li>
         ))}

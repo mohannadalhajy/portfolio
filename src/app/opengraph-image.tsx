@@ -42,7 +42,7 @@ export default async function Image() {
               backgroundColor: "#fbbf24",
             }}
           />
-          Full Stack Developer
+          Senior Software Engineer · Backend-Focused Full Stack
         </div>
 
         <div

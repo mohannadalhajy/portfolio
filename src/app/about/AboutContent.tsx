@@ -1,56 +1,33 @@
 "use client";
 
+import Image from "next/image";
+import { useState } from "react";
 import ProjectGallery from "@/components/project-gallery";
 import { motion } from "framer-motion";
 import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
-
-const focusAreas = [
-  "Building scalable full-stack web applications",
-  "Designing clean and maintainable backend architectures",
-  "Developing responsive and modern frontend interfaces",
-  "Implementing real-time features and messaging systems",
-  "Integrating cloud services, APIs, and third-party platforms",
-];
-
-const experienceAreas = [
-  "Scalable web platforms and SaaS products",
-  "Payment and subscription systems",
-  "Real-time communication and messaging",
-  "Cloud integrations and distributed services",
-  "API design and system architecture",
-];
-
-const technologies = [
-  "TypeScript",
-  "JavaScript",
-  "Node.js",
-  "NestJS",
-  "React",
-  "Next.js",
-  "MongoDB",
-  "MySQL",
-  "Redis",
-  "RabbitMQ",
-  "AWS",
-  "Docker",
-  "Nginx",
-];
+import { primaryTechnologies, technologyGroups } from "@/data/skills";
+import TechIcon from "@/components/tech-icon";
 
 const philosophy = [
   {
     number: "01",
-    title: "Type-Safety First",
-    desc: "Enforcing strict TypeScript configurations to eliminate runtime errors before they happen.",
+    title: "I stopped splitting services early",
+    desc: "I used to reach for microservices on day one. After debugging one payment flow across four repos and three queues, I changed my mind: I now ship a modular monolith with hard internal boundaries and only split out a service once it has its own scaling or failure profile. Most teams pay the distributed-systems tax years before they get anything back for it.",
   },
   {
     number: "02",
-    title: "Designing for Failure",
-    desc: "Building resilient microservices that gracefully handle partial outages and network partitions.",
+    title: "Money code should be boring and idempotent",
+    desc: "Every payment or subscription handler I write assumes the webhook will arrive twice, out of order, and after the user closed the tab. That means an idempotency key on every write and state derived from the provider rather than from my own optimism. It is slower to build and I would defend it in any review — a duplicate charge costs more trust than a month of velocity.",
   },
   {
     number: "03",
-    title: "User-Centric Performance",
-    desc: "Prioritizing fast edge delivery, lean bundles, and optimistic UI updates for the end user.",
+    title: "Real-time is a product decision, not a tech one",
+    desc: "Sockets everywhere is a tempting default, and mostly the wrong one. I reserve persistent connections for things that genuinely change while you watch — chat, presence, live status — and let polling or plain requests carry the rest. The tradeoff I accept: a slightly less impressive demo, in exchange for reconnect logic I can actually reason about at 3am.",
+  },
+  {
+    number: "04",
+    title: "AI writes the first draft, never the last word",
+    desc: "I use models the way I would use a fast, tireless junior: scaffolding, test fixtures, migrations, the tedious middle of a refactor. What I do not delegate is understanding. Every line that ships is one I have read and could defend without the chat window open, and anything touching payments, auth, or data I own goes through my own hands first. The speedup is real, but it lands in the boring parts on purpose — reviewing code nobody understands is how you end up with a system nobody can change.",
   },
 ];
 
@@ -63,52 +40,43 @@ export default function AboutContent() {
       variants={STAGGER_CHILDREN}
       className="space-y-16"
     >
-      <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="space-y-5">
-        <h1 className="font-serif text-3xl text-zinc-100 sm:text-4xl">About Me</h1>
-        <div className="max-w-3xl space-y-4 text-lg leading-relaxed text-zinc-400">
-          <p>
-            Full Stack Developer with 5+ years of experience developing scalable
-            backend systems using Node.js, NestJS, and TypeScript. Skilled in
-            designing REST APIs, database structures, and writing clean,
-            maintainable code. Experienced in building modern web interfaces
-            using React and Next.js.
-          </p>
-          <p>
-            I&apos;ve contributed to multiple production platforms including
-            social apps, legal services, car rentals, HR management, and project
-            management systems. My work focuses on building reliable systems
-            that integrate real-world services such as payments, messaging,
-            real-time communication, and cloud infrastructure.
-          </p>
-        </div>
-      </motion.div>
-
       <motion.div
         variants={FADE_DOWN_ANIMATION_VARIANTS}
-        className="grid gap-10 border-t border-zinc-800/60 pt-10 sm:grid-cols-2 sm:divide-x sm:divide-zinc-800/60"
+        className="flex flex-col-reverse gap-8 sm:flex-row sm:items-start sm:gap-10"
       >
-        <div>
-          <h2 className="font-serif text-lg text-zinc-100">What I Focus On</h2>
-          <ul className="mt-4 space-y-3 text-sm text-zinc-400">
-            {focusAreas.map((item) => (
-              <li key={item} className="flex gap-3">
-                <span className="mt-1 text-amber-500/50">▹</span>
-                <span className="leading-relaxed">{item}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="max-w-3xl space-y-5">
+          <h1 className="font-serif text-3xl text-zinc-900 dark:text-zinc-100 sm:text-4xl">About Me</h1>
+          <div className="space-y-4 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <p>
+              Senior Software Engineer, backend-focused full stack, with 5+
+              years of experience: scalable systems in Node.js, NestJS, and TypeScript,
+              REST API and database design, and the integration work — payments,
+              real-time messaging, cloud infrastructure — that has to be correct
+              under load. I ship the frontend too, in React and Next.js, most
+              often the dashboards and admin consoles that operate what I built
+              on the server.
+            </p>
+            <p>
+              I&apos;ve contributed to multiple production platforms including
+              social apps, legal services, car rentals, HR management, and project
+              management systems. My work focuses on building reliable systems
+              that integrate real-world services such as payments, messaging,
+              real-time communication, and cloud infrastructure.
+            </p>
+          </div>
         </div>
 
-        <div className="sm:pl-10">
-          <h2 className="font-serif text-lg text-zinc-100">Experience Areas</h2>
-          <ul className="mt-4 space-y-3 text-sm text-zinc-400">
-            {experienceAreas.map((item) => (
-              <li key={item} className="flex gap-3">
-                <span className="mt-1 text-amber-500/50">▹</span>
-                <span className="leading-relaxed">{item}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="mx-auto w-40 shrink-0 sm:mx-0 sm:w-48">
+          <div className="overflow-hidden rounded-2xl border border-zinc-200 shadow-sm dark:border-zinc-800/60">
+            <Image
+              src="/mohannad-alhajy.webp"
+              alt="Mohannad Alhajy"
+              width={480}
+              height={720}
+              className="h-auto w-full object-cover"
+              priority
+            />
+          </div>
         </div>
       </motion.div>
 
@@ -118,57 +86,54 @@ export default function AboutContent() {
         whileInView="show"
         viewport={{ once: true, margin: "-50px" }}
         variants={FADE_DOWN_ANIMATION_VARIANTS}
-        className="space-y-8 border-t border-zinc-800/60 pt-10"
+        className="space-y-8 border-t border-zinc-200 dark:border-zinc-800/60 pt-10"
       >
-        <h2 className="font-serif text-2xl text-zinc-100">Experience</h2>
+        <h2 className="font-serif text-2xl text-zinc-900 dark:text-zinc-100">Experience</h2>
 
-        <div className="relative border-l border-zinc-800/60 ml-3 space-y-14 py-2">
+        <div className="relative border-l border-zinc-200 dark:border-zinc-800/60 ml-3 space-y-14 py-2">
           <TimelineItem
             title="Full Stack Developer"
             meta="— Step By Tech"
             date="2021 – Present · Dubai"
             accent
           >
-            <p className="text-sm font-medium text-zinc-300 mb-6 max-w-2xl leading-relaxed">
-              Led development of high-impact backend systems and dynamic product
-              lines using Node.js, NestJS, and TypeScript.
+            <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-6 max-w-2xl leading-relaxed">
+              Led backend development across several product lines using
+              Node.js, NestJS, and TypeScript.
             </p>
 
-            <ul className="list-none space-y-3 mb-6 text-sm text-zinc-400">
+            <ul className="list-none space-y-3 mb-6 text-sm text-zinc-600 dark:text-zinc-400">
               <li className="flex gap-3">
-                <span className="text-amber-500/50 mt-1">▹</span>
+                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Engineered expansive API architectures servicing varied
-                  markets including Vidnik (social), Zadlaw (legal), and Exyar
-                  (auto).
+                  Built the APIs behind Vidnik (social), Zadlaw (legal), and
+                  Exyar (auto).
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-amber-500/50 mt-1">▹</span>
+                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Orchestrated real-time messaging and video conferencing
-                  capabilities for mobile-first products.
+                  Shipped real-time messaging and video calling for
+                  mobile-first products.
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-amber-500/50 mt-1">▹</span>
+                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Architected and deployed responsive admin dashboards and
-                  internal operational tooling via React.
+                  Built admin dashboards and internal tooling in React.
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-amber-500/50 mt-1">▹</span>
+                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Spearheaded integration of intricate UI functions like 3D
-                  visualization and real-time mapping integrations.
+                  Added 3D visualization and live mapping to the product
+                  front ends.
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-amber-500/50 mt-1">▹</span>
+                <span className="text-amber-600/70 dark:text-amber-500/50 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Directed cloud deployment strategies utilizing AWS
-                  infrastructure, Docker containerization, and Nginx.
+                  Ran deployments on AWS with Docker and Nginx.
                 </span>
               </li>
             </ul>
@@ -184,89 +149,29 @@ export default function AboutContent() {
             meta="— InfoTech"
             date="2020 – 2021 · Dubai"
           >
-            <ul className="list-none space-y-3 text-sm text-zinc-400">
+            <ul className="list-none space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
               <li className="flex gap-3">
-                <span className="text-zinc-600 mt-1">▹</span>
+                <span className="text-zinc-400 dark:text-zinc-600 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Designed highly secure multi-tenant capabilities, enabling
-                  total data isolation for enterprise organizational customers.
+                  Built multi-tenancy with full data isolation for enterprise
+                  customers.
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-zinc-600 mt-1">▹</span>
+                <span className="text-zinc-400 dark:text-zinc-600 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Oversaw continuous data integrations, rigorously enforcing
-                  standards to ensure maximum data reliability and
-                  compliance.
+                  Maintained ongoing data integrations and the standards that
+                  kept them reliable.
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="text-zinc-600 mt-1">▹</span>
+                <span className="text-zinc-400 dark:text-zinc-600 mt-1">▹</span>
                 <span className="leading-relaxed">
-                  Co-architected foundational systems, emphasizing zero-downtime
-                  maintenance and robust system optimization tools.
+                  Helped design core systems for zero-downtime releases, plus
+                  the tooling around them.
                 </span>
               </li>
             </ul>
-          </TimelineItem>
-        </div>
-      </motion.section>
-
-      {/* Testimonials */}
-      <motion.section
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-50px" }}
-        variants={FADE_DOWN_ANIMATION_VARIANTS}
-        className="space-y-8 border-t border-zinc-800/60 pt-10"
-      >
-        <h2 className="font-serif text-2xl text-zinc-100">Testimonials</h2>
-        <div className="grid gap-10 sm:grid-cols-2">
-          <blockquote className="border-l-2 border-amber-500/40 pl-6">
-            <p className="font-serif text-lg italic leading-relaxed text-zinc-200">
-              &ldquo;Mohannad didn&apos;t just write code; he architected systems
-              that allowed our product lines to scale their user base
-              exponentially without degraded performance. A true technical
-              leader.&rdquo;
-            </p>
-            <footer className="mt-4 text-sm text-zinc-400">
-              <span className="text-zinc-300">Team Leader</span> · Step By Tech
-            </footer>
-          </blockquote>
-
-          <blockquote className="border-l-2 border-amber-500/40 pl-6">
-            <p className="font-serif text-lg italic leading-relaxed text-zinc-200">
-              &ldquo;His focus on multi-tenant security and zero-downtime
-              deployments was critical to our enterprise deliverables. He
-              brings a senior mindset to every architecture discussion.&rdquo;
-            </p>
-            <footer className="mt-4 text-sm text-zinc-400">
-              <span className="text-zinc-300">Product Manager</span> · Vidnik
-            </footer>
-          </blockquote>
-        </div>
-      </motion.section>
-
-      {/* Education */}
-      <motion.section
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-50px" }}
-        variants={FADE_DOWN_ANIMATION_VARIANTS}
-        className="space-y-8 border-t border-zinc-800/60 pt-10"
-      >
-        <h2 className="font-serif text-2xl text-zinc-100">Education</h2>
-
-        <div className="relative border-l border-zinc-800/60 ml-3 py-2">
-          <TimelineItem
-            title="Damascus University"
-            date="2015 – 2020 · Syria"
-            compact
-          >
-            <p className="text-sm font-medium text-zinc-300 max-w-2xl leading-relaxed">
-              Bachelor&apos;s degree in Software and Information Systems
-              Engineering
-            </p>
           </TimelineItem>
         </div>
       </motion.section>
@@ -277,20 +182,24 @@ export default function AboutContent() {
         whileInView="show"
         viewport={{ once: true, margin: "-50px" }}
         variants={STAGGER_CHILDREN}
-        className="space-y-6 border-t border-zinc-800/60 pt-10"
+        className="space-y-6 border-t border-zinc-200 dark:border-zinc-800/60 pt-10"
       >
-        <h2 className="font-serif text-2xl text-zinc-100">Engineering Philosophy</h2>
-        <div className="divide-y divide-zinc-800/60 border-y border-zinc-800/60">
+        <h2 className="font-serif text-2xl text-zinc-900 dark:text-zinc-100">Engineering Philosophy</h2>
+        <p className="max-w-3xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          Four things I&apos;ve argued for often enough to write down — one of
+          which I used to believe the opposite of.
+        </p>
+        <div className="divide-y divide-zinc-200 dark:divide-zinc-800/60 border-y border-zinc-200 dark:border-zinc-800/60">
           {philosophy.map((item) => (
             <motion.div
               variants={FADE_DOWN_ANIMATION_VARIANTS}
               key={item.number}
               className="flex gap-6 py-6"
             >
-              <div className="pt-1 font-serif text-sm text-amber-400">{item.number}</div>
+              <div className="pt-1 font-serif text-sm text-amber-600 dark:text-amber-400">{item.number}</div>
               <div>
-                <h3 className="font-serif text-lg text-zinc-100">{item.title}</h3>
-                <p className="mt-1 max-w-2xl text-sm leading-relaxed text-zinc-400">
+                <h3 className="font-serif text-lg text-zinc-900 dark:text-zinc-100">{item.title}</h3>
+                <p className="mt-1 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                   {item.desc}
                 </p>
               </div>
@@ -299,37 +208,100 @@ export default function AboutContent() {
         </div>
       </motion.section>
 
-      <motion.div
+      {/* Education */}
+      <motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-50px" }}
         variants={FADE_DOWN_ANIMATION_VARIANTS}
-        className="space-y-4 border-t border-zinc-800/60 pt-10"
+        className="space-y-8 border-t border-zinc-200 dark:border-zinc-800/60 pt-10"
       >
-        <h2 className="font-serif text-lg text-zinc-100">Technologies</h2>
-        <div className="flex flex-wrap gap-2">
-          {technologies.map((tech) => (
-            <span
-              key={tech}
-              className="rounded-full border border-zinc-800/60 px-3 py-1 text-sm text-zinc-300"
-            >
-              {tech}
-            </span>
-          ))}
+        <h2 className="font-serif text-2xl text-zinc-900 dark:text-zinc-100">Education</h2>
+
+        <div className="relative border-l border-zinc-200 dark:border-zinc-800/60 ml-3 py-2">
+          <TimelineItem
+            title="Damascus University"
+            date="2015 – 2020 · Syria"
+            compact
+          >
+            <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300 max-w-2xl leading-relaxed">
+              Bachelor&apos;s degree in Software and Information Systems
+              Engineering
+            </p>
+          </TimelineItem>
         </div>
-      </motion.div>
+      </motion.section>
 
       <motion.div
         variants={FADE_DOWN_ANIMATION_VARIANTS}
-        className="border-t border-zinc-800/60 pt-10"
+        className="space-y-4 border-t border-zinc-200 dark:border-zinc-800/60 pt-10"
       >
-        <h2 className="font-serif text-lg text-zinc-100">How I Work</h2>
-        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
-          I believe in building software that is simple, reliable, and
-          maintainable. My approach focuses on clean architecture, clear domain
-          boundaries, and systems that can evolve as products grow. I enjoy
-          solving complex engineering problems and delivering high-quality
-          user experiences.
+        <h2 className="font-serif text-lg text-zinc-900 dark:text-zinc-100">Technologies</h2>
+        <p className="max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          What I reach for on almost every project, and what I&apos;d be happy
+          to be questioned on in depth.
         </p>
+        <TechnologyWall />
       </motion.div>
     </motion.div>
+  );
+}
+
+/* Primary stack up front; the full grouped list stays one click away so the
+   depth is available without burying the ten things that matter. */
+function TechnologyWall() {
+  const [showAll, setShowAll] = useState(false);
+
+  return (
+    <div className="space-y-6 pt-2">
+      <div className="flex flex-wrap gap-2">
+        {primaryTechnologies.map((tech) => (
+          <span
+            key={tech}
+            className="inline-flex items-center gap-1.5 rounded-full border border-amber-600/30 bg-amber-500/10 px-3 py-1 text-sm font-medium text-amber-900 dark:border-amber-500/30 dark:text-amber-200"
+          >
+            <TechIcon name={tech} />
+            {tech}
+          </span>
+        ))}
+      </div>
+
+      <button
+        type="button"
+        onClick={() => setShowAll((v) => !v)}
+        aria-expanded={showAll}
+        className="text-sm text-zinc-600 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:decoration-zinc-700 dark:hover:text-zinc-100"
+      >
+        {showAll ? "Hide full stack" : "Show the full stack"}
+      </button>
+
+      {showAll && (
+        <div className="space-y-6">
+          <p className="max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            Everything below has shipped in production on the projects listed
+            above.
+          </p>
+          {technologyGroups.map((group) => (
+            <div key={group.label} className="space-y-3">
+              <h3 className="text-xs font-medium uppercase tracking-wider text-amber-700/80 dark:text-amber-500/60">
+                {group.label}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {group.items.map((tech) => (
+                  <span
+                    key={tech}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 px-3 py-1 text-sm text-zinc-700 dark:border-zinc-800/60 dark:text-zinc-300"
+                  >
+                    <TechIcon name={tech} />
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -352,10 +324,10 @@ function TimelineItem({
   return (
     <div className="relative pl-8 group">
       <span
-        className={`absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full border-2 border-zinc-800 bg-zinc-950 transition-colors ${
+        className={`absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full border-2 border-zinc-300 bg-zinc-50 transition-colors dark:border-zinc-800 dark:bg-zinc-950 ${
           accent
             ? "group-hover:border-amber-500 group-hover:bg-amber-500/20"
-            : "group-hover:border-zinc-400 group-hover:bg-zinc-800"
+            : "group-hover:border-zinc-500 group-hover:bg-zinc-200 dark:group-hover:border-zinc-400 dark:group-hover:bg-zinc-800"
         }`}
       />
 
@@ -364,13 +336,13 @@ function TimelineItem({
           compact ? "mb-2" : "mb-4"
         }`}
       >
-        <h3 className="text-xl font-semibold text-zinc-100">
+        <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
           {title}
-          {meta && <span className="text-zinc-400 font-medium"> {meta}</span>}
+          {meta && <span className="text-zinc-600 dark:text-zinc-400 font-medium"> {meta}</span>}
         </h3>
         <span
           className={`shrink-0 text-sm font-medium ${
-            accent ? "text-amber-400" : "text-zinc-400"
+            accent ? "text-amber-600 dark:text-amber-400" : "text-zinc-600 dark:text-zinc-400"
           }`}
         >
           {date}

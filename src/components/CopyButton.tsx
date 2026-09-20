@@ -42,7 +42,7 @@ export default function CopyButton({
       onClick={handleCopy}
       aria-label={copied ? "Copied" : `${label}`}
       title={copied ? "Copied!" : label}
-      className={`relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-zinc-800/60 bg-zinc-950/60 text-zinc-400 transition-colors hover:border-zinc-700 hover:text-zinc-100 ${className}`}
+      className={`relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-zinc-300 bg-zinc-50 text-zinc-600 transition-colors hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-800/60 dark:bg-zinc-950/60 dark:text-zinc-400 dark:hover:border-zinc-700 dark:hover:text-zinc-100 ${className}`}
     >
       {copied ? (
         <Check className="h-4 w-4 text-emerald-400" />

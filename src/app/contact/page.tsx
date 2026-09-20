@@ -4,7 +4,7 @@ import ContactContent from "./ContactContent";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Mohannad Alhajy for new opportunities and collaborations via email, LinkedIn, or WhatsApp.",
+    "Mohannad Alhajy is open to full-time backend and senior engineering roles in the UAE, plus contract work on backends, payments, and real-time systems. Reach out via email, LinkedIn, or WhatsApp.",
   alternates: { canonical: "/contact" },
 };
 
