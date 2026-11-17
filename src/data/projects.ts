@@ -22,7 +22,7 @@ const vidnikProject = {
   tagline:
     "Matchmaking backend with AWS Rekognition liveness checks, OpenAI photo moderation, and Apple/Google payment validation.",
   subtitle:
-    "A modern halal matchmaking platform that helps Muslims connect for marriage through secure and respectful interactions. The application includes a mobile app for users and a backend system supporting authentication, profile management, matchmaking, messaging, and AI-based identity verification. The platform emphasizes privacy, guardian (wali) involvement, and culturally aligned communication.",
+    "Halal matchmaking where every account passes an AWS Rekognition liveness check, every photo is screened by an OpenAI vision model against Shariah modesty standards, and a guardian (wali) can take part in the match. The backend serves 30,000+ registered users.",
   caseStudy: {
     problem:
       "Muslims looking for marriage needed a platform that felt safe, private, and culturally aligned — not a casual dating app — with real identity verification, Shariah-conscious content standards, and guardian (wali) involvement built in from day one, not added later.",
@@ -32,11 +32,11 @@ const vidnikProject = {
       "A production platform serving 30,000+ registered users with over 1,000 chats and matches created, running wali-mediated, value-based matchmaking with privacy-first profile discovery under real-time chat, AI verification, and monetization traffic.",
   },
   myContribution: [
-    "Architected and built the full backend for a scalable mobile app: real-time chat, auth, profiles, matchmaking",
-    "Built an OpenAI vision pipeline for Shariah-compliant photo moderation alongside AWS Rekognition liveness verification",
-    "Designed the guardian (wali) recommendation workflow connecting dependents, matches, and approvals",
-    "Built monetization: Apple/Google payment validation, a virtual coin economy, profile boost packages, and QuickBooks integration for financial reporting",
-    "Built admin & super-admin dashboards and a customer support system for moderation and issue handling",
+    "Put identity verification in the signup path, not after it: AWS Rekognition liveness checks gate every account, and an OpenAI vision pipeline screens each uploaded photo for Shariah-compliant modesty.",
+    "Modeled guardian (wali) involvement as its own workflow linking dependents, matches, and approvals, rather than a flag on a profile.",
+    "Validated Apple and Google purchases server-side with Play Integrity anti-fraud checks, backing a virtual coin economy, profile boosts, and QuickBooks financial reporting.",
+    "Kept real-time chat, auth, profiles, and matchmaking responsive for 30,000+ users with Redis caching and async processing.",
+    "Gave staff admin and super-admin dashboards plus a support system, so moderation and user issues are handled in tooling, not in the database.",
   ],
   stack: [
     "NestJS",
@@ -75,9 +75,8 @@ const vidnikCrmProject = {
   title: "Vidnik CRM",
   tagline:
     "Admin console where ~87 permission keys resolve both sidebar and routing, across ~90 moderation and revenue screens.",
-  subtitle: `The internal operations console behind the Vidnik matchmaking platform — a role-based admin system covering user moderation, AI-assisted identity verification review, guardian (wali) oversight, matchmaking analytics, subscription and coin revenue, and a full customer support desk.
-
-    Built for four distinct staff roles (Super Admin, Sub Admin, Tech Support, Customer Service) with granular per-screen permissions, so each team sees only the tools its job requires.`,
+  subtitle:
+    "Staff tooling for a 30,000-user matchmaking platform holding sensitive personal data: ~87 permission keys drive both the sidebar and the routing table, so each of four staff roles reaches only the screens its job needs, out of ~90, and every action lands in an audit log.",
   caseStudy: {
     problem:
       "A matchmaking platform handling 30,000+ users generates constant human-in-the-loop work: every selfie and profile bio needs review against Shariah-conscious content standards, reported users and flagged photos need triage, guardian approvals need tracking, and payment disputes need resolving. Doing that through database queries doesn't scale, and giving every staff member full access to a platform holding sensitive personal data isn't acceptable.",
@@ -87,12 +86,12 @@ const vidnikCrmProject = {
       "The day-to-day control plane for the Vidnik platform: moderation, guardian oversight, revenue operations, and customer support handled by four separate staff roles across roughly 90 screens, with a full audit trail of who changed what.",
   },
   myContribution: [
-    "Built the permission system: ~87 granular permission keys resolving to both sidebar visibility and route access, across four admin roles.",
-    "Built the moderation queues surfacing AWS Rekognition liveness checks and OpenAI photo-moderation verdicts for human approve/reject review.",
-    "Built the support desk: ticket priority, assignment, ticket ageing, threaded replies, and per-agent performance reporting.",
-    "Built revenue operations: subscription and coin dashboards, cross-platform purchase records, and refund handling for Apple and Google payments.",
-    "Built matchmaking oversight: funnel analytics, the guardian (wali) recommendation workflow, and dependent relationship tracking.",
-    "Built admin activity logging and super-admin tooling for role management, app settings, and email templates.",
+    "Defined access once: ~87 permission keys resolve both sidebar visibility and route access across four admin roles, so a hidden screen is also an unreachable one.",
+    "Kept a human on every AI verdict: moderation queues surface AWS Rekognition liveness results and OpenAI photo-moderation calls for an explicit approve/reject.",
+    "Gave support leads per-agent performance reporting on top of ticket priority, assignment, ticket ageing, and threaded replies.",
+    "Handled Apple and Google refunds from the same screens as the subscription and coin revenue dashboards and cross-platform purchase records.",
+    "Exposed the matchmaking funnel and the guardian (wali) recommendation workflow to staff, including dependent relationship tracking.",
+    "Logged every admin action, and gave super-admins control over roles, app settings, and email templates.",
   ],
   stack: [
     "React",
@@ -138,7 +137,7 @@ const axiomProject = {
   tagline:
     "One modular NestJS backend for four clients, with Whisper/Polly voice for Unity and Redlock locking on booking races.",
   subtitle:
-    "A scalable multi-client platform for discovering UAE properties and managing relocation services. The system integrates a web application, administrative dashboard, and Unity 3D client, powered by a modular NestJS backend supporting AI interactions, real-time communication, and cloud-based infrastructure.",
+    "Four clients (a public site, an admin dashboard, a voice-driven Unity 3D app, and an AI microservice) served by one modular NestJS backend, with Redlock guarding bookings against race conditions. Built for expatriates finding property and relocating to the UAE.",
   caseStudy: {
     problem:
       "Expatriates relocating to the UAE needed one place to discover properties and manage relocation services — across four very different client types (public web, admin dashboard, a Unity 3D application, and a companion AI microservice) that would normally mean four separate backends.",
@@ -148,11 +147,11 @@ const axiomProject = {
       "One backend, four clients, no duplicated logic — powers over 1,000 property listings and 100+ AI negotiation sessions, with expatriates able to browse and voice-negotiate UAE properties inside the Unity app or manage relocation end-to-end through the web platform.",
   },
   myContribution: [
-    "Designed a modular NestJS backend serving four clients (web, admin dashboard, Unity 3D app, AI gateway) from shared domain modules.",
-    "Built the Unity voice-interaction layer: speech-to-text via OpenAI Whisper and text-to-speech via AWS Polly, streamed through S3 pre-signed URLs.",
-    "Built the AI gateway proxying conversational property search and price-negotiation chat to a companion Python/FastAPI AI microservice.",
-    "Addressed concurrency and race conditions in property inquiries and bookings using Redis caching and distributed locking with Redlock.",
-    "Implemented JWT/OAuth authentication across web, dashboard, and Unity auth guards, plus AWS integrations (S3, SES, Comprehend) and NestJS-scheduled background jobs.",
+    "One backend instead of four: web, admin, Unity 3D, and the AI gateway share NestJS domain modules, so no business logic is duplicated per client.",
+    "Made the Unity app voice-driven: OpenAI Whisper speech-to-text in, AWS Polly text-to-speech out, audio streamed through S3 pre-signed URLs.",
+    "Kept AI in its own Python/FastAPI service behind an x-api-key gateway that proxies conversational property search and price negotiation (100+ negotiation sessions so far).",
+    "Closed race conditions on concurrent inquiries and bookings with Redlock distributed locking over Redis.",
+    "Gave each client its own auth guard (JWT/OAuth for web, dashboard, and Unity), backed by AWS S3, SES, Comprehend, and scheduled background jobs.",
   ],
 
   stack: [
@@ -180,11 +179,8 @@ const exyarProject = {
   title: "Exyar",
   tagline:
     "One NestJS backend serving a booking site, an admin dashboard, and an API-key-gated AI gateway for car discovery.",
-  subtitle: `A full-featured luxury car rental platform that allows users to browse and book premium vehicles through a web application while administrators manage inventory, bookings, and customers through an administrative dashboard.
-    
-    The platform also integrates an AI-powered conversational assistant that helps users discover cars and get booking assistance through natural language interaction.
-    
-    The system was designed with a scalable modular backend architecture supporting high availability, secure authentication, and integration with external cloud services.`,
+  subtitle:
+    "Luxury car rental where the booking site, the admin dashboard, and an AI assistant for natural-language car discovery all run on one NestJS backend. The assistant reads vehicle data through an API-key-gated gateway instead of keeping its own copy. 100+ vehicles, 1,000+ bookings.",
   caseStudy: {
     problem:
       "A car rental business needed customers to browse and book premium vehicles, with AI-assisted help discovering the right car, while giving admins full inventory and booking control — all from one backend serving three different consumers (website, dashboard, and AI assistant).",
@@ -194,11 +190,11 @@ const exyarProject = {
       "A single backend cleanly serving three different consumers, powering over 100 vehicle listings and 1,000+ bookings made, with an AI conversational layer for vehicle discovery built into the same system rather than bolted on separately.",
   },
   myContribution: [
-    "Designed the modular NestJS backend architecture separating website, admin dashboard, and AI gateway API layers.",
-    "Built the vehicle management and booking system: brands, car details, pricing packages, media, and flexible booking options.",
-    "Built the AI gateway exposing vehicle data to a companion conversational AI service for natural-language car discovery.",
-    "Implemented multi-role JWT authentication, Redis caching for frequently requested data, and Firebase Cloud Messaging for real-time booking alerts.",
-    "Integrated AWS S3 for media storage and SES for transactional email, with secure verification/password-recovery email workflows.",
+    "Split the backend into three API layers (website, admin, AI gateway) over shared modules, so the assistant reads the same vehicle data customers book against.",
+    "Modeled bookings around brands, car details, pricing packages, and flexible booking options, now carrying 1,000+ bookings across 100+ vehicles.",
+    "Cached frequently requested vehicle data in Redis and pushed booking alerts in real time through Firebase Cloud Messaging.",
+    "Ran customers and staff through one multi-role JWT auth system rather than two.",
+    "Stored vehicle media on AWS S3 and sent verification and password-recovery email through SES.",
   ],
   stack: ["NestJS", "TypeScript", "Next.js", "MongoDB", "Redis", "AWS"],
   links: [],
@@ -220,9 +216,8 @@ const pmsProject = {
   title: "PMS",
   tagline:
     "Agile data model from project to board, epic, sprint and task, under granular RBAC and Redis-cached task queries.",
-  subtitle: `A full-featured Agile project management platform designed to help teams plan, track, and deliver projects efficiently. The system supports project planning, sprint management, task tracking, team collaboration, approvals, notifications, and document management. It enables organizations to structure work using boards, epics, sprints, and tasks while maintaining visibility across teams and workflows.
-
-    The backend was built with a scalable modular architecture using NestJS and MongoDB, integrating caching, cloud storage, real-time notifications, and role-based access control to support complex enterprise workflows.`,
+  subtitle:
+    "A Jira-equivalent built from scratch: a project → board → epic → sprint → task hierarchy under granular role-based permissions, with Redis caching on the heavy task queries. Tracks 20,000+ tasks across 20 projects for 5 teams.",
   caseStudy: {
     problem:
       "Teams needed a full Agile workflow — boards, epics, sprints, tasks, approvals, document management — with enterprise-grade access control, essentially a Jira-equivalent built from scratch.",
@@ -232,11 +227,11 @@ const pmsProject = {
       "A working Jira-equivalent in active use tracking over 20,000 tasks across 20 active projects for 5 onboarded teams, architected to stay maintainable as the codebase and organization grow.",
   },
   myContribution: [
-    "Designed the backend data model for Agile hierarchies: projects, boards, epics, sprints, tasks, timelines, and approvals.",
-    "Built role-based authentication, team/employee management, and granular permission systems.",
-    "Built document management with hierarchical document nodes, plus a design-asset review module with access/approval status.",
-    "Integrated Firebase push notifications, Slack webhook alerts, and HTML-to-PDF report generation.",
-    "Optimized performance with Redis caching for heavy task/project queries, and integrated AWS S3/SES/SSM for storage, email, and config.",
+    "Settled the Agile hierarchy (project → board → epic → sprint → task, plus timelines and approvals) in the data model first, so every feature hangs off one consistent structure.",
+    "Scoped every screen and action with granular role-based permissions across teams and employees.",
+    "Moved heavy task and project queries behind Redis caching to hold up at 20,000+ tasks.",
+    "Pushed task, doc, and update events out through Firebase and Slack webhooks, and generated PDF reports from HTML.",
+    "Stored documents as hierarchical nodes and added a design-asset review module with access and approval status, covered by Jest/Supertest tests.",
   ],
   stack: [
     "NestJS",
@@ -266,7 +261,7 @@ const zadlawProject = {
   tagline:
     "Consultations that book real Outlook slots via Microsoft Graph, auto-attach Zoom links, and bill through Stripe.",
   subtitle:
-    "A full-featured web platform for a law firm, enabling clients to book consultation sessions and interact with services online, while providing administrators with a comprehensive dashboard to manage appointments, analytics, content, and user interactions efficiently. The backend is built with NestJS and TypeScript, ensuring scalable and secure operations.",
+    "Law-firm booking where a consultation reserves a real Outlook slot through Microsoft Graph, gets a Zoom link attached automatically, and bills through Stripe, while staff run appointments, content, and subscriptions from one dashboard.",
   caseStudy: {
     problem:
       "A law firm needed clients to book consultations and interact with services online, with staff needing a dashboard covering analytics, content, appointments, and subscriptions — coordinated across appointments, legal advisory, blogs, and analytics modules without the data drifting out of sync.",
@@ -276,11 +271,11 @@ const zadlawProject = {
       "Clients book a consultation and get a real Outlook slot with a Zoom link automatically attached; staff run the firm's appointments, billing, and content from one dashboard instead of juggling separate tools.",
   },
   myContribution: [
-    "Designed the modular NestJS backend architecture powering the web application and admin dashboard.",
-    "Integrated Microsoft Graph API for Outlook scheduling and Zoom's API to auto-generate meeting links for bookings.",
-    "Built Stripe payment processing, subscription billing, and webhook handling.",
-    "Implemented JWT/Passport authentication and role-based authorization for clients and admin staff.",
-    "Built automated email workflows (AWS SES, EJS templates) and Redis caching for performance.",
+    "Booked against the firm's real Outlook calendars via Microsoft Graph instead of a separate availability table, and auto-created a Zoom meeting for each consultation.",
+    "Drove Stripe subscription billing from webhooks.",
+    "Centralized middleware and exception handling so the appointments, legal advisory, blogs, and analytics modules stay consistent with each other.",
+    "Separated client and staff roles with JWT/Passport authorization.",
+    "Automated email workflows on AWS SES with EJS templates, with Redis caching for frequent reads.",
   ],
   stack: [
     "NestJS",
@@ -315,8 +310,8 @@ const hrSoftware = {
   title: "HR Software",
   tagline:
     "Multi-tenant RBAC backend with isolated per-company data and a clock-in system that handles duplicate punches.",
-  subtitle: `A comprehensive HR workforce management platform designed to streamline employee attendance tracking, task management, and organizational administration. The system enables companies to manage employees, monitor clock-in/clock-out activity, assign and track daily tasks, control permissions and roles, and manage company resources through an administrative dashboard.
-    The platform supports multi-company management, allowing a super-admin to oversee multiple organizations, while each company can manage its own employees, roles, and operations. The backend architecture is built to be scalable, secure, and modular, with integrations for cloud storage, email notifications, caching, and background services.`,
+  subtitle:
+    "Multi-tenant HR backend where one super-admin oversees many companies whose data never mixes, with a dynamic RBAC system and a clock-in/clock-out service that tolerates duplicate punches.",
   caseStudy: {
     problem:
       "Companies needed to track attendance, assign tasks, and manage roles and permissions — with a single super-admin overseeing multiple independent companies without their data mixing.",
@@ -326,11 +321,11 @@ const hrSoftware = {
       "One system, multiple companies, each fully isolated — with attendance, tasks, and permissions all manageable from a single super-admin view when needed.",
   },
   myContribution: [
-    "Designed the multi-tenant NestJS backend with isolated per-company data and a super-admin oversight layer.",
-    "Built a flexible RBAC system for dynamic roles and permissions across company and super-admin dashboards.",
-    "Developed the clock-in/clock-out attendance system, handling edge cases like duplicate punches.",
-    "Built task assignment/tracking, Excel report exports, and AWS S3 file management with pre-signed uploads.",
-    "Integrated AWS SES/Nodemailer for email-based password activation, plus Redis caching for API performance.",
+    "Isolated data per company, with a super-admin layer above that sees across companies while they never see each other.",
+    "Made roles and permissions dynamic data rather than hardcoded, configurable per company.",
+    "Handled attendance edge cases like duplicate clock-in punches on the server.",
+    "Added task assignment and tracking with Excel exports, and file uploads straight to S3 via pre-signed URLs.",
+    "Activated accounts through an emailed password-setup link (AWS SES/Nodemailer), with Redis caching keeping dashboards responsive.",
   ],
   stack: [
     "NestJS",
@@ -358,9 +353,8 @@ const SIGProject = {
   title: "Save In Gold CRM",
   tagline:
     "Lead pipeline for 300k+ leads with cron-driven auto-assignment, overdue escalation, and Socket.IO dashboard updates.",
-  subtitle: `A multi-role CRM built for Save In Gold's sales operation, managing leads, agents, tasks, and customer conversations across three access levels: Admin, Sales Manager, and Sales Agent.
-
-    The platform tracks leads from multiple acquisition sources (mobile app, kiosk, website, social media), assigns them to agents, manages follow-up tasks, and centralizes customer communication in a unified inbox — all backed by role-based dashboards and reporting.`,
+  subtitle:
+    "Sales CRM for 300,000+ leads arriving from the mobile app, kiosks, website, and social media. Cron jobs auto-assign them and escalate overdue follow-ups, and Socket.IO pushes changes live to Admin, Sales Manager, and Agent dashboards.",
   caseStudy: {
     problem:
       "Save In Gold needed a CRM to manage a high volume of leads (eventually 300,000+) coming from multiple sources — mobile app, kiosks, website, social media — with different staff needing different levels of access: admins overseeing branches and roles, sales managers overseeing agents and performance, and agents working their own leads and tasks.",
@@ -370,11 +364,11 @@ const SIGProject = {
       "A production CRM in daily use managing over 300,000 leads and chats across multiple lead sources, with clean role separation between Admin, Sales Manager, and Sales Agent access levels.",
   },
   myContribution: [
-    "Built the role-based CRM backend distinguishing Admin, Sales Manager, and Sales Agent access levels.",
-    "Built lead management across multiple acquisition sources (mobile app, kiosk, website, social/WhatsApp) with assignment and status tracking.",
-    "Built the task/follow-up system with cron-driven auto-assignment, overdue escalation, and reminder notifications.",
-    "Built real-time dashboard updates via Socket.IO and a unified inbox with message templates for lead communication.",
-    "Built branch/exhibition management and reporting endpoints aggregating leads, tasks, and performance by source and agent.",
+    "Let cron jobs own lead auto-assignment, overdue escalation, and reminders, so routing and follow-up don't depend on someone remembering.",
+    "Split access into Admin, Sales Manager, and Sales Agent levels with granular permissions, so agents work only their own leads.",
+    "Tagged every lead with its source (mobile app, kiosk, website, social/WhatsApp) so reporting breaks down by source and by agent.",
+    "Pushed dashboard changes live over Socket.IO and put lead conversations in one inbox with message templates.",
+    "Added branch and exhibition management for admins.",
   ],
   stack: ["Node.js", "Express", "MongoDB", "Mongoose", "Socket.IO", "Next.js"],
   links: [],
@@ -396,7 +390,7 @@ const ordersProject = {
   tagline:
     "One Express backend keeping admin, client, and driver apps in sync through real-time order-status notifications.",
   subtitle:
-    "Full-stack delivery platform with an admin dashboard, client and driver apps, and a central backend.",
+    "Three apps (admin, client, driver) reading one Express backend, with real-time order-status notifications keeping them in sync from placement to delivery.",
   caseStudy: {
     problem:
       "A delivery operation needed to track orders from placement to delivery across three different apps — admin dashboard, client, and driver — sharing one source of truth.",
@@ -406,9 +400,9 @@ const ordersProject = {
       "End-to-end order tracking from placement to delivery, with the backend and dashboard both public on GitHub.",
   },
   myContribution: [
-    "Built a central Node.js/Express backend with role-based access control and authentication flows",
-    "Implemented order tracking and delivery status updates across admin, client, and driver apps",
-    "Built real-time order-status notifications to keep all three apps in sync",
+    "Made one backend the source of truth for the admin, client, and driver apps, with role-based access per app.",
+    "Pushed order-status changes in real time so all three apps show the same state.",
+    "Tracked orders from placement to delivery; backend and dashboard are public on GitHub.",
   ],
   stack: ["Node.js", "Express", "React", "MongoDB"],
   links: [
@@ -429,7 +423,7 @@ const realestateProject = {
   tagline:
     "Custom Vector Space Model search engine instead of an off-the-shelf service, plus behavior-driven recommendations.",
   subtitle:
-    "Listings management system with custom search and personalized recommendations.",
+    "Property search built on a hand-written Vector Space Model instead of an off-the-shelf search service, with recommendations driven by each user's behavior.",
   caseStudy: {
     problem:
       "A property listings platform needed search that actually understood relevance, not just keyword matching, plus recommendations tailored to each user.",
@@ -439,9 +433,9 @@ const realestateProject = {
       "A working search-and-recommend listings platform with its own retrieval logic, backend and dashboard both public on GitHub.",
   },
   myContribution: [
-    "Implemented a custom search engine using a Vector Space Model instead of an off-the-shelf search service",
-    "Built a recommendation system driven by user behavior and preferences",
-    "Built an admin dashboard for managing listings and users",
+    "Wrote the search engine on a Vector Space Model rather than adding a hosted search service, so relevance ranking is my own code.",
+    "Drove recommendations from user behavior and preferences.",
+    "Added an admin dashboard for listings and users.",
   ],
   stack: ["Node.js", "Express", "React", "MongoDB"],
   links: [
