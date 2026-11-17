@@ -2,13 +2,13 @@ const si = require('simple-icons');
 const fs = require('fs');
 const { technologies } = { technologies: null };
 const map = {
-"TypeScript":"typescript","JavaScript":"javascript","Node.js":"nodedotjs","Sass / SCSS":"sass",
-"NestJS":"nestjs","Express.js":"express","Swagger / OpenAPI":"swagger","WebSockets":"socketdotio","Socket.IO":"socketdotio","LiveKit":"livekit","JWT":"jsonwebtokens","Passport.js":"passport",
+"TypeScript":"typescript","JavaScript":"javascript","Node.js":"nodedotjs","ASP.NET Core":"dotnet","Sass / SCSS":"sass",
+"Express.js":"express","Swagger / OpenAPI":"swagger","WebSockets":"socketdotio","Socket.IO":"socketdotio","LiveKit":"livekit","JWT":"jsonwebtokens","Passport.js":"passport",
 "MongoDB":"mongodb","Mongoose":"mongoose","MySQL":"mysql","PostgreSQL":"postgresql","Sequelize":"sequelize","Redis":"redis","ioredis":"redis",
 "React":"react","Next.js":"nextdotjs","Tailwind CSS":"tailwindcss","Material UI":"mui","Radix UI / shadcn":"radixui","HeroUI":"heroui","Redux":"redux","TanStack Query":"reactquery","SWR":"swr","React Hook Form":"reacthookform","Zod":"zod","Framer Motion":"framer","GSAP":"greensock","Three.js":"threedotjs","React Three Fiber":"threedotjs","Embla / Swiper":"swiper","i18next":"i18next",
 "Docker":"docker","Docker Compose":"docker","Nginx":"nginx","PM2":"pm2","CI/CD Pipelines":"githubactions","Firebase":"firebase","Firebase Cloud Messaging":"firebase","Google Cloud Pub/Sub":"googlecloud","Google Cloud Speech":"googlecloud",
 "Stripe":"stripe","QuickBooks":"quickbooks","Google OAuth":"google","Apple Sign-In":"apple","Google Play Billing":"googleplay","Mapbox":"mapbox","Mixpanel":"mixpanel","Sentry":"sentry","New Relic":"newrelic",
-"node-cron":"nodedotjs","NestJS Schedule":"nestjs","Elasticsearch Logging":"elasticsearch",
+"node-cron":"nodedotjs","Elasticsearch Logging":"elasticsearch",
 "Jest":"jest","Cypress":"cypress","Testing Library":"testinglibrary","ESLint":"eslint","Prettier":"prettier","Storybook":"storybook","Webpack":"webpack","Git":"git"
 };
 const toKey = s => 'si' + s.replace(/[^a-z0-9]/g, '').replace(/^./, c => c.toUpperCase());

@@ -4,7 +4,7 @@ import AboutContent from "./AboutContent";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Senior Software Engineer, backend-focused full stack, with 5+ years of experience \u2014 scalable systems in Node.js, NestJS, and TypeScript, plus React and Next.js frontends.",
+    "ASP.NET Core developer with 5+ years of experience \u2014 scalable systems in C# and ASP.NET Core, plus React and Next.js frontends.",
   alternates: { canonical: "/about" },
 };
 

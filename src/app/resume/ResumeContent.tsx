@@ -7,10 +7,10 @@ import { FADE_DOWN_ANIMATION_VARIANTS, STAGGER_CHILDREN } from "@/lib/motion";
 import { resumeUrl, resumeViewUrl, resumeUpdated, siteConfig } from "@/lib/site";
 
 const highlights = [
-  { label: "Title", value: "Senior Software Engineer" },
+  { label: "Title", value: "ASP.NET Core Developer" },
   { label: "Experience", value: "5+ years" },
-  { label: "Focus", value: "Backend Engineering & APIs" },
-  { label: "Stack", value: "Node.js · NestJS · TypeScript" },
+  { label: "Focus", value: "ASP.NET Core APIs & React Frontends" },
+  { label: "Stack", value: "ASP.NET Core · C# · React" },
   { label: "Based in", value: "Dubai, UAE" },
 ];
 
@@ -26,8 +26,8 @@ export default function ResumeContent() {
         <h1 className="font-serif text-3xl text-zinc-900 dark:text-zinc-100 sm:text-4xl">Resume</h1>
         <p className="text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
           Read it here, or take a copy with you. Below is the same document I
-          send to hiring teams for Senior Software Engineer and Backend
-          Engineer roles — scalable APIs, real-time systems, and
+          send to hiring teams for ASP.NET Core and full stack .NET /
+          React roles — scalable APIs, real-time systems, and
           subscription and payment flows in production for 30,000+ users.
         </p>
         <p className="text-sm text-zinc-500 dark:text-zinc-500">Last updated {resumeUpdated}</p>

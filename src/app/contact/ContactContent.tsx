@@ -53,7 +53,7 @@ export default function ContactContent() {
       <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS} className="space-y-5">
         <h1 className="font-serif text-3xl text-zinc-900 dark:text-zinc-100 sm:text-4xl">Contact</h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-400">
-          Looking for a full-time backend or senior engineering role in the UAE
+          Looking for a full-time ASP.NET Core or full stack (.NET + React) role in the UAE
           (on site or hybrid). Also open to contract work on scoped backend,
           payments, or real-time systems.
         </p>

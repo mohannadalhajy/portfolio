@@ -39,11 +39,10 @@ const vidnikProject = {
     "Gave staff admin and super-admin dashboards plus a support system, so moderation and user issues are handled in tooling, not in the database.",
   ],
   stack: [
-    "NestJS",
-    "Node.js",
-    "TypeScript",
-    "Express",
+    "ASP.NET Core",
+    "C#",
     "React",
+    "TypeScript",
     "Next.js",
     "MySQL",
     "MongoDB",
@@ -96,7 +95,7 @@ const vidnikCrmProject = {
   stack: [
     "React",
     "TypeScript",
-    "NestJS",
+    "ASP.NET Core",
     "MySQL",
     "Redis",
     "React Query",
@@ -135,19 +134,19 @@ const axiomProject = {
   slug: "axiom",
   title: "Axiom",
   tagline:
-    "One modular NestJS backend for four clients, with Whisper/Polly voice for Unity and Redlock locking on booking races.",
+    "One modular ASP.NET Core backend for four clients, with Whisper/Polly voice for Unity and Redlock locking on booking races.",
   subtitle:
-    "Four clients (a public site, an admin dashboard, a voice-driven Unity 3D app, and an AI microservice) served by one modular NestJS backend, with Redlock guarding bookings against race conditions. Built for expatriates finding property and relocating to the UAE.",
+    "Four clients (a public site, an admin dashboard, a voice-driven Unity 3D app, and an AI microservice) served by one modular ASP.NET Core backend, with Redlock guarding bookings against race conditions. Built for expatriates finding property and relocating to the UAE.",
   caseStudy: {
     problem:
       "Expatriates relocating to the UAE needed one place to discover properties and manage relocation services — across four very different client types (public web, admin dashboard, a Unity 3D application, and a companion AI microservice) that would normally mean four separate backends.",
     approach:
-      "Designed a single modular NestJS backend serving all clients from shared domain modules, with a dedicated Unity API layer exposing voice interaction (Whisper speech-to-text, AWS Polly text-to-speech) so the 3D client can be driven by voice, and an AI gateway (x-api-key secured) that proxies conversational property search and price-negotiation chat to a companion Python/FastAPI AI service. Added Redis + Redlock to handle concurrent and race-condition-prone booking/inquiry operations safely.",
+      "Designed a single modular ASP.NET Core backend serving all clients from shared domain modules, with a dedicated Unity API layer exposing voice interaction (Whisper speech-to-text, AWS Polly text-to-speech) so the 3D client can be driven by voice, and an AI gateway (x-api-key secured) that proxies conversational property search and price-negotiation chat to a companion Python/FastAPI AI service. Added Redis + Redlock to handle concurrent and race-condition-prone booking/inquiry operations safely.",
     result:
       "One backend, four clients, no duplicated logic — powers over 1,000 property listings and 100+ AI negotiation sessions, with expatriates able to browse and voice-negotiate UAE properties inside the Unity app or manage relocation end-to-end through the web platform.",
   },
   myContribution: [
-    "One backend instead of four: web, admin, Unity 3D, and the AI gateway share NestJS domain modules, so no business logic is duplicated per client.",
+    "One backend instead of four: web, admin, Unity 3D, and the AI gateway share ASP.NET Core domain modules, so no business logic is duplicated per client.",
     "Made the Unity app voice-driven: OpenAI Whisper speech-to-text in, AWS Polly text-to-speech out, audio streamed through S3 pre-signed URLs.",
     "Kept AI in its own Python/FastAPI service behind an x-api-key gateway that proxies conversational property search and price negotiation (100+ negotiation sessions so far).",
     "Closed race conditions on concurrent inquiries and bookings with Redlock distributed locking over Redis.",
@@ -155,8 +154,8 @@ const axiomProject = {
   ],
 
   stack: [
-    "NestJS",
-    "TypeScript",
+    "ASP.NET Core",
+    "C#",
     "Unity",
     "MongoDB",
     "Redis",
@@ -178,14 +177,14 @@ const exyarProject = {
   slug: "exyar",
   title: "Exyar",
   tagline:
-    "One NestJS backend serving a booking site, an admin dashboard, and an API-key-gated AI gateway for car discovery.",
+    "One ASP.NET Core backend serving a booking site, an admin dashboard, and an API-key-gated AI gateway for car discovery.",
   subtitle:
-    "Luxury car rental where the booking site, the admin dashboard, and an AI assistant for natural-language car discovery all run on one NestJS backend. The assistant reads vehicle data through an API-key-gated gateway instead of keeping its own copy. 100+ vehicles, 1,000+ bookings.",
+    "Luxury car rental where the booking site, the admin dashboard, and an AI assistant for natural-language car discovery all run on one ASP.NET Core backend. The assistant reads vehicle data through an API-key-gated gateway instead of keeping its own copy. 100+ vehicles, 1,000+ bookings.",
   caseStudy: {
     problem:
       "A car rental business needed customers to browse and book premium vehicles, with AI-assisted help discovering the right car, while giving admins full inventory and booking control — all from one backend serving three different consumers (website, dashboard, and AI assistant).",
     approach:
-      "Built a modular NestJS backend with clear separation between the customer site, admin dashboard, and an AI gateway (x-api-key secured) that a companion AI service uses for vehicle discovery chat; added Redis caching for frequently requested vehicle data, Firebase Cloud Messaging for real-time booking notifications, and secure multi-role JWT authentication for both customers and staff.",
+      "Built a modular ASP.NET Core backend with clear separation between the customer site, admin dashboard, and an AI gateway (x-api-key secured) that a companion AI service uses for vehicle discovery chat; added Redis caching for frequently requested vehicle data, Firebase Cloud Messaging for real-time booking notifications, and secure multi-role JWT authentication for both customers and staff.",
     result:
       "A single backend cleanly serving three different consumers, powering over 100 vehicle listings and 1,000+ bookings made, with an AI conversational layer for vehicle discovery built into the same system rather than bolted on separately.",
   },
@@ -196,7 +195,7 @@ const exyarProject = {
     "Ran customers and staff through one multi-role JWT auth system rather than two.",
     "Stored vehicle media on AWS S3 and sent verification and password-recovery email through SES.",
   ],
-  stack: ["NestJS", "TypeScript", "Next.js", "MongoDB", "Redis", "AWS"],
+  stack: ["ASP.NET Core", "C#", "Next.js", "MongoDB", "Redis", "AWS"],
   links: [],
   photos: [
     "/exyar/exyar-home.webp",
@@ -222,7 +221,7 @@ const pmsProject = {
     problem:
       "Teams needed a full Agile workflow — boards, epics, sprints, tasks, approvals, document management — with enterprise-grade access control, essentially a Jira-equivalent built from scratch.",
     approach:
-      "Designed a flexible data model to represent Agile hierarchies (project → board → epic → sprint → task), layered in granular role-based permissions, Redis caching for heavy task and project queries, Firebase push notifications and Slack webhook alerts for task/doc/update events, HTML-to-PDF report generation, and a design-asset review module with access and approval status, all covered by Jest/Supertest tests.",
+      "Designed a flexible data model to represent Agile hierarchies (project → board → epic → sprint → task), layered in granular role-based permissions, Redis caching for heavy task and project queries, Firebase push notifications and Slack webhook alerts for task/doc/update events, HTML-to-PDF report generation, and a design-asset review module with access and approval status, all covered by automated tests.",
     result:
       "A working Jira-equivalent in active use tracking over 20,000 tasks across 20 active projects for 5 onboarded teams, architected to stay maintainable as the codebase and organization grow.",
   },
@@ -231,11 +230,11 @@ const pmsProject = {
     "Scoped every screen and action with granular role-based permissions across teams and employees.",
     "Moved heavy task and project queries behind Redis caching to hold up at 20,000+ tasks.",
     "Pushed task, doc, and update events out through Firebase and Slack webhooks, and generated PDF reports from HTML.",
-    "Stored documents as hierarchical nodes and added a design-asset review module with access and approval status, covered by Jest/Supertest tests.",
+    "Stored documents as hierarchical nodes and added a design-asset review module with access and approval status, covered by automated tests.",
   ],
   stack: [
-    "NestJS",
-    "TypeScript",
+    "ASP.NET Core",
+    "C#",
     "Next.js",
     "MongoDB",
     "Redis",
@@ -266,7 +265,7 @@ const zadlawProject = {
     problem:
       "A law firm needed clients to book consultations and interact with services online, with staff needing a dashboard covering analytics, content, appointments, and subscriptions — coordinated across appointments, legal advisory, blogs, and analytics modules without the data drifting out of sync.",
     approach:
-      "Built the backend in NestJS/TypeScript with Microsoft Graph API integration for real Outlook calendar scheduling and Zoom's API to auto-create meeting links for each booked consultation, Stripe for subscription billing and webhook handling, and centralized middleware and exception handling so appointments, legal advisory, blogs, and analytics modules stay consistent and don't drift out of sync.",
+      "Built the backend in ASP.NET Core/C# with Microsoft Graph API integration for real Outlook calendar scheduling and Zoom's API to auto-create meeting links for each booked consultation, Stripe for subscription billing and webhook handling, and centralized middleware and exception handling so appointments, legal advisory, blogs, and analytics modules stay consistent and don't drift out of sync.",
     result:
       "Clients book a consultation and get a real Outlook slot with a Zoom link automatically attached; staff run the firm's appointments, billing, and content from one dashboard instead of juggling separate tools.",
   },
@@ -274,12 +273,12 @@ const zadlawProject = {
     "Booked against the firm's real Outlook calendars via Microsoft Graph instead of a separate availability table, and auto-created a Zoom meeting for each consultation.",
     "Drove Stripe subscription billing from webhooks.",
     "Centralized middleware and exception handling so the appointments, legal advisory, blogs, and analytics modules stay consistent with each other.",
-    "Separated client and staff roles with JWT/Passport authorization.",
-    "Automated email workflows on AWS SES with EJS templates, with Redis caching for frequent reads.",
+    "Separated client and staff roles with JWT-based authorization.",
+    "Automated email workflows on AWS SES with templated emails, with Redis caching for frequent reads.",
   ],
   stack: [
-    "NestJS",
-    "TypeScript",
+    "ASP.NET Core",
+    "C#",
     "MongoDB",
     "Redis",
     "Microsoft Graph API (Outlook)",
@@ -325,11 +324,11 @@ const hrSoftware = {
     "Made roles and permissions dynamic data rather than hardcoded, configurable per company.",
     "Handled attendance edge cases like duplicate clock-in punches on the server.",
     "Added task assignment and tracking with Excel exports, and file uploads straight to S3 via pre-signed URLs.",
-    "Activated accounts through an emailed password-setup link (AWS SES/Nodemailer), with Redis caching keeping dashboards responsive.",
+    "Activated accounts through an emailed password-setup link (AWS SES), with Redis caching keeping dashboards responsive.",
   ],
   stack: [
-    "NestJS",
-    "TypeScript",
+    "ASP.NET Core",
+    "C#",
     "React",
     "MongoDB",
     "Redis",
@@ -370,7 +369,7 @@ const SIGProject = {
     "Pushed dashboard changes live over Socket.IO and put lead conversations in one inbox with message templates.",
     "Added branch and exhibition management for admins.",
   ],
-  stack: ["Node.js", "Express", "MongoDB", "Mongoose", "Socket.IO", "Next.js"],
+  stack: ["ASP.NET Core", "C#", "MongoDB", "Socket.IO", "Next.js"],
   links: [],
   photos: [
     "/sig-crm/sig-crm-dashboard.webp",
@@ -388,14 +387,14 @@ const ordersProject = {
   slug: "orders-delivery-system",
   title: "Orders Delivery System",
   tagline:
-    "One Express backend keeping admin, client, and driver apps in sync through real-time order-status notifications.",
+    "One ASP.NET Core backend keeping admin, client, and driver apps in sync through real-time order-status notifications.",
   subtitle:
-    "Three apps (admin, client, driver) reading one Express backend, with real-time order-status notifications keeping them in sync from placement to delivery.",
+    "Three apps (admin, client, driver) reading one ASP.NET Core backend, with real-time order-status notifications keeping them in sync from placement to delivery.",
   caseStudy: {
     problem:
       "A delivery operation needed to track orders from placement to delivery across three different apps — admin dashboard, client, and driver — sharing one source of truth.",
     approach:
-      "Built a central Node.js/Express backend with role-based access control and real-time order-status notifications so all three apps stay in sync.",
+      "Built a central ASP.NET Core backend with role-based access control and real-time order-status notifications so all three apps stay in sync.",
     result:
       "End-to-end order tracking from placement to delivery, with the backend and dashboard both public on GitHub.",
   },
@@ -404,7 +403,7 @@ const ordersProject = {
     "Pushed order-status changes in real time so all three apps show the same state.",
     "Tracked orders from placement to delivery; backend and dashboard are public on GitHub.",
   ],
-  stack: ["Node.js", "Express", "React", "MongoDB"],
+  stack: ["ASP.NET Core", "C#", "React", "MongoDB"],
   links: [
     {
       label: "Backend Repo",
@@ -437,7 +436,7 @@ const realestateProject = {
     "Drove recommendations from user behavior and preferences.",
     "Added an admin dashboard for listings and users.",
   ],
-  stack: ["Node.js", "Express", "React", "MongoDB"],
+  stack: ["ASP.NET Core", "C#", "React", "MongoDB"],
   links: [
     {
       label: "Backend Repo",
