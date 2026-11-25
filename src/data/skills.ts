@@ -3,7 +3,8 @@
 export const skillGroups = [
   {
     label: "Backend & Architecture",
-    tools: "Node.js, NestJS, Microservices, REST / GraphQL, WebSockets",
+    tools:
+      "Node.js, NestJS, Microservices, DDD, SOLID, Multi-Layer Architecture, REST / GraphQL, WebSockets",
   },
   {
     label: "Frontend & UX",
@@ -40,6 +41,15 @@ export const technologyGroups = [
       "JWT",
       "Passport.js",
       "Rate Limiting",
+    ],
+  },
+  {
+    label: "Architecture & Design",
+    items: [
+      "Domain-Driven Design (DDD)",
+      "SOLID Principles",
+      "Multi-Layer Architecture",
+      "Microservices",
     ],
   },
   {
