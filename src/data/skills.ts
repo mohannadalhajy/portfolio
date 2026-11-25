@@ -3,7 +3,7 @@
 export const skillGroups = [
   {
     label: "Backend & Architecture",
-    tools: "ASP.NET Core, C#, Microservices, REST / GraphQL, WebSockets",
+    tools: "Node.js, NestJS, Microservices, REST / GraphQL, WebSockets",
   },
   {
     label: "Frontend & UX",
@@ -25,12 +25,12 @@ export const skillGroups = [
 export const technologyGroups = [
   {
     label: "Languages & Runtime",
-    items: ["C#", "TypeScript", "JavaScript", "SQL", "Sass / SCSS"],
+    items: ["TypeScript", "JavaScript", "Node.js", "SQL", "Sass / SCSS"],
   },
   {
     label: "Backend",
     items: [
-      "ASP.NET Core",
+      "NestJS",
       "Express.js",
       "REST APIs",
       "Swagger / OpenAPI",
@@ -129,6 +129,7 @@ export const technologyGroups = [
     items: [
       "node-cron",
       "Agenda",
+      "NestJS Schedule",
       "Winston",
       "Pino",
       "Elasticsearch Logging",
@@ -151,11 +152,11 @@ export const technologyGroups = [
 // The handful I'd want a reader to leave with. Everything else on the About
 // page sits behind a toggle so this list is what gets read first.
 export const primaryTechnologies = [
-  "C#",
-  "ASP.NET Core",
+  "TypeScript",
+  "Node.js",
+  "NestJS",
   "React",
   "Next.js",
-  "TypeScript",
   "MongoDB",
   "PostgreSQL",
   "Redis",

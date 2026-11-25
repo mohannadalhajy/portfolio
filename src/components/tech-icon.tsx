@@ -24,7 +24,6 @@ import { brandIcons } from "@/data/tech-icons";
 /* Entries with no brand mark in `simple-icons` (trademark-restricted or too
    small to have one) get a glyph that reads as the thing it does. */
 const fallbackIcons: Record<string, LucideIcon> = {
-  "C#": Code,
   SQL: Database,
   "REST APIs": Braces,
   "Rate Limiting": Gauge,

@@ -10,8 +10,8 @@ export default function SEOJsonLd() {
           "@type": "Person",
           name: siteConfig.name,
           jobTitle: [
-            "ASP.NET Core Developer",
-            ".NET Developer",
+            "Senior Software Engineer",
+            "Senior Backend Engineer",
             "Software Engineer",
             "Backend Engineer",
             "Full Stack Developer",
@@ -29,9 +29,8 @@ export default function SEOJsonLd() {
             name: "Damascus University",
           },
           knowsAbout: [
-            "ASP.NET Core",
-            "C#",
-            ".NET",
+            "Node.js",
+            "NestJS",
             "TypeScript",
             "React",
             "Next.js",

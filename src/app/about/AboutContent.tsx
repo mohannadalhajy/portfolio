@@ -99,7 +99,7 @@ export default function AboutContent() {
             accent
           >
             <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-6 max-w-2xl leading-relaxed">
-              Backend developer on three production CRM platforms
+              Lead backend developer on three production CRM platforms
               (SaveInGold, MENA, BBH).
             </p>
 
@@ -154,8 +154,8 @@ export default function AboutContent() {
             date="2021 – 2026 · Dubai"
           >
             <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-6 max-w-2xl leading-relaxed">
-              Built backends with ASP.NET Core and C# across several product
-              lines, plus the React frontends on top of them.
+              Led backend development across several product lines using
+              Node.js, NestJS, and TypeScript.
             </p>
 
             <ul className="list-none space-y-3 mb-6 text-sm text-zinc-600 dark:text-zinc-400">

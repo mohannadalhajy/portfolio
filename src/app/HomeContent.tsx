@@ -12,14 +12,14 @@ import { resumeUrl, resumePage, resumeUpdated } from "@/lib/site";
 const testimonials = [
   {
     quote:
-      "Mohannad didn't just write code; he architected systems that allowed our product lines to scale their user base exponentially without degraded performance.",
+      "Mohannad didn't just write code; he architected systems that allowed our product lines to scale their user base exponentially without degraded performance. A true technical leader.",
     name: "Bilal Tahir",
     role: "Team Leader",
     company: "Step By Tech",
   },
   {
     quote:
-      "His focus on multi-tenant security and zero-downtime deployments was critical to our enterprise deliverables.",
+      "His focus on multi-tenant security and zero-downtime deployments was critical to our enterprise deliverables. He brings a senior mindset to every architecture discussion.",
     name: "Nabeel Iqbal",
     role: "Product Manager",
     company: "Vidnik",
@@ -46,7 +46,7 @@ export default function HomeContent() {
 
             <div className="relative">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-600 dark:text-zinc-400">
-                ASP.NET Core Developer · React Frontend · Dubai
+                Senior Software Engineer · Backend-Focused Full Stack · Dubai
               </p>
               <h1 className="mt-2 font-serif text-5xl text-zinc-900 dark:text-zinc-100 sm:text-6xl lg:text-7xl">
                 Mohannad Alhajy
@@ -54,10 +54,10 @@ export default function HomeContent() {
             </div>
 
             <p className="max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-              I'm an ASP.NET Core developer with 5+ years of experience
-              building the systems behind payments, multi-tenant SaaS, and
-              real-time features, and the React and Next.js frontends that
-              operate them. My work is live in HR, legal,
+              I'm a backend-focused full stack engineer with 5+ years of
+              experience building the systems behind payments, multi-tenant
+              SaaS, and real-time features, then shipping the React and Next.js
+              dashboards that operate them. My work is live in HR, legal,
               proptech, automotive, and social platforms, from Dubai. I care
               about billing that reconciles, tenant data that never leaks, and
               chat and notifications that hold up under load.

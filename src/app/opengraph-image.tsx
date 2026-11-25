@@ -42,7 +42,7 @@ export default async function Image() {
               backgroundColor: "#fbbf24",
             }}
           />
-          ASP.NET Core Developer · React Frontend
+          Senior Software Engineer · Backend-Focused Full Stack
         </div>
 
         <div
@@ -72,7 +72,7 @@ export default async function Image() {
         </div>
 
         <div style={{ display: "flex", marginTop: 48, gap: 16 }}>
-          {["ASP.NET Core", "C#", "React", "Next.js"].map((t) => (
+          {["Node.js", "NestJS", "AWS", "Next.js"].map((t) => (
             <div
               key={t}
               style={{
